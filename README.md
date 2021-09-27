@@ -1,1 +1,1 @@
-# pakwheels_automation
+# automated-testing-scripts-desktop-web
