@@ -3,13 +3,10 @@
 // npx cypress open
 describe('Search for car, bike and autopart', function(){
 
-    it('Search for used car', function(){ 
+    it.only('Search for used car', function(){ 
 
         cy.visit('https://www.pakgari.com/used-cars/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
-        
-        // Select cash
-        // cy.contains('Cash').click()
         
         // select Make
         cy.get('li[title="Toyota Cars for Sale in Pakistan"] > .filter-check').click()
@@ -20,23 +17,22 @@ describe('Search for car, bike and autopart', function(){
         
         // select version
         cy.wait(5000)
-        cy.get('#collapse_12 > .accordion-inner > .more-choice').click()
+        cy.get('#collapse_11 > .accordion-inner > .more-choice').click()
         cy.wait(3000)
         cy.get('#version_list > :nth-child(1) > .checkbox').click()
         cy.get(':nth-child(8) > .checkbox').click()
         cy.get('.btn-link').click()
-        cy.get(':nth-child(28) > .checkbox > input').click()
+        cy.get(':nth-child(27) > .checkbox > input').click()
         cy.get('form > .modal-footer > .pull-right > .btn').click()
-
         
 
         // select city
-        cy.wait(2000)
-        cy.get('li[title="Toyota Corolla Gli Vvti Cars for Sale in Lahore, Pakistan"] > .filter-check').click()
+        // cy.wait(2000)
+        // cy.get('li[title="Toyota Corolla Gli Vvti Cars for Sale in Lahore, Pakistan"] > .filter-check').click()
         
         // select registration
         cy.wait(2000)
-        cy.get('#collapse_12 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
+        cy.get('#collapse_13 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
         
         // select engine type.
         cy.wait(3000)
@@ -75,7 +71,6 @@ describe('Search for car, bike and autopart', function(){
         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(1)').should('have.text', "\n400,000 to 3,000,000\n\n\n ")
         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(3)').should('have.text','\nToyota\n\n\n ')
         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(4)').should('have.text','\nCorolla\n\n\n ')
-        cy.get('.accordion-inner > .list-unstyled > :nth-child(9)').should('have.text','\nBlack\n\n\n ')
         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(6)').should('have.text','\nLahore\n\n\n ')
 
      })
