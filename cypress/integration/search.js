@@ -3,7 +3,7 @@
 // npx cypress open
 describe('Search for car, bike and autopart', function(){
 
-    it.only('Search for used car', function(){ 
+    it('Search for used car', function(){ 
 
         cy.visit('https://www.pakgari.com/used-cars/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
