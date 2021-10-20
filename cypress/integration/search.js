@@ -3,7 +3,7 @@
 // npx cypress open
 describe('Search for car, bike and autopart', function(){
 
-    it('Search for used car', function(){ 
+    it.only('Search for used car', function(){ 
 
         cy.visit('https://www.pakgari.com/used-cars/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
@@ -17,7 +17,8 @@ describe('Search for car, bike and autopart', function(){
         
         // select version
         cy.wait(5000)
-        cy.get('#collapse_11 > .accordion-inner > .more-choice').click()
+        // cy.contains('Version').find('more choices').click()
+        cy.get('#collapse_10 > .accordion-inner > .more-choice').click()
         cy.wait(3000)
         cy.get('#version_list > :nth-child(1) > .checkbox').click()
         cy.get(':nth-child(8) > .checkbox').click()
@@ -27,42 +28,43 @@ describe('Search for car, bike and autopart', function(){
         
 
         // select city
-        // cy.wait(2000)
-        // cy.get('li[title="Toyota Corolla Gli Vvti Cars for Sale in Lahore, Pakistan"] > .filter-check').click()
-        
-        // select registration
         cy.wait(2000)
-        cy.get('#collapse_13 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
-        
+        cy.contains("Lahore").click()
+    
         // select engine type.
-        cy.wait(3000)
-        cy.get(':nth-child(20) > .accordion-heading').click() 
-        cy.get('#collapse_16 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
+        // cy.wait(3000)
+        // cy.contains('Engine Type').click()
+        // cy.get(':nth-child(20) > .accordion-heading').click() 
+        // cy.get('#collapse_16 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
         
         // Price Range
-        cy.wait(2000)
+        cy.wait(3000)
         cy.get('#pr_from').type('400000')
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('#pr_to').type('3000000')
         cy.get('#pr-go').click()
         
         // select color
         cy.wait(2000)
-        cy.get(':nth-child(23) > .accordion-heading').click()
-        cy.wait(2000)
-        cy.get('#collapse_19 > .accordion-inner > .more-choice').click()
-        cy.wait(2000)
-        cy.get(':nth-child(1) > .checkbox > input').click()
-        cy.get(':nth-child(6) > .checkbox > input').click()
-        cy.get(':nth-child(9) > .checkbox > input').click()
-        cy.get('form > .modal-footer > .pull-right > .btn').click()
+        cy.contains('Color').click()
+        cy.contains('Silver').click()
+        // cy.wait(2000)
+        // cy.get('#collapse_19 > .accordion-inner > .more-choice').click()
+        // cy.wait(2000)
+        // cy.get(':nth-child(1) > .checkbox > input').click()
+        // cy.get(':nth-child(6) > .checkbox > input').click()
+        // cy.get(':nth-child(9) > .checkbox > input').click()
+        // cy.get('form > .modal-footer > .pull-right > .btn').click()
+        
 
         // Year
         cy.wait(2000)
         cy.get('#yr_from').click()
+        cy.wait(1000)
         cy.get('.tt-dataset > :nth-child(9)').click()
 
         cy.get('#yr_to').click()
+        cy.wait(1000)
         cy.get(':nth-child(2) > .tt-menu > .tt-dataset > :nth-child(21)').click()
 
         cy.get('#yr-go').click()
