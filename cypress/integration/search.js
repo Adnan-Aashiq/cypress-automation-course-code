@@ -1,9 +1,8 @@
 /// <reference types="cypress"/>
 
-// npx cypress open
 describe('Search for car, bike and autopart', function(){
 
-    it.only('Search for used car', function(){ 
+    it('Search for used car', function(){ 
 
         cy.visit('https://www.pakgari.com/used-cars/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
@@ -48,23 +47,14 @@ describe('Search for car, bike and autopart', function(){
         cy.wait(2000)
         cy.contains('Color').click()
         cy.contains('Silver').click()
-        // cy.wait(2000)
-        // cy.get('#collapse_19 > .accordion-inner > .more-choice').click()
-        // cy.wait(2000)
-        // cy.get(':nth-child(1) > .checkbox > input').click()
-        // cy.get(':nth-child(6) > .checkbox > input').click()
-        // cy.get(':nth-child(9) > .checkbox > input').click()
-        // cy.get('form > .modal-footer > .pull-right > .btn').click()
         
 
         // Year
         cy.wait(2000)
         cy.get('#yr_from').click()
-        cy.wait(1000)
         cy.get('.tt-dataset > :nth-child(9)').click()
-
+        cy.wait(2000)
         cy.get('#yr_to').click()
-        cy.wait(1000)
         cy.get(':nth-child(2) > .tt-menu > .tt-dataset > :nth-child(21)').click()
 
         cy.get('#yr-go').click()
@@ -79,11 +69,13 @@ describe('Search for car, bike and autopart', function(){
 
 
 
-    it('Search for used bikes', function(){
+    it.only('Search for used bikes', function(){
 
         cy.visit('https://www.pakgari.com/used-bikes/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
 
+
+        
         // Price Range
         cy.wait(1000)
         cy.get('#pr_from').type('40000')
@@ -93,36 +85,34 @@ describe('Search for car, bike and autopart', function(){
 
 
         // Year
-        cy.wait(2000)
-        cy.get('#yr_from').type("2008")
+        // cy.wait(2000)
+        // cy.get('#yr_from').click()
+        // cy.get('#collapse_1 > .accordion-inner > .range-filter > :nth-child(1) > .tt-menu > .tt-dataset > :nth-child(9)').click({force: true})
 
-        cy.get('#yr_to').click()
-        cy.wait(1000)
-        cy.get(':nth-child(2) > .tt-menu > .tt-dataset > :nth-child(21)').click()
+        // cy.get('#yr_to').click()
+        // cy.wait(1000)
+        // cy.get(':nth-child(2) > .tt-menu > .tt-dataset > :nth-child(21)').click({multiple: true})
 
-        cy.get('#yr-go').click()
+        // cy.get('#yr-go').click()
 
         // Select make
         cy.wait(1000)
-        cy.get('li[title="Honda 2008 - 2020 Bikes for Sale in 40000 - 120000 in Pakistan"] > .filter-check').click()
+        cy.get('.filter-check').contains('Honda').click()
 
         // Select model
         cy.wait(4000)
-        cy.get('#collapse_3 > .accordion-inner > .more-choice').click()
-        cy.wait(1000)
-        cy.get('#model_list_popular > :nth-child(1) > .checkbox').click()
-        cy.get('form > .modal-footer > .pull-right > .btn').click()
+        cy.get('.filter-check > a').contains('CG 125').click()
 
         // select location
-        cy.wait(1000)
-        cy.get('li[title="Honda Cg 125  2 2008 - 2020 Bikes for Sale in 40000 - 120000 in Lahore, Pakistan"] > .filter-check').click()
+        cy.wait(4000)
+        cy.contains('City').get('.filter-check').contains('Lahore').click()
 
         // Registration
-        cy.wait(1000)
-        cy.get('#collapse_5 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
+        cy.wait(4000)
+        cy.contains('Registered In').get('.filter-check').contains('Lahore').click()
 
         // milage
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('#ml_from').type('400')
         cy.wait(1000)
         cy.get('#ml_to').type('4000')
@@ -131,7 +121,7 @@ describe('Search for car, bike and autopart', function(){
 
          // Final expected conditions
          cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(1)').should('have.text', "\n40,000 to 120,000\n\n\n ")
-         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(2)').should('have.text', "\n2008 to 2020\n\n\n ")
+        //  cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(2)').should('have.text', "\n2008 to 2020\n\n\n ")
          cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(3)').should('have.text', "\nHonda\n\n\n ")
          cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(4)').should('have.text', "\nCG 125\n\n\n ")
      
