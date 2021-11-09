@@ -15,27 +15,14 @@ describe('Search for car, bike and autopart', function(){
         cy.get('li[title="Toyota Corolla Cars for Sale in Pakistan"] > .filter-check').click()
         
         // select version
-        cy.wait(5000)
-        // cy.contains('Version').find('more choices').click()
-        cy.get('#collapse_10 > .accordion-inner > .more-choice').click()
-        cy.wait(3000)
-        cy.get('#version_list > :nth-child(1) > .checkbox').click()
-        cy.get(':nth-child(8) > .checkbox').click()
-        cy.get('.btn-link').click()
-        cy.get(':nth-child(27) > .checkbox > input').click()
-        cy.get('form > .modal-footer > .pull-right > .btn').click()
-        
+        // cy.wait(5000)
+        // cy.get('.filter-check > a').contains('GLi 1.3 VVTi').click()
+        cy.get('li[title="Toyota Corolla Gli Vvti Cars for Sale in Pakistan"] > .filter-check').should('be.visible').click()
 
         // select city
         cy.wait(2000)
-        cy.contains("Lahore").click()
-    
-        // select engine type.
-        // cy.wait(3000)
-        // cy.contains('Engine Type').click()
-        // cy.get(':nth-child(20) > .accordion-heading').click() 
-        // cy.get('#collapse_16 > .accordion-inner > .list-unstyled > :nth-child(1) > .filter-check').click()
-        
+        cy.contains("City").get(".filter-check > a").contains('Lahore').click()
+            
         // Price Range
         cy.wait(3000)
         cy.get('#pr_from').type('400000')
@@ -56,25 +43,27 @@ describe('Search for car, bike and autopart', function(){
         cy.wait(2000)
         cy.get('#yr_to').click()
         cy.get(':nth-child(2) > .tt-menu > .tt-dataset > :nth-child(21)').click()
-
         cy.get('#yr-go').click()
 
-        // Final expected conditions
-        cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(1)').should('have.text', "\n400,000 to 3,000,000\n\n\n ")
-        cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(3)').should('have.text','\nToyota\n\n\n ')
-        cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(4)').should('have.text','\nCorolla\n\n\n ')
-        cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(6)').should('have.text','\nLahore\n\n\n ')
+        // Mileage
+        // cy.wait(3000)
+        cy.get('#ml_from').should('be.visible').type('40000')
+        // cy.wait(3000)
+        cy.get('#ml_to').should('be.visible').type('60000')
+        cy.get('#ml-go').should('be.visible').click()
+
+        // select city
+        cy.wait(2000)
+        cy.contains("Registered In").get(".filter-check > a").contains('Lahore').click()
 
      })
 
 
 
-    it.only('Search for used bikes', function(){
+    it('Search for used bikes', function(){
 
         cy.visit('https://www.pakgari.com/used-bikes/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
-
-
         
         // Price Range
         cy.wait(1000)
@@ -112,23 +101,15 @@ describe('Search for car, bike and autopart', function(){
         cy.contains('Registered In').get('.filter-check').contains('Lahore').click()
 
         // milage
-        cy.wait(2000)
-        cy.get('#ml_from').type('400')
-        cy.wait(1000)
-        cy.get('#ml_to').type('4000')
-        cy.get('#ml-go').click()
-
-
-         // Final expected conditions
-         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(1)').should('have.text', "\n40,000 to 120,000\n\n\n ")
-        //  cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(2)').should('have.text', "\n2008 to 2020\n\n\n ")
-         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(3)').should('have.text', "\nHonda\n\n\n ")
-         cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(4)').should('have.text', "\nCG 125\n\n\n ")
-     
+        // cy.wait(2000)
+        cy.get('#ml_from').should('be.visible').type('400')
+        // cy.wait(1000)
+        cy.get('#ml_to').should('be.visible').type('4000')
+        cy.get('#ml-go').should('be.visible').click()     
     })
 
 
-    it('Search for autoparts', function(){
+    it.only('Search for autoparts', function(){
 
         cy.visit('https://www.pakgari.com/accessories-spare-parts/search/-/')
         cy.get('#onesignal-slidedown-cancel-button').click()
