@@ -1,5 +1,5 @@
 {
-    "defaultCommandTimeout": 12000,
+    "defaultCommandTimeout": 19000,
     "viewportWidth": 1260,
     "viewportHeight": 800,
     "reporter": "mochawesome",
