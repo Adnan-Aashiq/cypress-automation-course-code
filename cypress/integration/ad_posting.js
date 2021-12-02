@@ -69,8 +69,6 @@ it('Post a Car ad', function(){
   // Submit and continue
   cy.get('#submit_form').click()
 
-  cy.wait(3000)
-
   // Skip upsell for pending state ad
   // cy.get('.btn-link-outline-gray').click()
   
@@ -173,7 +171,7 @@ it('Post an autopart ad', function(){
   cy.get('#ad_listing_city_id_chzn_o_7').click()
 
   // Skip the duplicate pop-up
-  cy.get('.model-footer > .btn').click()
+  // cy.get('.model-footer > .btn').click() 
 
   // Select Category
   cy.get('#category_selector').click()
