@@ -15,7 +15,7 @@ it('Place an estore order', function(){
     cy.contains('View Cart').click()
 
     cy.get('button[class="btn pull-left"]').eq(1).click()
-    cy.get(':nth-child(2) > .checkout-footer > .btn').click()
+    cy.get(':nth-child(2) > .checkout-footer > .btn').click() 
 
     cy.get('.with-email').click()
     cy.get('#username').type('newweb@mailinator.com')
