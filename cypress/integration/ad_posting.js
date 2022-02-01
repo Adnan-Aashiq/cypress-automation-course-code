@@ -10,11 +10,13 @@ it('Post a Car ad', function(){
 
   cy.get('[title="Post an Ad"]').click()
   cy.get('#select-sell-option').click()
-  cy.get('.with-email').click()
+  cy.get('[href="javascript:void(0)"]').click()
   cy.get('#username').type('newweb@mailinator.com')
   cy.get('#password').type('1234567')
-  cy.get(':nth-child(6) > .btn').click()
+  cy.get('#frm_login > .btn').click()
 
+
+  cy.get('#select-sell-option').click()
 // Select City
   cy.get('#used_car_ad_listing_attributes_city_id_chzn > .chzn-single > span').click()
   cy.get('#used_car_ad_listing_attributes_city_id_chzn_o_7').click()
@@ -83,15 +85,15 @@ it('Post a Bike ad', function(){
   cy.get('.logo-blue > img').click({force: true})
   cy.wait(3000)
   cy.get('#onesignal-slidedown-cancel-button').click()
-  cy.contains('Sell Bike').click({force: true})
+  cy.contains('Sell Your Bike').click({force: true})
   
   // Login
-  cy.get('.with-email').click()
+  cy.get('.modal-body > [href="javascript:void(0)"]').click()
   cy.get('#username').type('newweb@mailinator.com')
   cy.get('#password').type('1234567')
-  cy.get(':nth-child(6) > .btn').click()
+  cy.get('#frm_login > .btn').click()
   
-  
+  cy.contains('Sell Your Bike').click({force: true})
   // Ad form
 
   // Select City
@@ -158,11 +160,12 @@ it('Post an autopart ad', function(){
   cy.contains('Sell Accessory').click({force: true})
 
   // Login
-  cy.get('.with-email').click()
+  cy.get('.modal-body > [href="javascript:void(0)"]').click()
   cy.get('#username').type('newweb@mailinator.com')
   cy.get('#password').type('1234567')
-  cy.get(':nth-child(6) > .btn').click()
+  cy.get('#frm_login > .btn').click()
 
+  cy.contains('Sell Accessory').click({force: true})
   // Enter title
   cy.get('#ad_listing_title').type('Car Wax')
 
@@ -171,7 +174,7 @@ it('Post an autopart ad', function(){
   cy.get('#ad_listing_city_id_chzn_o_7').click()
 
   // Skip the duplicate pop-up
-  // cy.get('.model-footer > .btn').click() 
+  cy.get('.model-footer > .btn').click() 
 
   // Select Category
   cy.get('#category_selector').click()

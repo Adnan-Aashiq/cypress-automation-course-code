@@ -130,8 +130,8 @@ describe('Search for car, bike and autopart', function(){
 
         // select buy now ads checkbox
         // cy.wait(3000)
-        cy.get('.search-loader-fixed > img').should('not.be.visible')
-        cy.contains('Buy Now Ads Only').click()
+        // cy.get('.search-loader-fixed > img').should('not.be.visible')
+        // cy.contains('Buy Now Ads Only').click()
         // select location checkbox
         cy.get('.search-loader-fixed > img').should('not.be.visible')
         cy.get('.filter-check > a').contains('Lahore').click()
@@ -159,8 +159,6 @@ describe('Search for car, bike and autopart', function(){
         cy.get('.filter-check > a').contains('With Pictures').click()
 
         cy.get('.search-loader-fixed > img').should('not.be.visible')
-        // Final expected conditions
-        cy.get('#collapse_search_key_filter > .accordion-inner > .list-unstyled > :nth-child(1)').should('have.text', "\nBuy Now Ads Only\n\n\n ")
 
     })
 

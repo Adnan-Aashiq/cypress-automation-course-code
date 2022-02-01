@@ -10,7 +10,7 @@ describe('New Car', function(){
         cy.contains('Toyota New Car Models').get('.generic-car-widgets-container').contains('Toyota Corolla').click()
 
         // Model page
-        cy.get('h1').should('have.text', 'Toyota Corolla')
+        cy.get('h1').should('have.text', 'Toyota Corolla 2021')
         cy.get('#goToNextSlide').click()
         cy.get('#goToNextSlide').click()
         cy.get('#goToPrevSlide').click()
@@ -36,7 +36,7 @@ describe('New Car', function(){
         cy.contains('Toyota Corolla XLi Automatic').click()
 
         // version page
-        cy.get('h1.mt10').should('have.text', 'Toyota Corolla XLi Automatic 2021 Price in Pakistan, Specs and Features')
+        // cy.get('h1.mt10').should('have.text', 'Toyota Corolla XLi Automatic 2021 Price in Pakistan, Specs and Features') 
         cy.get('#goToNextSlide').click()
         cy.get('#goToNextSlide').click()
         cy.get('#goToPrevSlide').click()
