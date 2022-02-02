@@ -21,7 +21,7 @@ Use git-flow model "http://danielkummer.github.io/git-flow-cheatsheet/" <br/> <b
 * Use develop branch to maintain development ready code. <br/>
 * Use feature branches to keep your in progress code. <br/>
 
-**Modeules Status** <br/>
+**Modules Status** <br/>
 Modules | Issues to deal
 --- | --- | 
 Ad Post | Duplicate pop-up issue
