@@ -28,3 +28,11 @@ Ad Post | Duplicate pop-up issue
 Search | 
 New Car | Some titles are changed
 Autostore | 
+<br/>
+
+**Commands to Run Cypress** <br/>
+* **Open cypress:** "npx cypress open" <br/> 
+* **Run specific testcase/spec file:** "npx cypress run --spec "cypress/integration/search.js"" <br/>
+* **Run specific testcase/spec file with mocha awesome report:** "npx cypress run --spec "cypress/integration/search.js"  --reporter mochawesome" <br/>
+* **Run all testcases/spec files:** "npx cypress run" <br/>
+* **Run all testcases/spec files:** "npx cypress run --reporter mochawesome" <br/>
