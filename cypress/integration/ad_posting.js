@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+// <reference types="cypress"/>
 
 // npx cypress open
 describe('Ad Posting', function(){

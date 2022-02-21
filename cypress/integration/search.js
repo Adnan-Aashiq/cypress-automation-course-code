@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+// <reference types="cypress"/>
 
 describe('Search for car, bike and autopart', function(){
 

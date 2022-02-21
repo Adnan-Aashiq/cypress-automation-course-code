@@ -1,5 +1,7 @@
 describe('New Car', function(){
 
+    var today = new Date();
+
     it('Make and model page', function(){
         cy.visit("https://www.pakgari.com/new-cars")
         cy.contains('New Cars by Make').scrollIntoView()
@@ -15,10 +17,10 @@ describe('New Car', function(){
         cy.get('#goToNextSlide').click()
         cy.get('#goToPrevSlide').click()
         
-        cy.contains('Toyota Corolla Colors').scrollIntoView()
+        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Colors').scrollIntoView()
 
-        cy.contains('Toyota Corolla Price in Pakistan').scrollIntoView()
-        cy.contains('Toyota Corolla Price in Pakistan').get('tbody').contains('Toyota Corolla Altis 1.8').click()
+        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Price in Pakistan').scrollIntoView()
+        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Price in Pakistan').get('tbody').contains('Toyota Corolla Altis 1.8').click()
 
     })
 
