@@ -1,4 +1,6 @@
 // <reference types="cypress"/>
+import {LoginPage} from '../pages/Login';
+const login = new LoginPage();
 
 // npx cypress open
 describe('Ad Posting', function(){
@@ -10,11 +12,8 @@ it('Post a Car ad', function(){
 
   cy.get('[title="Post an Ad"]').click()
   cy.get('#select-sell-option').click()
-  cy.get('[href="javascript:void(0)"]').click()
-  cy.get('#username').type('newweb@mailinator.com')
-  cy.get('#password').type('1234567')
-  cy.get('#frm_login > .btn').click()
 
+  login.loginWithEmail('newweb@mailinator.com', '1234567')
 
   cy.get('#select-sell-option').click()
 // Select City
@@ -47,9 +46,6 @@ it('Post a Car ad', function(){
   cy.get('#Bumper-to-Bumper').click()
   cy.get('#Like').click()
   cy.get('#Price').click()
-// Ad pictures
-  // cy.get('a.pickfiles').click()
-  // cy.get('a.pickfiles').attachFile('car_ad_pictures/car1.jpg');
 
 // Select Engine Type
   cy.get('#used_car_engine_type').select('Petrol')
@@ -88,10 +84,7 @@ it('Post a Bike ad', function(){
   cy.contains('Sell Your Bike').click({force: true})
   
   // Login
-  cy.get('.modal-body > [href="javascript:void(0)"]').click()
-  cy.get('#username').type('newweb@mailinator.com')
-  cy.get('#password').type('1234567')
-  cy.get('#frm_login > .btn').click()
+  login.loginWithEmail('newweb@mailinator.com', '1234567')
   
   cy.contains('Sell Your Bike').click({force: true})
   // Ad form
@@ -129,8 +122,6 @@ it('Post a Bike ad', function(){
   cy.get('.list-unstyled > :nth-child(1) > label').click()
   cy.get('.list-unstyled > :nth-child(3) > label').click()
 
-  // Add photos
-
   // User name and phone number
 
   // Not needed when logged in
@@ -160,10 +151,7 @@ it('Post an autopart ad', function(){
   cy.contains('Sell Accessory').click({force: true})
 
   // Login
-  cy.get('.modal-body > [href="javascript:void(0)"]').click()
-  cy.get('#username').type('newweb@mailinator.com')
-  cy.get('#password').type('1234567')
-  cy.get('#frm_login > .btn').click()
+  login.loginWithEmail('newweb@mailinator.com', '1234567')
 
   cy.contains('Sell Accessory').click({force: true})
   // Enter title

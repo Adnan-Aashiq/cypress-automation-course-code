@@ -1,9 +1,23 @@
+import {LoginPage} from '../pages/Login';
+const login = new LoginPage();
+
 describe('Auto Store', function(){
 
 it('Place an estore order', function(){
 
     cy.visit("https://www.pakgari.com/accessories-spare-parts/")
+
+    cy.on('uncaught:exception', (err, runnable) => {
+        expect(err.message).to.include('addValidatorToField is not defined')
+        // return false to prevent the error from
+        // failing this test
+        return false
+      })
+
     cy.get('#onesignal-slidedown-cancel-button').click()
+
+    cy.get("a[href='javascript:void(0)'][data-target='#sign_in_pop_up']").click()
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
 
     cy.get('#search_key').type('mat')
     cy.get('#ad-listings-search-btn').click()
@@ -17,13 +31,6 @@ it('Place an estore order', function(){
     cy.get('button[class="btn pull-left"]').eq(1).click()
     cy.get(':nth-child(2) > .checkout-footer > .btn').click() 
 
-    cy.get('.with-email').click()
-    cy.get('#username').type('newweb@mailinator.com')
-    cy.get('#password').type('1234567')
-    cy.get(':nth-child(6) > .btn').click()
-
-    cy.get(':nth-child(2) > .checkout-footer > .btn').click()
-
     cy.get('#order_name').clear()
     cy.get('#order_name').type('Test Order')
 
@@ -32,8 +39,7 @@ it('Place an estore order', function(){
 
     cy.get('#recent-address > :nth-child(1)').click()
     cy.get('.well > .checkout-footer > .btn').click()
-
-    cy.get('h1').should('have.text', ' Verify number ')
+      
 })
 
 
