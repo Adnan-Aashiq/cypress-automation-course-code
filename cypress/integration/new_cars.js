@@ -1,52 +1,34 @@
+import {NewCars} from '../pages/NewCars';
+const newCar = new NewCars();
+
+
 describe('New Car', function(){
 
-    var today = new Date();
-
-    it('Make and model page', function(){
-        cy.visit("https://www.pakgari.com/new-cars")
-        cy.contains('New Cars by Make').scrollIntoView()
-        cy.get('#amk_toyota').click()
-
-        cy.get('h1.mt10').should('have.text', 'Toyota Cars in Pakistan')
-        cy.contains('Toyota New Car Models').scrollIntoView()
-        cy.contains('Toyota New Car Models').get('.generic-car-widgets-container').contains('Toyota Corolla').click()
-
-        // Model page
-        cy.get('h1').should('have.text', 'Toyota Corolla 2021')
-        cy.get('#goToNextSlide').click()
-        cy.get('#goToNextSlide').click()
-        cy.get('#goToPrevSlide').click()
+    it.only('Verifies Make, model and version pages', function(){
         
-        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Colors').scrollIntoView()
+        newCar.openNewcarLanding()
 
-        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Price in Pakistan').scrollIntoView()
-        cy.contains('Toyota Corolla ' + today.getFullYear() + ' Price in Pakistan').get('tbody').contains('Toyota Corolla Altis 1.8').click()
+        newCar.scrollToMakeSection()
 
-    })
+        newCar.selectMakeFromMakeSection()
 
-    it('New car version page', function(){
+        newCar.verifyMakePage()
 
-        cy.visit("https://www.pakgari.com/new-cars")
+        newCar.openModelPageFromMakePage()
 
-        cy.get('#car_selector').click()
-        cy.get('#make_42 > a').click()
-        cy.get('#model_118 > a').click()
+        newCar.verifyModelPageH1()
 
-        cy.get('#new-home-new-car-search-btn').click()
+        newCar.VerifyPictures()
 
-        cy.get('.search-heading > .pull-left').should('have.text', 'New Toyota Corolla Cars')
-        cy.contains('Toyota Corolla XLi Automatic').click()
+        newCar.verifyModelColorSection()
 
-        // version page
-        // cy.get('h1.mt10').should('have.text', 'Toyota Corolla XLi Automatic 2021 Price in Pakistan, Specs and Features') 
-        cy.get('#goToNextSlide').click()
-        cy.get('#goToNextSlide').click()
-        cy.get('#goToPrevSlide').click()
+        newCar.verifyModelPriceInPakSection()
 
-        cy.get('.accordion-group > .accordion-heading > .accordion-toggle').contains('Engine/ Motor').click()
-        cy.get('#features-tab').click()
-        cy.get('.accordion-group > .accordion-heading > .accordion-toggle').contains('Exterior').click()
+        newCar.openVersionPageFromModel()
 
+        newCar.VerifyPictures()
+
+        newCar.verifySpecsAndFeatures()
     })
 
 })
