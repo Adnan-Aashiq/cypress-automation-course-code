@@ -1,27 +1,28 @@
 // <reference types="cypress"/>
 import {LoginPage} from '../pages/Login';
+import { SellForms } from '../pages/SellForms';
 const login = new LoginPage();
+const sellForm = new SellForms();
+const carAdDetails= require('../fixtures/carAdDetails.json'); 
 
 // npx cypress open
 describe('Ad Posting', function(){
 
-it('Post a Car ad', function(){
+it.only('Post a Car ad', function(){
 
-  cy.visit("https://www.pakgari.com")
-  cy.get('#onesignal-slidedown-cancel-button').click()
+  sellForm.openPakwheels()
 
-  cy.get('[title="Post an Ad"]').click()
-  cy.get('#select-sell-option').click()
+  sellForm.gotoCarSellForm()
 
   login.loginWithEmail('newweb@mailinator.com', '1234567')
 
-  cy.get('#select-sell-option').click()
+  sellForm.clickContinueFromSellOption()
 // Select City
-  cy.get('#used_car_ad_listing_attributes_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_ad_listing_attributes_city_id_chzn_o_7').click()
+  sellForm.selectCity(carAdDetails.city)
+
 // select City area
-  cy.get('#used_car_ad_listing_attributes_city_area_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_ad_listing_attributes_city_area_id_chzn_o_2').click()
+  sellForm.selectCityArea(carAdDetails.city_area)
+  
 // Select year make model
   cy.get('#car_selector').click()
   cy.get('#model_year_2019 > a').click()
@@ -63,16 +64,11 @@ it('Post a Car ad', function(){
   cy.get('#used_car_ad_listing_attributes_phone').clear()
   cy.get('#used_car_ad_listing_attributes_phone').type('03915134567')
   // Enter Secondary phone number
-  // cy.get('#used_car_ad_listing_attributes_phone_1').type('03913456789')
-  // Submit and continue
-  cy.get('#submit_form').click()
 
-  // Skip upsell for pending state ad
-  // cy.get('.btn-link-outline-gray').click()
+  // cy.get('#used_car_ad_listing_attributes_phone_1').type('03913456789')
   
-  // // Assertions
-  // cy.get('h1').should('have.text', 'Toyota Vitz F 1.3 2019')
-  // cy.get('.price-box > .generic-green').should('have.text', 'PKR 19 lacs')
+  // Submit and continue
+  // cy.get('#submit_form').click() 
 
 })
 

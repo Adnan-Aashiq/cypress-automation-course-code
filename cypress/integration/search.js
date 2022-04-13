@@ -141,7 +141,7 @@ describe('Search for car, bike and autopart', function(){
         cy.contains('Category').get('#tree').contains('Car Care').click()
         // cy.wait(3000)
         cy.get('.search-loader-fixed > img').should('not.be.visible')
-        cy.get('.hitarea').click()
+        // cy.get('.hitarea').click()
         cy.get('.collapsable > .list-unstyled > :nth-child(1) > a').click()
 
         // Price Range
