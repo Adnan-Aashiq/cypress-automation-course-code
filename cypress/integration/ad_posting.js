@@ -5,7 +5,6 @@ const login = new LoginPage();
 const sellForm = new SellForms();
 const carAdDetails= require('../fixtures/carAdDetails.json'); 
 
-// npx cypress open
 describe('Ad Posting', function(){
 
 it.only('Post a Car ad', function(){
@@ -17,58 +16,45 @@ it.only('Post a Car ad', function(){
   login.loginWithEmail('newweb@mailinator.com', '1234567')
 
   sellForm.clickContinueFromSellOption()
-// Select City
+
   sellForm.selectCity(carAdDetails.city)
 
-// select City area
   sellForm.selectCityArea(carAdDetails.city_area)
+
+  sellForm.selectYearMakeModelVersion(carAdDetails.model_year, carAdDetails.make, carAdDetails.model, carAdDetails.version)
+
+  sellForm.selectRegistrationCity(carAdDetails.reg_city)
+
+  sellForm.selectExteriorColor(carAdDetails.exterior_color)
+
+// // Skip duplicate pop-up
+//   cy.get('.model-footer > .btn').click()
+
+  sellForm.enterMileage(carAdDetails.mileage)
+
+  sellForm.enterPrice(carAdDetails.price)
+
+  sellForm.enterDescription(carAdDetails.description)
+  sellForm.selectDescPreSuggestValues()
+
+  sellForm.selectEngineType(carAdDetails.engine_type)
+
+  sellForm.enterEngineCapacity(carAdDetails.engine_capacity)
+
+  sellForm.selectTransmission(carAdDetails.transmission)
+
+  sellForm.selectAssembly(carAdDetails.assembly)
+
+  sellForm.selectFeatures(carAdDetails.features)
+
+  // enter price again because of price calculator
+  sellForm.enterPrice(carAdDetails.price)
+
+  sellForm.enterPhone(carAdDetails.phone)
   
-// Select year make model
-  cy.get('#car_selector').click()
-  cy.get('#model_year_2019 > a').click()
-  cy.get('#make_42 > a').click()
-  cy.get('#model_294 > a').click()
-  cy.get('[version_id="771"][generation_id="139"] > a').click()
-// Select Registration City
-  cy.get('#used_car_reg_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_reg_city_id_chzn_o_7').click()
-// Select Exterior Color
-  cy.get('#used_car_exterior_color_chzn > .chzn-single > span').click()
-  cy.get('#used_car_exterior_color_chzn_o_4').click()
-// Skip duplicate pop-up
-  cy.get('.model-footer > .btn').click()
-// Enter Mileage
-  cy.get('#mileage_text').type('67000')
+  sellForm.enableWhatsappContact()
 
-// Enter Price
-  cy.get('#price_formatted').type('1900000')
-// Ad description
-  cy.get('#used_car_ad_listing_attributes_description').type('Automation test description test. ')
-  cy.get('#Bumper-to-Bumper').click()
-  cy.get('#Like').click()
-  cy.get('#Price').click()
-
-// Select Engine Type
-  cy.get('#used_car_engine_type').select('Petrol')
-// Enter engine capacity
-  cy.get('#used_car_engine_capacity').type('1000')
-// Select Transmission
-  cy.get('#used_car_transmission').select('Automatic')
-// Select Assembly
-  cy.get('#used_car_assembly').select('Imported')
-// Select Feature
-  cy.get('#used_car_rear_speakers').click()
-// Enter Price again for price calculator
-  cy.get('#price_formatted').type('1900000')
-  // Enter phone number
-  cy.get('#used_car_ad_listing_attributes_phone').clear()
-  cy.get('#used_car_ad_listing_attributes_phone').type('03915134567')
-  // Enter Secondary phone number
-
-  // cy.get('#used_car_ad_listing_attributes_phone_1').type('03913456789')
-  
-  // Submit and continue
-  // cy.get('#submit_form').click() 
+  // sellForm.submitAd()
 
 })
 
