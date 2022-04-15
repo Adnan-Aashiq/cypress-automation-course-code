@@ -1,64 +1,67 @@
 // <reference types="cypress"/>
 import {LoginPage} from '../pages/Login';
-import { SellForms } from '../pages/SellForms';
+import { CarSellForm } from '../pages/CarSellForm';
 const login = new LoginPage();
-const sellForm = new SellForms();
+const carSellForm = new CarSellForm();
 const carAdDetails= require('../fixtures/carAdDetails.json'); 
 
 describe('Ad Posting', function(){
 
-it.only('Post a Car ad', function(){
+carAdDetails.forEach((carAdDetail)=>{
+  it('Post a Car ad', function(){
 
-  sellForm.openPakwheels()
-
-  sellForm.gotoCarSellForm()
-
-  login.loginWithEmail('newweb@mailinator.com', '1234567')
-
-  sellForm.clickContinueFromSellOption()
-
-  sellForm.selectCity(carAdDetails.city)
-
-  sellForm.selectCityArea(carAdDetails.city_area)
-
-  sellForm.selectYearMakeModelVersion(carAdDetails.model_year, carAdDetails.make, carAdDetails.model, carAdDetails.version)
-
-  sellForm.selectRegistrationCity(carAdDetails.reg_city)
-
-  sellForm.selectExteriorColor(carAdDetails.exterior_color)
-
-// // Skip duplicate pop-up
-//   cy.get('.model-footer > .btn').click()
-
-  sellForm.enterMileage(carAdDetails.mileage)
-
-  sellForm.enterPrice(carAdDetails.price)
-
-  sellForm.enterDescription(carAdDetails.description)
-  sellForm.selectDescPreSuggestValues()
-
-  sellForm.selectEngineType(carAdDetails.engine_type)
-
-  sellForm.enterEngineCapacity(carAdDetails.engine_capacity)
-
-  sellForm.selectTransmission(carAdDetails.transmission)
-
-  sellForm.selectAssembly(carAdDetails.assembly)
-
-  sellForm.selectFeatures(carAdDetails.features)
-
-  // enter price again because of price calculator
-  sellForm.enterPrice(carAdDetails.price)
-
-  sellForm.enterPhone(carAdDetails.phone)
+    carSellForm.openPakwheels()
+    
+    carSellForm.gotoCarSellForm()
   
-  sellForm.enableWhatsappContact()
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
+  
+    carSellForm.clickContinueFromSellOption()
+  
+    carSellForm.selectCity(carAdDetail.city)
+  
+    carSellForm.selectCityArea(carAdDetail.city_area)
+  
+    carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
+  
+    carSellForm.selectRegistrationCity(carAdDetail.reg_city)
+  
+    carSellForm.selectExteriorColor(carAdDetail.exterior_color)
+  
+    // Skip duplicate pop-up
+    //   cy.get('.model-footer > .btn').click()
+  
+    carSellForm.enterMileage(carAdDetail.mileage)
+  
+    carSellForm.enterPrice(carAdDetail.price)
+  
+    carSellForm.enterDescription(carAdDetail.description)
+    carSellForm.selectDescPreSuggestValues()
+  
+    carSellForm.selectEngineType(carAdDetail.engine_type)
+  
+    carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
+  
+    carSellForm.selectTransmission(carAdDetail.transmission)
+  
+    carSellForm.selectAssembly(carAdDetail.assembly)
+  
+    carSellForm.selectFeatures(carAdDetail.features)
+  
+    // enter price again because of price calculator
+    carSellForm.enterPrice(carAdDetail.price)
+  
+    carSellForm.enterPhone(carAdDetail.phone)
+      
+    carSellForm.enableWhatsappContact()
+  
+    // carSellForm.submitAd()
+  
+  })
 
-  // sellForm.submitAd()
+})  
 
-})
-
-it('Post a Bike ad', function(){
+it.skip('Post a Bike ad', function(){
 
   cy.get('.logo-blue > img').click({force: true})
   cy.wait(3000)
@@ -125,7 +128,7 @@ it('Post a Bike ad', function(){
 
 })
 
-it('Post an autopart ad', function(){
+it.skip('Post an autopart ad', function(){
 
   cy.get('.logo-blue > img').click({force: true})
   cy.wait(3000)
