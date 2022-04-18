@@ -39,7 +39,7 @@ export class BikeSellForm extends SellForms{
 
     selectFeatures(features){
         features.forEach((feature)=>{
-            cy.get('.col-md-6').contains(feature)
+            cy.get('.col-md-6').contains(feature).click()
         })
     }
 

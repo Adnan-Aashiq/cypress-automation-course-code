@@ -2,6 +2,7 @@ export class SellForms{
 
     phone_loc = '#used_car_ad_listing_attributes_phone';
     bike_phone_loc = '#used_bike_ad_listing_attributes_phone';
+    accessory_phone_loc = '#ad_listing_phone';
 
     openPakwheels(){
         cy.visit("https://www.pakgari.com")

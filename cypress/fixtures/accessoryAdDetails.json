@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Car Waxes",
+        "city": "Karachi",
+        "category": "Car Care",
+        "sub_category": "Car Wax",
+        "condition": "New",
+        "description": "This is the test description for autopart ad posting from cypress automation",
+        "price": "6500",
+        "phone": "03915134567"
+    },
+    {
+        "title": "Car A/C Belt",
+        "city": "Lahore",
+        "category": "Engine & Mechanical",
+        "sub_category": "A/C Belt",
+        "condition": "Used",
+        "description": "This is the test description for autopart ad posting from cypress automation",
+        "price": "5500",
+        "phone": "03915134567"
+    }
+]

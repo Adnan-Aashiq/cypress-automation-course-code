@@ -2,67 +2,71 @@
 import {LoginPage} from '../pages/Login';
 import { CarSellForm } from '../pages/CarSellForm';
 import { BikeSellForm } from '../pages/BikeSellForm';
+import { AccessorySellForm } from '../pages/AccessorySellForm';
 const login = new LoginPage();
 const carSellForm = new CarSellForm();
 const bikeSellForm = new BikeSellForm();
+const accessorySellForm = new AccessorySellForm();
 const carAdDetails= require('../fixtures/carAdDetails.json');
 const bikeAdDetails= require('../fixtures/bikeAdDetails.json');
+const accessoryAdDetails= require('../fixtures/accessoryAdDetails.json');
+
 
 describe('Ad Posting', function(){
 
-// carAdDetails.forEach((carAdDetail)=>{
-//   it('Post a Car ad', function(){
+carAdDetails.forEach((carAdDetail)=>{
+  it('Post a Car ad', function(){
 
-//     carSellForm.openPakwheels()
+    carSellForm.openPakwheels()
     
-//     carSellForm.gotoCarSellForm()
+    carSellForm.gotoCarSellForm()
   
-//     login.loginWithEmail('newweb@mailinator.com', '1234567')
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
   
-//     carSellForm.clickContinueFromSellOption()
+    carSellForm.clickContinueFromSellOption()
   
-//     carSellForm.selectCity(carAdDetail.city)
+    carSellForm.selectCity(carAdDetail.city)
   
-//     carSellForm.selectCityArea(carAdDetail.city_area)
+    carSellForm.selectCityArea(carAdDetail.city_area)
   
-//     carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
+    carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
   
-//     carSellForm.selectRegistrationCity(carAdDetail.reg_city)
+    carSellForm.selectRegistrationCity(carAdDetail.reg_city)
   
-//     carSellForm.selectExteriorColor(carAdDetail.exterior_color)
+    carSellForm.selectExteriorColor(carAdDetail.exterior_color)
   
-//     // Skip duplicate pop-up
-//     //   cy.get('.model-footer > .btn').click()
+    // Skip duplicate pop-up
+    //   cy.get('.model-footer > .btn').click()
   
-//     carSellForm.enterMileage(carAdDetail.mileage)
+    carSellForm.enterMileage(carAdDetail.mileage)
   
-//     carSellForm.enterPrice(carAdDetail.price)
+    carSellForm.enterPrice(carAdDetail.price)
   
-//     carSellForm.enterDescription(carAdDetail.description)
-//     carSellForm.selectDescPreSuggestValues()
+    carSellForm.enterDescription(carAdDetail.description)
+    carSellForm.selectDescPreSuggestValues()
   
-//     carSellForm.selectEngineType(carAdDetail.engine_type)
+    carSellForm.selectEngineType(carAdDetail.engine_type)
   
-//     carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
+    carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
   
-//     carSellForm.selectTransmission(carAdDetail.transmission)
+    carSellForm.selectTransmission(carAdDetail.transmission)
   
-//     carSellForm.selectAssembly(carAdDetail.assembly)
+    carSellForm.selectAssembly(carAdDetail.assembly)
   
-//     carSellForm.selectFeatures(carAdDetail.features)
+    carSellForm.selectFeatures(carAdDetail.features)
   
-//     // enter price again because of price calculator
-//     carSellForm.enterPrice(carAdDetail.price)
+    // enter price again because of price calculator
+    carSellForm.enterPrice(carAdDetail.price)
   
-//     carSellForm.enterPhone(carAdDetail.phone)
+    carSellForm.enterPhone(carAdDetail.phone)
       
-//     carSellForm.enableWhatsappContact()
+    carSellForm.enableWhatsappContact()
   
-//     // carSellForm.submitAd()
+    // carSellForm.submitAd()
   
-//   })
+  })
 
-// })  
+})  
 
 
 bikeAdDetails.forEach((bikeAdDetail)=>{
@@ -107,58 +111,37 @@ bikeAdDetails.forEach((bikeAdDetail)=>{
   
 })
 
-it.skip('Post an autopart ad', function(){
 
-  cy.get('.logo-blue > img').click({force: true})
-  cy.wait(3000)
-  cy.get('#onesignal-slidedown-cancel-button').click()
-  cy.contains('Sell Accessory').click({force: true})
+accessoryAdDetails.forEach((accessoryAdDetail)=>{
+  it('Post an autopart ad', function(){
 
-  // Login
-  login.loginWithEmail('newweb@mailinator.com', '1234567')
-
-  cy.contains('Sell Accessory').click({force: true})
-  // Enter title
-  cy.get('#ad_listing_title').type('Car Wax')
-
-  // Select City
-  cy.get('#ad_listing_city_id_chzn > .chzn-single > span').click()
-  cy.get('#ad_listing_city_id_chzn_o_7').click()
-
-  // Skip the duplicate pop-up
-  cy.get('.model-footer > .btn').click() 
-
-  // Select Category
-  cy.get('#category_selector').click()
-  cy.get('#category_276 > a').click()
-  cy.get('#model_325 > a').click()
-
-  // Select condition
-  cy.get('#ad_listing_condition').select('Used')
+    accessorySellForm.openPakwheels()
   
-  // Enter description
-  cy.get('#ad_listing_description').type('This is the test description for autopart ad posting from cypress automation')
+    accessorySellForm.openAccessorySellForm()
+    // Login
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
+    // It should already navigate to autopart sell form after login website consistency issue
+    accessorySellForm.openAccessorySellForm()
+    
+    accessorySellForm.enterTitle(accessoryAdDetail.title)
 
-  // Enter Price
-  cy.get('#price_formatted').type('3200')
+    accessorySellForm.selectCity(accessoryAdDetail.city)
+    
+    accessorySellForm.selectCategory(accessoryAdDetail.category, accessoryAdDetail.sub_category)
 
-  // Pictures
+    accessorySellForm.selectCondition(accessoryAdDetail.condition)    
+  
+    accessorySellForm.enterDescription(accessoryAdDetail.description)
+    
+    accessorySellForm.enterPrice(accessoryAdDetail.price)
+    
+    accessorySellForm.enterPhone(accessoryAdDetail.phone)
+  
+    // accessorySellForm.submitAd() 
 
-  // User contact info
-
-  // Not needed when logged in
-  // cy.get('#ad_listing_display_name').type('Test user')
-  cy.get('#ad_listing_phone').clear()
-  cy.get('#ad_listing_phone').type('03915134567')
-
-  // Submit and continue
-  cy.get('#submit_form').click()
-  cy.wait(2000)
-
-  // Assertions
-  // cy.get('h1').should('have.text', 'Car Wax')
-  // cy.get('.price-box > .generic-green').should('have.text', 'PKR 3,200')
+  })
 
 })
+
 
 })
