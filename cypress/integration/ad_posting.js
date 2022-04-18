@@ -1,200 +1,147 @@
 // <reference types="cypress"/>
 import {LoginPage} from '../pages/Login';
+import { CarSellForm } from '../pages/CarSellForm';
+import { BikeSellForm } from '../pages/BikeSellForm';
+import { AccessorySellForm } from '../pages/AccessorySellForm';
 const login = new LoginPage();
+const carSellForm = new CarSellForm();
+const bikeSellForm = new BikeSellForm();
+const accessorySellForm = new AccessorySellForm();
+const carAdDetails= require('../fixtures/carAdDetails.json');
+const bikeAdDetails= require('../fixtures/bikeAdDetails.json');
+const accessoryAdDetails= require('../fixtures/accessoryAdDetails.json');
 
-// npx cypress open
+
 describe('Ad Posting', function(){
 
-it('Post a Car ad', function(){
+carAdDetails.forEach((carAdDetail)=>{
+  it('Post a Car ad', function(){
 
-  cy.visit("https://www.pakgari.com")
-  cy.get('#onesignal-slidedown-cancel-button').click()
-
-  cy.get('[title="Post an Ad"]').click()
-  cy.get('#select-sell-option').click()
-
-  login.loginWithEmail('newweb@mailinator.com', '1234567')
-
-  cy.get('#select-sell-option').click()
-// Select City
-  cy.get('#used_car_ad_listing_attributes_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_ad_listing_attributes_city_id_chzn_o_7').click()
-// select City area
-  cy.get('#used_car_ad_listing_attributes_city_area_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_ad_listing_attributes_city_area_id_chzn_o_2').click()
-// Select year make model
-  cy.get('#car_selector').click()
-  cy.get('#model_year_2019 > a').click()
-  cy.get('#make_42 > a').click()
-  cy.get('#model_294 > a').click()
-  cy.get('[version_id="771"][generation_id="139"] > a').click()
-// Select Registration City
-  cy.get('#used_car_reg_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_car_reg_city_id_chzn_o_7').click()
-// Select Exterior Color
-  cy.get('#used_car_exterior_color_chzn > .chzn-single > span').click()
-  cy.get('#used_car_exterior_color_chzn_o_4').click()
-// Skip duplicate pop-up
-  cy.get('.model-footer > .btn').click()
-// Enter Mileage
-  cy.get('#mileage_text').type('67000')
-
-// Enter Price
-  cy.get('#price_formatted').type('1900000')
-// Ad description
-  cy.get('#used_car_ad_listing_attributes_description').type('Automation test description test. ')
-  cy.get('#Bumper-to-Bumper').click()
-  cy.get('#Like').click()
-  cy.get('#Price').click()
-
-// Select Engine Type
-  cy.get('#used_car_engine_type').select('Petrol')
-// Enter engine capacity
-  cy.get('#used_car_engine_capacity').type('1000')
-// Select Transmission
-  cy.get('#used_car_transmission').select('Automatic')
-// Select Assembly
-  cy.get('#used_car_assembly').select('Imported')
-// Select Feature
-  cy.get('#used_car_rear_speakers').click()
-// Enter Price again for price calculator
-  cy.get('#price_formatted').type('1900000')
-  // Enter phone number
-  cy.get('#used_car_ad_listing_attributes_phone').clear()
-  cy.get('#used_car_ad_listing_attributes_phone').type('03915134567')
-  // Enter Secondary phone number
-  // cy.get('#used_car_ad_listing_attributes_phone_1').type('03913456789')
-  // Submit and continue
-  cy.get('#submit_form').click()
-
-  // Skip upsell for pending state ad
-  // cy.get('.btn-link-outline-gray').click()
+    carSellForm.openPakwheels()
+    
+    carSellForm.gotoCarSellForm()
   
-  // // Assertions
-  // cy.get('h1').should('have.text', 'Toyota Vitz F 1.3 2019')
-  // cy.get('.price-box > .generic-green').should('have.text', 'PKR 19 lacs')
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
+  
+    carSellForm.clickContinueFromSellOption()
+  
+    carSellForm.selectCity(carAdDetail.city)
+  
+    carSellForm.selectCityArea(carAdDetail.city_area)
+  
+    carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
+  
+    carSellForm.selectRegistrationCity(carAdDetail.reg_city)
+  
+    carSellForm.selectExteriorColor(carAdDetail.exterior_color)
+  
+    // Skip duplicate pop-up
+    //   cy.get('.model-footer > .btn').click()
+  
+    carSellForm.enterMileage(carAdDetail.mileage)
+  
+    carSellForm.enterPrice(carAdDetail.price)
+  
+    carSellForm.enterDescription(carAdDetail.description)
+    carSellForm.selectDescPreSuggestValues()
+  
+    carSellForm.selectEngineType(carAdDetail.engine_type)
+  
+    carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
+  
+    carSellForm.selectTransmission(carAdDetail.transmission)
+  
+    carSellForm.selectAssembly(carAdDetail.assembly)
+  
+    carSellForm.selectFeatures(carAdDetail.features)
+  
+    // enter price again because of price calculator
+    carSellForm.enterPrice(carAdDetail.price)
+  
+    carSellForm.enterPhone(carAdDetail.phone)
+      
+    carSellForm.enableWhatsappContact()
+  
+    // carSellForm.submitAd()
+  
+  })
+
+})  
+
+
+bikeAdDetails.forEach((bikeAdDetail)=>{
+  it('Post a Bike ad', function(){
+
+    bikeSellForm.openPakwheels()
+  
+    bikeSellForm.gotoBikeSellForm()
+    
+    // Login
+  
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
+    // It should already navigate to bike sell form after login website consistency issue
+    bikeSellForm.gotoBikeSellForm()
+    
+    bikeSellForm.selectCity(bikeAdDetail.city)
+
+    bikeSellForm.selectCityArea(bikeAdDetail.city_area)
+  
+    bikeSellForm.selectYearMakeModel(bikeAdDetail.model_year, bikeAdDetail.make, bikeAdDetail.model)
+
+    bikeSellForm.selectRegistrationCity(bikeAdDetail.reg_city)
+
+    bikeSellForm.enterMileage(bikeAdDetail.mileage)
+
+    bikeSellForm.selectEngineType(bikeAdDetail.engine_type)
+
+    bikeSellForm.enterDescription(bikeAdDetail.description)
+
+    bikeSellForm.enterPrice(bikeAdDetail.price)
+    
+    bikeSellForm.selectFeatures(bikeAdDetail.features)
+
+    bikeSellForm.enterPhone(bikeAdDetail.phone)
+
+    bikeSellForm.enableWhatsappContact()
+
+    // bikeSellForm.submitAd() 
+  
+  })
+  
+  
+})
+
+
+accessoryAdDetails.forEach((accessoryAdDetail)=>{
+  it('Post an autopart ad', function(){
+
+    accessorySellForm.openPakwheels()
+  
+    accessorySellForm.openAccessorySellForm()
+    // Login
+    login.loginWithEmail('newweb@mailinator.com', '1234567')
+    // It should already navigate to autopart sell form after login website consistency issue
+    accessorySellForm.openAccessorySellForm()
+    
+    accessorySellForm.enterTitle(accessoryAdDetail.title)
+
+    accessorySellForm.selectCity(accessoryAdDetail.city)
+    
+    accessorySellForm.selectCategory(accessoryAdDetail.category, accessoryAdDetail.sub_category)
+
+    accessorySellForm.selectCondition(accessoryAdDetail.condition)    
+  
+    accessorySellForm.enterDescription(accessoryAdDetail.description)
+    
+    accessorySellForm.enterPrice(accessoryAdDetail.price)
+    
+    accessorySellForm.enterPhone(accessoryAdDetail.phone)
+  
+    // accessorySellForm.submitAd() 
+
+  })
 
 })
 
-it('Post a Bike ad', function(){
-
-  cy.get('.logo-blue > img').click({force: true})
-  cy.wait(3000)
-  cy.get('#onesignal-slidedown-cancel-button').click()
-  cy.contains('Sell Your Bike').click({force: true})
-  
-  // Login
-  login.loginWithEmail('newweb@mailinator.com', '1234567')
-  
-  cy.contains('Sell Your Bike').click({force: true})
-  // Ad form
-
-  // Select City
-  cy.get('#used_bike_ad_listing_attributes_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_bike_ad_listing_attributes_city_id_chzn_o_7').click()
-  // select City area
-  cy.get('#used_bike_ad_listing_attributes_city_area_id_chzn > .chzn-single > span').click()
-  cy.get('#used_bike_ad_listing_attributes_city_area_id_chzn_o_2').click()
-
-  // select make model
-  cy.get('#bike_selector').click()
-  cy.get('#model_year_2019 > a').click()
-  cy.get('#make_16 > a').click()
-  cy.get('#model_470 > a').click()
-
-  // registration city
-  cy.get('#used_bike_reg_city_id_chzn > .chzn-single > span').click()
-  cy.get('#used_bike_reg_city_id_chzn_o_7').click()
-
-  // Enter Mileage
-  cy.get('#mileage_text').type('67000')
-
-  // Select engine type
-  cy.get('#used_bike_engine_type').select('4 Stroke')
-
-  // Enter description
-  cy.get('#used_bike_ad_listing_attributes_description').type('This is the test text for automation of bike ad post')
-
-  // Enter Price
-  cy.get('#price_formatted').type('109000')
-
-  // Select features
-  cy.get('.list-unstyled > :nth-child(1) > label').click()
-  cy.get('.list-unstyled > :nth-child(3) > label').click()
-
-  // User name and phone number
-
-  // Not needed when logged in
-  // cy.get('#used_bike_ad_listing_attributes_display_name').type('Test User') 
-  cy.get('#used_bike_ad_listing_attributes_phone').clear()
-  cy.get('#used_bike_ad_listing_attributes_phone').type('03915134567')
-
-  // Submit and continue
-  cy.get('#submit_form').click()
-  cy.wait(2000)
-
-  // Skip upsell for pending state ad
-  // cy.get('.btn-link-outline-gray').click()
-  
-  // Assertions
-  // cy.get('h1').should('have.text', 'Honda CG 125 2019')
-  // cy.get('.price-box > .generic-green').should('have.text', 'PKR 1.09 lacs')
-
-
-})
-
-it('Post an autopart ad', function(){
-
-  cy.get('.logo-blue > img').click({force: true})
-  cy.wait(3000)
-  cy.get('#onesignal-slidedown-cancel-button').click()
-  cy.contains('Sell Accessory').click({force: true})
-
-  // Login
-  login.loginWithEmail('newweb@mailinator.com', '1234567')
-
-  cy.contains('Sell Accessory').click({force: true})
-  // Enter title
-  cy.get('#ad_listing_title').type('Car Wax')
-
-  // Select City
-  cy.get('#ad_listing_city_id_chzn > .chzn-single > span').click()
-  cy.get('#ad_listing_city_id_chzn_o_7').click()
-
-  // Skip the duplicate pop-up
-  cy.get('.model-footer > .btn').click() 
-
-  // Select Category
-  cy.get('#category_selector').click()
-  cy.get('#category_276 > a').click()
-  cy.get('#model_325 > a').click()
-
-  // Select condition
-  cy.get('#ad_listing_condition').select('Used')
-  
-  // Enter description
-  cy.get('#ad_listing_description').type('This is the test description for autopart ad posting from cypress automation')
-
-  // Enter Price
-  cy.get('#price_formatted').type('3200')
-
-  // Pictures
-
-  // User contact info
-
-  // Not needed when logged in
-  // cy.get('#ad_listing_display_name').type('Test user')
-  cy.get('#ad_listing_phone').clear()
-  cy.get('#ad_listing_phone').type('03915134567')
-
-  // Submit and continue
-  cy.get('#submit_form').click()
-  cy.wait(2000)
-
-  // Assertions
-  // cy.get('h1').should('have.text', 'Car Wax')
-  // cy.get('.price-box > .generic-green').should('have.text', 'PKR 3,200')
-
-})
 
 })
