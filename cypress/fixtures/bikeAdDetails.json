@@ -1,0 +1,20 @@
+[
+    {
+        "city": "Rawalpindi",
+        "city_area": "Saddar",
+        "model_year": "2020",
+        "make": "Honda",
+        "model": "CG 125",
+        "reg_city": "Lahore",
+        "mileage": "56000",
+        "engine_type": "4 Stroke",
+        "price": "2300000",
+        "description": "Automation test description test. for the used bikes ad posting. This text is added by automated script.",
+        "features": [
+            "Disc Brake",
+            "Cool Box"
+        ],
+        "phone": "03915134567"
+
+    }
+]

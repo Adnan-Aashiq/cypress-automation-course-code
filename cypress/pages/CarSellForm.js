@@ -1,12 +1,7 @@
-export class CarSellForm{
+import { SellForms } from "./SellForms"
 
-    phone_loc = '#used_car_ad_listing_attributes_phone';
+export class CarSellForm extends SellForms{
 
-    openPakwheels(){
-        cy.visit("https://www.pakgari.com")
-        cy.get('#onesignal-slidedown-cancel-button').click()
-
-    }
 
     gotoCarSellForm(){
         cy.get('[title="Post an Ad"]').click()
@@ -46,16 +41,8 @@ export class CarSellForm{
         cy.get('div[id="used_car_exterior_color_chzn"] ul[class="chzn-results"]').contains(color).click()
     }
 
-    enterMileage(mileage){
-        cy.get('#mileage_text').type(mileage)
-    }
-
-    enterPrice(price){
-        cy.get('#price_formatted').type(price)
-    }
-
     enterDescription(description){
-        cy.get('#used_car_ad_listing_attributes_description').type('Automation test description test. ')
+        cy.get('#used_car_ad_listing_attributes_description').type(description)
     }
 
     selectDescPreSuggestValues(){
@@ -89,14 +76,6 @@ export class CarSellForm{
     enterPhone(phone){
         cy.get(this.phone_loc).clear()
         cy.get(this.phone_loc).type(phone)
-    }
-
-    enableWhatsappContact(){
-        cy.get('.slider_whatsapp').click()
-    }
-
-    submitAd(){
-        cy.get('#submit_form').click() 
     }
 
 }
