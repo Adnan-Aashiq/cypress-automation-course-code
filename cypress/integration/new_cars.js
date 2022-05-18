@@ -11,7 +11,6 @@ describe('New Car', function(){
     it.only('Verifies Make, model and version pages', function(){
         
         newCar.openNewcarLanding()
-
         newCar.scrollToMakeSection()
 
         newCar.selectMakeFromMakeSection(make)
