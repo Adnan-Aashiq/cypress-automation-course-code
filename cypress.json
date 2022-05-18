@@ -3,6 +3,7 @@
     "viewportWidth": 1260,
     "viewportHeight": 800,
     "reporter": "mochawesome",
+    "hideXHR": true,
     "reporterOptions": {
         "reportDir": "cypress/report/mochawesome-report",
         "overwrite": true,

@@ -8,7 +8,7 @@ export class UsedBikeSearch{
     yearTo = '2020'
     mileageFrom = '40000'
     mileageTo = '60000'
-    registerCity_Locator = 'Bahawalpur'
+    registerCity_Locator = 'Karachi'
 
 
 

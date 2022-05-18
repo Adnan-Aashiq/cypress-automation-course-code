@@ -23,5 +23,13 @@ export class FindUsedAutoPartsHomepage{
     ClickOnShippingButton(){
         cy.get("td[class='checkout-footer'] button[class='btn btn-primary pull-right']").click()
     }
+    FillingShippingInfo(){
+        cy.get('#order_name').clear()
+        cy.get('#order_name').type('Test Order')
+        cy.get('#order_phone').type('03915134567')
+        cy.get('#order_comments').type('Testing order')
+        cy.get('#recent-address > :nth-child(1)').click()
+        cy.get('.well > .checkout-footer > .btn').click()
+    }
 
 }

@@ -8,7 +8,7 @@ const carAdDetails= require('../fixtures/carAdDetails.json');
 // npx cypress open
 describe('Ad Posting', function(){
 
-it.only('Post a Car ad', function(){
+it('Post a Car ad', function(){
 
   sellForm.openPakwheels()
 
@@ -69,6 +69,8 @@ it.only('Post a Car ad', function(){
   
   // Submit and continue
   // cy.get('#submit_form').click() 
+
+  
 
 })
 

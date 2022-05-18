@@ -19,6 +19,7 @@ const usedAutoPartsSearchObj = new UsedAutoPartsSearch();
 
 
 describe('Search for car, bike and autopart', function(){
+    
     it('Search for used car', function(){ 
         homePageObj.openHomePage();
         homePageObj.closeBanner();
@@ -54,11 +55,11 @@ describe('Search for car, bike and autopart', function(){
     })
 
 
-    it.only('Search for autoparts', function(){
+    it('Search for autoparts', function(){
         homePageObj.openHomePage();
         homePageObj.closeBanner();
         homePageObj.clickOnFindAutoParts();
-        findUsedAutoPartsHomePageObj.clickOnSearch();
+        usedAutoPartsSearchObj.clickOnSearch();
         usedSearchFilterObj.clickOnCity(usedAutoPartsSearchObj.city_Locator);
         usedSearchFilterObj.priceRangeSearch(usedAutoPartsSearchObj.priceFrom,usedAutoPartsSearchObj.priceTo);
         usedAutoPartsSearchObj.clickOnCategory(usedAutoPartsSearchObj.category_Locator);
