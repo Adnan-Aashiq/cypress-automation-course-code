@@ -23,6 +23,7 @@ describe('Automating lead forms',function(){
     it('Placing PakWheels Car Inspection lead',function(){
         Homepageobj.openHomePage();
         Homepageobj.closeBanner();
+        cy.contains('Sign In').click();
         Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
         Homepageobj.clickOnCarInspection();
         Carinspectionhomeobj.clickOnScheduleInspection();
@@ -44,6 +45,7 @@ describe('Automating lead forms',function(){
     it('Auction Sheet verification when user is logged in',function(){
         Homepageobj.openHomePage();
         Homepageobj.closeBanner();
+        cy.contains('Sign In').click();
         Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
         Homepageobj.clickAuctionSheetVerfication();
         Auctionsheetverificationobj.inputChassisNumber(Auctionsheetverificationobj.ChassisNumber);
@@ -64,6 +66,7 @@ describe('Automating lead forms',function(){
     it.only('Placing PakWheels Sell it for me lead when user is logged in',function(){
         Homepageobj.openHomePage();
         Homepageobj.closeBanner();
+        cy.contains('Sign In').click();
         Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
         Homepageobj.clickSIFM();
         SIFMPageobj.clickOnGetStarted();

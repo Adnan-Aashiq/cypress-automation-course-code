@@ -13,6 +13,7 @@ describe('Auto Store', function(){
 it('Place an estore order', function(){
   homePageObj.openHomePage();
   homePageObj.closeBanner();
+  cy.contains('Sign In').click();
   login.loginWithEmail('sprint167@mailinator.com','Test123');
   homePageObj.clickOnFindAutoParts();
   findUsedAutoPartsHomePageObj.TypeInSearch(findUsedAutoPartsHomePageObj.searchField_Locator,findUsedAutoPartsHomePageObj.searchKeyword);
