@@ -4,27 +4,31 @@ const newCar = new NewCars();
 
 describe('New Car', function(){
 
+    var make = "Toyota"
+    var model = "Corolla"
+    var version = "XLi Automatic"
+    var price = "PKR 2,119,000"
     it.only('Verifies Make, model and version pages', function(){
         
         newCar.openNewcarLanding()
 
         newCar.scrollToMakeSection()
 
-        newCar.selectMakeFromMakeSection()
+        newCar.selectMakeFromMakeSection(make)
 
-        newCar.verifyMakePage()
+        newCar.verifyMakePage(make)
 
-        newCar.openModelPageFromMakePage()
+        newCar.openModelPageFromMakePage(make, model)
 
-        newCar.verifyModelPageH1()
+        newCar.verifyModelPageH1(make, model)
 
         newCar.VerifyPictures()
 
-        newCar.verifyModelColorSection()
+        newCar.verifyModelColorSection(make, model)
 
-        newCar.verifyModelPriceInPakSection()
+        newCar.verifyModelPriceInPakSection(make, model, version, price)
 
-        newCar.openVersionPageFromModel()
+        newCar.openVersionPageFromModel(make, model, version)
 
         newCar.VerifyPictures()
 
