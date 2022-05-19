@@ -8,7 +8,7 @@ describe('New Car', function(){
     var model = "Corolla"
     var version = "XLi Automatic"
     var price = "PKR 2,119,000"
-    it.only('Verifies Make, model and version pages', function(){
+    it('Verifies Make, model and version pages', function(){
         
         newCar.openNewcarLanding()
         newCar.scrollToMakeSection()

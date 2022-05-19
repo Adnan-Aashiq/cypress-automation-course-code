@@ -63,7 +63,7 @@ describe('Automating lead forms',function(){
         Auctionsheetverificationobj.clickOnBuyNow();
         
     })
-    it.only('Placing PakWheels Sell it for me lead when user is logged in',function(){
+    it('Placing PakWheels Sell it for me lead when user is logged in',function(){
         Homepageobj.openHomePage();
         Homepageobj.closeBanner();
         cy.contains('Sign In').click();
@@ -78,7 +78,7 @@ describe('Automating lead forms',function(){
         SIFMLeadFormobj.ClickOnSubmit();
         SIFMLeadFormobj.VerifyLead();
     })
-    it.only('Placing PakWheels Sell it for me lead when user is not logged in',function(){
+    it('Placing PakWheels Sell it for me lead when user is not logged in',function(){
         Homepageobj.openHomePage();
         Homepageobj.closeBanner();
         Homepageobj.clickSIFM();
