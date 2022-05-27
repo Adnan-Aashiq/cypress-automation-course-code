@@ -4,26 +4,24 @@ export class SIFMPage{
     }
 }
 export class SIFMLeadForm{
-    Name = 'Adnan Aashiq'
-    Phonenumber = '03022149193'
-
-
-    SelectModelYear(){
-        cy.get("#sell_it_for_me_lead_model_year").select('2018').should('have.value', '2018');
+    SelectModelYear(year){
+        cy.get("#sell_it_for_me_lead_model_year").select(year).should('have.value', year);
     }
-    SelectCarInfo(){
+    SelectCarInfo(make,model){
         cy.get("#car_selector").click();
-        cy.get("[class='fs14 get-listing make-listings'] [class='make']").contains("Suzuki").click();
-        cy.get("[class='form-group nomargin'] [class*='model-listings fs14 get-listing models_for_']").contains("Cultus").click();
+        cy.get(".form-group.nomargin .make").contains(make).click();
+        cy.get(".form-group.nomargin .model").contains(model).click();
     }
-    SelectCity(){
-        cy.get("#sell_it_for_me_lead_city_id").select('Multan').should('have.value', '256');
+    
+    SelectCity(city){
+        cy.get("#sell_it_for_me_lead_city_id").select(city).should('have.value', '256');
     }
-    InputName(Name){
-        cy.get("#sell_it_for_me_lead_name").type(Name);
+    InputName(name){
+        cy.get("#sell_it_for_me_lead_name").clear();
+        cy.get("#sell_it_for_me_lead_name").type(name);
     }
-    InputPhoneNumber(PhoneNumber){
-        cy.get("#sell_it_for_me_lead_mobile_number").type(PhoneNumber)
+    InputPhoneNumber(phoneNumber){
+        cy.get("#sell_it_for_me_lead_mobile_number").type(phoneNumber)
     }
     ClickOnSubmit(){
         cy.get("#submit_btn").click();

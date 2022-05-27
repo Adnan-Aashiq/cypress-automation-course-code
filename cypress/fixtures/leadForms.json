@@ -1,0 +1,222 @@
+{
+	"SellItForMe_loggedOutUser": [
+		{
+			"year": "2022",
+			"make": "Suzuki",
+			"model": "Cultus",
+			"city": "Multan",
+			"name": "Adnan Aashiq",
+			"phoneNumber": "03022149193"
+		},
+		{
+			"year": "2020",
+			"make": "Honda",
+			"model": "City",
+			"city": "Multan",
+			"name": "Maham Riaz",
+			"phoneNumber": "03025689366"
+		}
+	],
+	"SellItForMe_loggedinUser": [
+		{
+			"year": "2022",
+			"make": "Nissan",
+			"model": "Kix",
+			"city": "Multan",
+			"name": "Adnan Aashiq",
+			"phoneNumber": "03022149193"
+		},
+		{
+			"year": "2020",
+			"make": "Dodge",
+			"model": "Brothers",
+			"city": "Multan",
+			"name": "Maham Riaz",
+			"phoneNumber": "03025689366"
+		}
+	],
+	"InspectionRequest": [
+		{
+			"year": "2018",
+			"make": "KIA",
+			"model": "Pride",
+			"name": "Maham Riaz",
+			"phoneNumber": "03025689366",
+			"email" : "testing@PW.com",
+			"city": "Karachi",
+			"cityArea": "Korangi"
+		},
+		{
+			"year": "2020",
+			"make": "Opel",
+			"model": "Rekord",
+			"name": "Iqra Aziz",
+			"phoneNumber": "03568974522",
+			"email" : "testing@PW.com",
+			"city": "Karachi",
+			"cityArea": "Air Port"
+		}
+	],
+	"AuctionSheet_loggedinUser": [
+		{
+			"chassisNumber": "HE12-062075"
+		},
+		{
+			"chassisNumber": "RU3-1041850"
+		}
+	],
+	"AuctionSheet_loggedOutUser": [
+		{
+			"chassisNumber": "HE12-062075",
+			"name": "Iqra Aziz",
+			"email": "testing@PW.com",
+			"phoneNumber": "03568974522"
+		},
+		{
+			"chassisNumber": "RU3-1041850",
+			"name": "Maham Riaz",
+			"email": "testingforloggedout@PW.com",
+			"phoneNumber": "03025689366"
+		}
+	],
+	"Insurance": [
+		{
+			"year": "2020",
+			"make": "Honda",
+			"model": "BR-V ",
+			"version": "i-VTEC",
+			"priceLocator":"#car_value",
+			"price": "5000000",
+			"insuranceBankName": "EFU General Insurance Ltd",
+			"name": "Iqra Aziz",
+			"email": "testing@PW.com",
+			"phoneNumber": "03568974522",
+			"city": "Lahore"
+		},
+		{
+			"year": "2019",
+			"make": "DFSK",
+			"model": "C37",
+			"version": "Euro V",
+			"priceLocator":"#car_value",
+			"price": "2400000",
+			"insuranceBankName": "Pak Qatar Insurance Company Limited",
+			"name": "Maham Riaz",
+			"email": "testingforloggedout@PW.com",
+			"phoneNumber": "03025689366",
+			"city": "Karachi"
+		}
+	],
+	"Newcarfinance": [
+		{
+			"city1": "Lahore",
+			"year": "2022",
+			"make": "Honda",
+			"model": "City",
+			"version": "Aspire Prosmatec 1.3 i-VTEC",
+			"tenure": "4 Year",
+			"downPayment": "40%",
+			"bankName": "HBL CarLoan ",
+			"name": "Saliha",
+			"email": "test@pakwheels.com",
+			"phoneNumber": "03225689741",
+			"age": "22",
+			"cnic": "45202-1234120-9",
+			"city2": "Lahore",
+			"cityArea": "Gulberg",
+			"address": "Street Test House Automation",
+			"bestTimeToCall": "Office Hours",
+			"sourceOfIncome": "Salaried",
+			"monthlyIncome": "21,000 - 35,000",
+			"bank": "Askari Bank Limited",
+			"taxFilerStatus": "Non-Filer",
+			"creditCardLoan": "Yes",
+			"intendToUseVehicle": "Personal",
+			"acquire": "Next 2 weeks"
+		},
+		{
+			"city1": "Islamabad",
+			"year": "2022",
+			"make": "Changan",
+			"model": "Kalash",
+			"version": "Base Grade",
+			"tenure": "3 Year",
+			"downPayment": "45%",
+			"bankName": "HBL CarLoan ",
+			"name": "Nabeel Sajid",
+			"email": "nabeel@pakwheels.com",
+			"phoneNumber": "03228789121",
+			"age": "40",
+			"cnic": "35202-2106120-5",
+			"city2": "Islamabad",
+			"cityArea": "AGHOSH",
+			"address": "Street Test House Automation",
+			"bestTimeToCall": "Before Mid-day",
+			"sourceOfIncome": "Self-Employed",
+			"monthlyIncome": "Above 55,000",
+			"bank": "Faysal Bank Limited",
+			"taxFilerStatus": "Non-Filer",
+			"creditCardLoan": "No",
+			"intendToUseVehicle": "Business",
+			"acquire": "Just looking for information"
+		}
+	],
+	"Usedcarfinance": [
+		{
+			"city1": "Peshawar",
+			"year": "2019",
+			"make": "Suzuki",
+			"model": "Wagon R ",
+			"version": "VXR",
+			"priceLocator":"#car_finance_lead_price",
+			"price": "2000000",
+			"tenure": "5",
+			"downPayment": "40%",
+			"bankName": "UBL Drive    ",
+			"name": "Muhammad Ali",
+			"email": "ali@pakwheels.com",
+			"phoneNumber": "03228788951",
+			"age": "19",
+			"cnic": "45586-1234189-9",
+			"city2": "Lahore",
+			"cityArea": "Aftab Garden",
+			"address": "Street Test House Automation",
+			"bestTimeToCall": "Office Hours",
+			"sourceOfIncome": "Salaried",
+			"monthlyIncome": "21,000 - 35,000",
+			"bank": "Askari Bank Limited",
+			"taxFilerStatus": "Non-Filer",
+			"creditCardLoan": "Yes",
+			"intendToUseVehicle": "Personal",
+			"acquire": "Next 2 weeks"
+		},
+		{
+			"city1": "Rawalpindi",
+			"year": "2021",
+			"make": "Suzuki",
+			"model": "Bolan ",
+			"version": "Cargo Van Euro ll",
+			"priceLocator":"#car_finance_lead_price",
+			"price": "1500000",
+			"tenure": "4",
+			"downPayment": "60%",
+			"bankName": "Faysal Car Finance",
+			"name": "Muhammad Ali",
+			"email": "ali@pakwheels.com",
+			"phoneNumber": "03228788951",
+			"age": "19",
+			"cnic": "45586-1234189-9",
+			"city2": "Bahawalpur",
+			"cityArea": "Satellite Town",
+			"address": "Street Test House Automation",
+			"bestTimeToCall": "Office Hours",
+			"sourceOfIncome": "Salaried",
+			"monthlyIncome": "36,000 - 55,000",
+			"bank": "Askari Bank Limited",
+			"taxFilerStatus": "Filer",
+			"creditCardLoan": "Yes",
+			"intendToUseVehicle": "Personal",
+			"acquire": "Next 2 weeks"
+		}
+	]
+}

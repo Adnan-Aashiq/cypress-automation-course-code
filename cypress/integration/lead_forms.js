@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
-import {Homepage} from "../pages/Homepage"
-import { CarInspectionHome,CarInspectionLeadForm } from "../pages/CarInspection";
+import { Homepage } from "../pages/Homepage"
+import { CarInspectionHome, CarInspectionLeadForm } from "../pages/CarInspection";
 import { LoginPage } from "../pages/Login";
 import { AuctionSheetVerification } from "../pages/Auctionsheetverification";
-import {SIFMPage,SIFMLeadForm} from "../pages/SIFM"
-import { NewCarLoanCalculator,UsedCarLoanCalculator,Banks,FinanceForm,InsuranceForm } from "../pages/Carfinanceand_insurance";
+import { SIFMPage, SIFMLeadForm } from "../pages/SIFM"
+import { NewCarLoanCalculator, UsedCarLoanCalculator, Banks, FinanceForm, InsuranceForm } from "../pages/Carfinanceand_insurance";
 
 const Homepageobj = new Homepage();
 const Carinspectionhomeobj = new CarInspectionHome();
@@ -13,146 +13,161 @@ const Loginpageobj = new LoginPage();
 const Auctionsheetverificationobj = new AuctionSheetVerification();
 const SIFMPageobj = new SIFMPage();
 const SIFMLeadFormobj = new SIFMLeadForm();
-const Newcarloancalculatorobj =  new NewCarLoanCalculator();
+const Newcarloancalculatorobj = new NewCarLoanCalculator();
 const Usedcarloancalculatorobj = new UsedCarLoanCalculator();
-const Banksobj =  new Banks();
+const Banksobj = new Banks();
 const Financeformobj = new FinanceForm();
 const Insuranceformobj = new InsuranceForm();
 
-describe('Automating lead forms',function(){
-    it('Placing PakWheels Car Inspection lead',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        cy.contains('Sign In').click();
-        Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
-        Homepageobj.clickOnCarInspection();
-        Carinspectionhomeobj.clickOnScheduleInspection();
-        Carinspectionleadformobj.SelectModelYear();
-        Carinspectionleadformobj.SelectCarInfo();
-        Carinspectionleadformobj.InputName(Carinspectionleadformobj.Name);
-        Carinspectionleadformobj.InputPhoneNumber(Carinspectionleadformobj.Phonenumber);
-        //for already logged in user this lower function is not required
-        //Carinspectionleadformobj.InputEmail(Carinspectionleadformobj.Email);
-        Carinspectionleadformobj.SelectCity();
-        Carinspectionleadformobj.SelectCityArea();
-        Carinspectionleadformobj.CheckBox();
-        Carinspectionleadformobj.ClickOnSubmit();
-        Carinspectionleadformobj.VerifyLead();
+const sifmTestData = require("../fixtures/leadForms.json")
 
+describe('Automating lead forms', function () {
+    sifmTestData.InspectionRequest.forEach((data) => {
+        it('Placing PakWheels Car Inspection lead', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.ClickOnSignIn();
+            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Homepageobj.clickOnCarInspection();
+            Carinspectionhomeobj.clickOnScheduleInspection();
+            Carinspectionleadformobj.SelectModelYear(data.year);
+            Carinspectionleadformobj.SelectCarInfo(data.make, data.model);
+            Carinspectionleadformobj.InputName(data.name);
+            Carinspectionleadformobj.InputPhoneNumber(data.phoneNumber);
+            //for already logged in user this lower function is not required
+            //Carinspectionleadformobj.clickIfExist(data.email)
+            //Carinspectionleadformobj.InputEmail(data.email);
+            Carinspectionleadformobj.SelectCity(data.city);
+            Carinspectionleadformobj.SelectCityArea(data.cityArea);
+            Carinspectionleadformobj.CheckBox();
+            Carinspectionleadformobj.ClickOnSubmit();
+            Carinspectionleadformobj.VerifyLead();
+
+        })
     })
-
-
-    it('Auction Sheet verification when user is logged in',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        cy.contains('Sign In').click();
-        Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
-        Homepageobj.clickAuctionSheetVerfication();
-        Auctionsheetverificationobj.inputChassisNumber(Auctionsheetverificationobj.ChassisNumber);
-        Auctionsheetverificationobj.verifyAuctionSheet();
-        Auctionsheetverificationobj.clickOnBuyNow();
+    sifmTestData.AuctionSheet_loggedinUser.forEach((data) => {
+        it('Auction Sheet verification when user is logged in', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.ClickOnSignIn();
+            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Homepageobj.clickAuctionSheetVerfication();
+            Auctionsheetverificationobj.inputChassisNumber(data.chassisNumber);
+            Auctionsheetverificationobj.verifyAuctionSheet();
+            Auctionsheetverificationobj.clickOnBuyNow();
+        })
     })
+    sifmTestData.AuctionSheet_loggedOutUser.forEach((data) => {
+        it('Auction Sheet verification when user is not logged in', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.clickAuctionSheetVerfication();
+            Auctionsheetverificationobj.inputChassisNumber(data.chassisNumber);
+            Auctionsheetverificationobj.verifyAuctionSheet();
+            Auctionsheetverificationobj.filling_Form(data.name, data.email, data.phoneNumber);
+            Auctionsheetverificationobj.clickOnBuyNow();
 
-    it('Auction Sheet verification when user is not logged in',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        Homepageobj.clickAuctionSheetVerfication();
-        Auctionsheetverificationobj.inputChassisNumber(Auctionsheetverificationobj.ChassisNumber);
-        Auctionsheetverificationobj.verifyAuctionSheet();
-        Auctionsheetverificationobj.filling_Form();
-        Auctionsheetverificationobj.clickOnBuyNow();
-        
+        })
     })
-    it('Placing PakWheels Sell it for me lead when user is logged in',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        cy.contains('Sign In').click();
-        Loginpageobj.loginWithEmail('sprint168@mailinator.com','1234567')
-        Homepageobj.clickSIFM();
-        SIFMPageobj.clickOnGetStarted();
-        SIFMLeadFormobj.SelectModelYear();
-        SIFMLeadFormobj.SelectCarInfo();
-        SIFMLeadFormobj.SelectCity();
-        SIFMLeadFormobj.InputName(SIFMLeadFormobj.Name);
-        SIFMLeadFormobj.InputPhoneNumber(SIFMLeadFormobj.Phonenumber);
-        SIFMLeadFormobj.ClickOnSubmit();
-        SIFMLeadFormobj.VerifyLead();
+    sifmTestData.SellItForMe_loggedinUser.forEach((data) => {
+        it('Placing PakWheels Sell it for me lead when user is logged in', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.ClickOnSignIn();
+            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Homepageobj.clickSIFM();
+            SIFMPageobj.clickOnGetStarted();
+            SIFMLeadFormobj.SelectModelYear(data.year);
+            SIFMLeadFormobj.SelectCarInfo(data.make, data.model);
+            SIFMLeadFormobj.SelectCity(data.city);
+            SIFMLeadFormobj.InputName(data.name);
+            SIFMLeadFormobj.InputPhoneNumber(data.phoneNumber);
+            SIFMLeadFormobj.ClickOnSubmit();
+        })
     })
-    it('Placing PakWheels Sell it for me lead when user is not logged in',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        Homepageobj.clickSIFM();
-        SIFMPageobj.clickOnGetStarted();
-        SIFMLeadFormobj.SelectModelYear();
-        SIFMLeadFormobj.SelectCarInfo();
-        SIFMLeadFormobj.SelectCity();
-        SIFMLeadFormobj.InputName(SIFMLeadFormobj.Name);
-        SIFMLeadFormobj.InputPhoneNumber(SIFMLeadFormobj.Phonenumber);
-        SIFMLeadFormobj.ClickOnSubmit();
+    sifmTestData.SellItForMe_loggedOutUser.forEach((data) => {
+
+        it('Placing PakWheels Sell it for me lead when user is not logged in', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.clickSIFM();
+            SIFMPageobj.clickOnGetStarted();
+            SIFMLeadFormobj.SelectModelYear(data.year);
+            SIFMLeadFormobj.SelectCarInfo(data.make, data.model);
+            SIFMLeadFormobj.SelectCity(data.city);
+            SIFMLeadFormobj.InputName(data.name);
+            SIFMLeadFormobj.InputPhoneNumber(data.phoneNumber);
+            SIFMLeadFormobj.ClickOnSubmit();
+        })
     })
-    it('Placing New Car finance lead',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        Homepageobj.clickOnCarFinance();
-        Newcarloancalculatorobj.SelectCity(Newcarloancalculatorobj.City);
-        Newcarloancalculatorobj.SelectMakeModelVersion(Newcarloancalculatorobj.Year,Newcarloancalculatorobj.Make,Newcarloancalculatorobj.Model_locator,Newcarloancalculatorobj.Model,Newcarloancalculatorobj.Version);
-        Newcarloancalculatorobj.SelectTenure(Newcarloancalculatorobj.Tenure);
-        Newcarloancalculatorobj.SelectDownPayment(Newcarloancalculatorobj.DownPayment);
-        Newcarloancalculatorobj.ClickOnShowPlans();
-        Banksobj.ClickOnFinanceBank('HBL CarLoan ');
-        Financeformobj.InputName('Saliha');
-        Financeformobj.InputEmail('test@pakwheels.com')
-        Financeformobj.InputPhoneNUmber('03225689741')
-        Financeformobj.InputAge('22');
-        Financeformobj.InputCNIC('36303-5869875-7');
-        Financeformobj.SelectCity('Lahore');
-        Financeformobj.SelectCityArea('Gulberg');
-        Financeformobj.InputAddress('xyz');
-        Financeformobj.SelectBestTimeToCall('Before Mid-day');
-        Financeformobj.FilFinancialInformation('Self-Employed','21,000 - 35,000','Faysal Bank Limited','Non-Filer','No','Business','Next 2 weeks');
-        Financeformobj.ClickOnApplyNow();
+    sifmTestData.Newcarfinance.forEach((data) => {
+        it('Placing New Car finance lead', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.clickOnCarFinance();
+            Newcarloancalculatorobj.SelectCity(data.city1);
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
+            Newcarloancalculatorobj.SelectTenure(data.tenure);
+            Newcarloancalculatorobj.SelectDownPayment(data.downPayment);
+            Newcarloancalculatorobj.ClickOnShowPlans();
+            Banksobj.ClickOnFinanceBank(data.bankName);
+            Financeformobj.InputName(data.name);
+            Financeformobj.InputEmail(data.email)
+            Financeformobj.InputPhoneNUmber(data.phoneNumber)
+            Financeformobj.InputAge(data.age);
+            Financeformobj.InputCNIC(data.cnic);
+            Financeformobj.SelectCity(data.city2);
+            Financeformobj.SelectCityArea(data.cityArea);
+            Financeformobj.InputAddress(data.address);
+            Financeformobj.SelectBestTimeToCall(data.bestTimeToCall);
+            Financeformobj.FilFinancialInformation(data.sourceOfIncome, data.monthlyIncome, data.bank, data.taxFilerStatus, data.creditCardLoan, data.intendToUseVehicle, data.acquire);
+            Financeformobj.ClickOnApplyNow();
 
 
+        })
     })
-    it('Placing Used Car finance lead',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        Homepageobj.clickOnCarFinance();
-        Usedcarloancalculatorobj.ClickOnUsedCars();
-        Newcarloancalculatorobj.SelectCity(Usedcarloancalculatorobj.City);
-        Usedcarloancalculatorobj.InputCarPrice(Usedcarloancalculatorobj.Price_locator,Usedcarloancalculatorobj.Price);
-        Newcarloancalculatorobj.SelectMakeModelVersion(Usedcarloancalculatorobj.Year,Usedcarloancalculatorobj.Make,Usedcarloancalculatorobj.Model_locator,Usedcarloancalculatorobj.Model,Usedcarloancalculatorobj.Version);
-        Newcarloancalculatorobj.SelectTenure(Usedcarloancalculatorobj.Tenure);
-        Newcarloancalculatorobj.SelectDownPayment(Usedcarloancalculatorobj.DownPayment);
-        Newcarloancalculatorobj.ClickOnShowPlans();
-        Banksobj.ClickOnFinanceBank('Faysal Car Finance');
-        Financeformobj.InputName('Saliha');
-        Financeformobj.InputEmail('test@pakwheels.com')
-        Financeformobj.InputPhoneNUmber('03225689741')
-        Financeformobj.InputAge('22');
-        Financeformobj.InputCNIC('36303-5869875-7');
-        Financeformobj.SelectCity('Lahore');
-        Financeformobj.SelectCityArea('Gulberg');
-        Financeformobj.InputAddress('xyz');
-        Financeformobj.SelectBestTimeToCall('Before Mid-day');
-        Financeformobj.FilFinancialInformation('Self-Employed','21,000 - 35,000','Faysal Bank Limited','Non-Filer','No','Business','Next 2 weeks');
-        Financeformobj.ClickOnApplyNow();
-
+    sifmTestData.Usedcarfinance.forEach((data) => {
+        it('Placing Used Car finance lead', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.clickOnCarFinance();
+            Usedcarloancalculatorobj.ClickOnUsedCars();
+            Newcarloancalculatorobj.SelectCity(data.city1);
+            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator,data.price);
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
+            Newcarloancalculatorobj.SelectTenure(data.tenure);
+            Newcarloancalculatorobj.SelectDownPayment(data.downPayment);
+            Newcarloancalculatorobj.ClickOnShowPlans();
+            Banksobj.ClickOnFinanceBank(data.bankName);
+            Financeformobj.InputName(data.name);
+            Financeformobj.InputEmail(data.email)
+            Financeformobj.InputPhoneNUmber(data.phoneNumber)
+            Financeformobj.InputAge(data.age);
+            Financeformobj.InputCNIC(data.cnic);
+            Financeformobj.SelectCity(data.city2);
+            Financeformobj.SelectCityArea(data.cityArea);
+            Financeformobj.InputAddress(data.address);
+            Financeformobj.SelectBestTimeToCall(data.bestTimeToCall);
+            Financeformobj.FilFinancialInformation(data.sourceOfIncome, data.monthlyIncome, data.bank, data.taxFilerStatus, data.creditCardLoan, data.intendToUseVehicle, data.acquire);
+            Financeformobj.ClickOnApplyNow();
+        })
     })
-    it('Placing Car insurance lead',function(){
-        Homepageobj.openHomePage();
-        Homepageobj.closeBanner();
-        Homepageobj.clickOnCarInsurance();
-        Newcarloancalculatorobj.SelectMakeModelVersion(Usedcarloancalculatorobj.Year,Usedcarloancalculatorobj.Make,Usedcarloancalculatorobj.Model_locator,Usedcarloancalculatorobj.Model,Usedcarloancalculatorobj.Version);
-        Usedcarloancalculatorobj.InputCarPrice(Insuranceformobj.Price_locator,Usedcarloancalculatorobj.Price);
-        Newcarloancalculatorobj.ClickOnShowPlans();
-        Banksobj.ClickOnInsuranceBank("IGI Insurance");
-        Insuranceformobj.AddTracker();
-        Insuranceformobj.InputName('Saliha');
-        Insuranceformobj.InputEmail('test@pakwheels.com')
-        Insuranceformobj.InputPhoneNUmber('03225689741')
-        Insuranceformobj.SelectCity('Lahore');
-        Financeformobj.ClickOnApplyNow();
-
+    sifmTestData.Insurance.forEach((data)=>{
+        it('Placing Car insurance lead', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.clickOnCarInsurance();
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
+            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator,data.price);
+            Newcarloancalculatorobj.ClickOnShowPlans();
+            Banksobj.ClickOnInsuranceBank(data.insuranceBankName);
+            Insuranceformobj.addTracker();
+            Insuranceformobj.inputName(data.name);
+            Insuranceformobj.inputEmail(data.email)
+            Insuranceformobj.inputPhoneNumber(data.phoneNumber)
+            Insuranceformobj.selectCity(data.city);
+            Financeformobj.clickOnApplyNow();
+    
+        })
     })
 })

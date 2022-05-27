@@ -62,7 +62,7 @@ carAdDetails.forEach((carAdDetail)=>{
       
     carSellForm.enableWhatsappContact()
   
-    // carSellForm.submitAd()
+    carSellForm.submitAd()
   
   })
 
@@ -104,7 +104,7 @@ bikeAdDetails.forEach((bikeAdDetail)=>{
 
     bikeSellForm.enableWhatsappContact()
 
-    // bikeSellForm.submitAd() 
+    bikeSellForm.submitAd() 
   
   })
   
@@ -137,7 +137,7 @@ accessoryAdDetails.forEach((accessoryAdDetail)=>{
     
     accessorySellForm.enterPhone(accessoryAdDetail.phone)
   
-    // accessorySellForm.submitAd() 
+    accessorySellForm.submitAd() 
 
   })
 

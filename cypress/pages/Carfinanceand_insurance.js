@@ -1,59 +1,41 @@
 //Car Finance
 export class NewCarLoanCalculator{
-    Model_locator = '.model-listings.fs14.get-listing.models_for_14 li.model';
-    City='Karachi';
-    Year = '2022'
-    Make = 'Honda';
-    Model = 'City';
-    Version = 'i-DSI'
-    Tenure = '3';
-    DownPayment = '30%'
-    Bankindex = '6'
-    SelectCity(City){
+    SelectCity(city){
         cy.get('.chzn-single').click();
-        cy.get("ul[class='chzn-results'] li[class='active-result']").contains(City).click();
-        //cy.get("ul[class='chzn-results'] li[class='active-result result-selected']").should('have.text', 'Karachi');
+        cy.get("ul[class='chzn-results'] li[class='active-result']").contains(city).click();
+        cy.get("ul[class='chzn-results'] li[class='active-result result-selected']")
+        .should('have.text', city);
     }
-    SelectMakeModelVersion(Year,Make,Model_locator,Model,Version){
+    SelectMakeModelVersion(year,make,model,version){
         cy.get("#car_selector").click();
-        cy.get(".fs14.get-listing.year-listings li.model_year").contains(Year).click();
-        cy.get(".fs14.get-listing.make-listings li.make").contains(Make).click();
-        cy.get(Model_locator).contains(Model).click();
-        cy.get(".fs14.get-listing.version-listings li.version").contains(Version).click();
+        cy.get(".form-group.nomargin .model_year").contains(year).click();
+        cy.get(".form-group.nomargin .make").contains(make).click();
+        cy.get(".form-group.nomargin .model").contains(model).click();
+        cy.get(".form-group.nomargin .version").contains(version).click();
     }
-    SelectTenure(Tenure){
+    SelectTenure(tenure){
         cy.wait(2000)
-        cy.get('#car_finance_lead_tenure').select(Tenure);
+        cy.get('#car_finance_lead_tenure').select(tenure);
     }
-    SelectDownPayment(DownPayment){
-        cy.get('#car_finance_lead_down_payment').select(DownPayment);
+    SelectDownPayment(downPayment){
+        cy.get('#car_finance_lead_down_payment').select(downPayment);
     }
     ClickOnShowPlans(){
         cy.contains('Show Plans').click();
     }
 }
 export class UsedCarLoanCalculator{
-    Price_locator = '#car_finance_lead_price'
-    Model_locator = '.form-group.nomargin ul.model-listings.fs14.get-listing.models_for_41';
-    City='Lahore';
-    Year = '2019'
-    Make = 'Suzuki';
-    Model = 'Cultus';
-    Version = 'VXL'
-    Price = '2000000'
-    Tenure = '5';
-    DownPayment = '40%'
-    Bankindex = '2'
     ClickOnUsedCars(){
         cy.get('#upcoming-tab').click();
     }
-    InputCarPrice(Price_locator,Price){
-        cy.get(Price_locator).type(Price);
+    InputCarPrice(priceLocator,price){
+        cy.get(priceLocator).type(price);
     }
 }
 export class Banks{
     ClickOnFinanceBank(FinanceBankName){
-        cy.get("a[class='img-content'][title='"+ FinanceBankName +"']").parents('.well.search-list.clearfix').find('#submitbutton').click();
+        cy.get("a[class='img-content'][title='"+ FinanceBankName +"']")
+        .parents('.well.search-list.clearfix').find('#submitbutton').click();
     }
     
 
@@ -119,26 +101,26 @@ export class FinanceForm{
         cy.wait(2000);
         cy.get('.col-md-8>#car_finance_lead_processing_period').select(Dp7);
     }
-    ClickOnApplyNow(){
+    clickOnApplyNow(){
         cy.get('#submitbutton').click();
     }
 }
+
 //Car Insurance
 export class InsuranceForm{
-    Price_locator = '#car_value'
-    AddTracker(){
+    addTracker(){
         cy.get(".nomargin> input[type='checkbox']").click();
     }
-    InputName(Name){
-        cy.get('.col-md-8>#car_insurance_lead_name').type(Name);
+    inputName(name){
+        cy.get('.col-md-8>#car_insurance_lead_name').type(name);
     }
-    InputEmail(Email){
-        cy.get('.col-md-8>#car_insurance_lead_email').type(Email)
+    inputEmail(email){
+        cy.get('.col-md-8>#car_insurance_lead_email').type(email)
     }
-    InputPhoneNUmber(PhoneNumber){
-        cy.get('.col-md-8>#car_insurance_lead_mobile_number').type(PhoneNumber);
+    inputPhoneNumber(phoneNumber){
+        cy.get('.col-md-8>#car_insurance_lead_mobile_number').type(phoneNumber);
     }
-    SelectCity(City){
-        cy.get('.col-md-8>#car_insurance_lead_city_id').select(City);
+    selectCity(city){
+        cy.get('.col-md-8>#car_insurance_lead_city_id').select(city);
     }
 }
