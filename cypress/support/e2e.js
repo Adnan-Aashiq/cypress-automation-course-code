@@ -24,3 +24,21 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
   })
+
+
+  // Hide fetch/XHR requests
+
+if (Cypress.config('hideXHR')) {
+  // Add the above snippet here...
+const app = window.top;
+
+if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+const style = app.document.createElement('style');
+style.innerHTML =
+  '.command-name-request, .command-name-xhr { display: none }';
+style.setAttribute('data-hide-command-log-request', '');
+
+app.document.head.appendChild(style);
+  }
+
+}
