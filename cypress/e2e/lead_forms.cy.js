@@ -6,6 +6,7 @@ import { AuctionSheetVerification } from "../pages/Auctionsheetverification";
 import { SIFMPage, SIFMLeadForm } from "../pages/SIFM"
 import { NewCarLoanCalculator, UsedCarLoanCalculator, Banks, FinanceForm, InsuranceForm } from "../pages/Carfinanceand_insurance";
 
+
 const Homepageobj = new Homepage();
 const Carinspectionhomeobj = new CarInspectionHome();
 const Carinspectionleadformobj = new CarInspectionLeadForm();
@@ -18,6 +19,7 @@ const Usedcarloancalculatorobj = new UsedCarLoanCalculator();
 const Banksobj = new Banks();
 const Financeformobj = new FinanceForm();
 const Insuranceformobj = new InsuranceForm();
+
 
 const sifmTestData = require("../fixtures/leadForms.json")
 
