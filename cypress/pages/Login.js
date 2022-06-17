@@ -1,5 +1,7 @@
 export class LoginPage{
-
+    clickOnSignIn(){
+        cy.contains('Sign In').click();
+    }
     // Login from pop-up
     loginWithEmail(email, pass){
         cy.get('a[data-login-method="SignInWithEmail"]').click()
@@ -7,6 +9,7 @@ export class LoginPage{
         cy.get('#password').type(pass);
         cy.get('#frm_login > .btn').click()
     }
+
 
 
 }

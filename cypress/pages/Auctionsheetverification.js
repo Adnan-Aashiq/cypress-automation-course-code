@@ -1,16 +1,18 @@
 export class AuctionSheetVerification{
-    ChassisNumber = 'HE12-062075'
     
-    inputChassisNumber(ChassisNumber){
-        cy.get('#chassis-number').type(ChassisNumber);
+    inputChassisNumber(chassisNumber){
+        cy.get('#chassis-number').type(chassisNumber);
     }
     verifyAuctionSheet(){
-        cy.get('.btn.btn-success.btn-lg.fs20').click();
+        cy.get("input[value='Verify Auction Sheet']").click();
     }
-    filling_Form(){
-        cy.get('#auction_sheet_request_display_name').type('Adnan Aashiq')
-        cy.get('#auction_sheet_request_email').type('sprint168@mailinator.com');
-        cy.get('#auction_sheet_request_mobile_phone').type('03022149193')
+    filling_Form(name,email,phoneNumber){
+        cy.get('#auction_sheet_request_display_name')
+        .type(name)
+        cy.get('#auction_sheet_request_email')
+        .type(email);
+        cy.get('#auction_sheet_request_mobile_phone')
+        .type(phoneNumber)
         
     }
     clickOnBuyNow(){

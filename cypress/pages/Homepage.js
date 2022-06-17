@@ -1,45 +1,37 @@
 export class Homepage{
     homePageURL = "https://www.pakgari.com/";
-    bannerClose_Locator = "#onesignal-slidedown-cancel-button";
-    usedCars_Locator = 'Find Used Cars for Sale';
-    usedBike_Locator = 'Find Used Bikes';
-    findAutoPart_Locator = 'Auto Store';
-    carInspection_Locator = '#certify-car-index';
-
-
-
     openHomePage(){
         cy.visit(this.homePageURL);
     }
     closeBanner(){
-        cy.get(this.bannerClose_Locator).click();
+        cy.get("#onesignal-slidedown-cancel-button").click();
     }
     ClickOnSignIn(){
         cy.contains('Sign In').click();
     }
     clickOnUsedCars(){
-        cy.contains(this.usedCars_Locator).click({force: true});
+        cy.contains('Find Used Cars for Sale').click({force: true});
     }
     clickOnUsedBikes(){
-        cy.contains(this.usedBike_Locator).click({force: true});
+        cy.contains('Find Used Bikes').click({force: true});
     }
     clickOnFindAutoParts(){
-        cy.contains(this.findAutoPart_Locator).click({force: true});
+        cy.contains('Auto Store').click({force: true});
     }
     clickOnCarInspection(){
-        cy.get(this.carInspection_Locator).click();
+        cy.get('#certify-car-index').scrollIntoView().click();
     }
     clickAuctionSheetVerfication(){
-        cy.contains('Auction Sheet Verification').click({force: true});
+        cy.contains('Auction Sheet Verification').scrollIntoView().click({force: true});
     }
     clickSIFM(){
-        cy.contains('PakWheels Sell It For Me').click({force: true});
+        cy.contains('PakWheels Sell It For Me').scrollIntoView().click({force: true});
     }
     clickOnCarFinance(){
-        cy.contains('Car Finance').click({force: true});
+        cy.contains('Car Finance').scrollIntoView().click({force: true});
     }
     clickOnCarInsurance(){
-        cy.contains('Car Insurance').click({force: true});
+        cy.contains('Car Insurance').scrollIntoView().click({force: true});
     }
     
 }

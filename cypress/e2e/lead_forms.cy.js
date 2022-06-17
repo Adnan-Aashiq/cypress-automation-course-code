@@ -60,7 +60,7 @@ describe('Automating lead forms', function () {
         })
     })
     sifmTestData.AuctionSheet_loggedOutUser.forEach((data) => {
-        it.only('Auction Sheet verification when user is not logged in', function () {
+        it('Auction Sheet verification when user is not logged in', function () {
             Homepageobj.openHomePage();
             Homepageobj.closeBanner();
             Homepageobj.clickAuctionSheetVerfication();

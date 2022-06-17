@@ -1,10 +1,21 @@
 export class FindUsedAutoPartsHomepage {
 
+    TypeInSearch(searchKeyword) {
+        cy.get('#search_key').type(searchKeyword);
+    }
+    ClickOnSearch() {
+        cy.get("#ad-listings-search-btn").click();
+    }
 
     ClickOnAddToCart(parts) {
         cy.get('.classified-listing').each(($el, index, $list) => {
+            // array to verify total price
+            //parts = ["HORN - MERCEDES SOUND - E-280+ in Lahore","Karsa Army Horn ","MOMO Horn Kit","HORN - PORSCHE SOUND- E-240+", "HORN - HONDA / TOYOTA SOUND- C-180"];
+            //array to verify shipping price
+            //parts = []
             const cycars = cy.wrap(parts);
             const text = $el.find('.ad-detail-path > h3').text()
+            //cy.log(text);
             cycars.each((partname) => {
                 if (text.includes(partname)) {
                     cy.wrap($el.find('.add-cart-item')).click()
@@ -14,8 +25,8 @@ export class FindUsedAutoPartsHomepage {
         })
         cy.wait(2000);
     }
-    ClickOnSearch(Button){
-        cy.get(Button).click();
+    ClickOnCart() {
+        cy.get('#cart-url > .fa').click({ force: true });
     }
 
     changingQuantity() {
@@ -29,14 +40,12 @@ export class FindUsedAutoPartsHomepage {
             const shippingPrice = $product.text();
             //let stringWithoutCommas = shippingPrice.replace(/,/g, '');
             totalship += Number(shippingPrice)
-
         }).then(() => {
             cy.get('#shipping_charges').then(function ($elem) {
                 const itemsTotal = $elem.text();
                 //var itemsTotalWithoutCommas = itemsTotal.replace(/,/g, '');
                 expect(Number(itemsTotal)).to.equal(totalship)
                 cy.wrap(totalship).as('totalShipment')
-
             })
         })
     }
@@ -93,7 +102,7 @@ export class FindUsedAutoPartsHomepage {
     ClickOnShippingButton() {
         cy.get("td[class='checkout-footer'] button[class='btn btn-primary pull-right']").click()
     }
-    FillingShippingInfo(){
+    FillingShippingInfo() {
         cy.get('#order_name').clear()
         cy.get('#order_name').type('Test Order')
         cy.get('#order_phone').type('03915134567')

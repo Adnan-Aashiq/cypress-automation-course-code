@@ -5,37 +5,47 @@ export class CarInspectionHome{
 } 
 
 export class CarInspectionLeadForm{
-    Name = 'Adnan Aashiq'
-    Phonenumber = '03022149193'
-    Email = 'test@pakwheels.com'
-
-
-    SelectModelYear(){
-        cy.get("#car_certification_request_model_year").select('2018').should('have.value', '2018');
+    SelectModelYear(year){
+        cy.get("#car_certification_request_model_year")
+        .select(year).should('have.value', year);
     }
-    SelectCarInfo(){
+    SelectCarInfo(make,model){
+        //this model css is only valid for suzuki make
         cy.get("#car_selector").click();
-        cy.get("[class='fs14 get-listing make-listings'] [class='make']").contains("Suzuki").click();
-        cy.get("[class='model-listings fs14 get-listing models_for_41 show'] [class='model']").contains("Cultus").click();
+        cy.get(".form-group.nomargin .make").contains(make).click();
+        cy.get(".form-group.nomargin .model").contains(model).click();
     }
-    InputName(Name){
-        cy.get("#car_certification_request_name").type(Name);
+    InputName(name){
+        cy.get("#car_certification_request_name").type(name);
     }
-    InputPhoneNumber(PhoneNumber){
-        cy.get("#car_certification_request_mobile").type(PhoneNumber)
+    InputPhoneNumber(phoneNumber){
+        cy.get("#car_certification_request_mobile").type(phoneNumber)
     }
-    InputEmail(Email){
-        cy.get("#user_email").type(Email);
+    // clickIfExist(email){
+    //     cy.get('body').then((body) => {
+    //         if (body.find("#user_email").length > 0) {
+    //             cy.get("#user_email").type(email)
+    //         }
+    //         else
+    //         {
+
+    //         }
+    //     });
+    // }
+    InputEmail(email){
+        cy.get("#user_email").type(email);
     }
-    SelectCity(){
+    SelectCity(city){
         cy.get('.chzn-single').click();
-        cy.get("ul[class='chzn-results'] li[class='active-result']").contains('Karachi').click();
-        cy.get("ul[class='chzn-results'] li[class='active-result result-selected']").should('have.text', 'Karachi');
+        cy.get("ul[class='chzn-results'] li[class='active-result']").contains(city).click();
+        cy.get("ul[class='chzn-results'] li[class='active-result result-selected']")
+        .should('have.text', city);
     }
-    SelectCityArea(){
+    SelectCityArea(cityArea){
         cy.get("#car_certification_request_city_area_id_chzn").click();
-        cy.get("ul[class='chzn-results'] li[class='active-result group-option']").contains('Korangi').click();
-        cy.get("ul[class='chzn-results'] li[class='active-result group-option result-selected']").should('have.text', 'Korangi');
+        cy.get("ul[class='chzn-results'] li[class='active-result group-option']").contains(cityArea).click();
+        cy.get("ul[class='chzn-results'] li[class='active-result group-option result-selected']")
+        .should('have.text', cityArea);
     }
     CheckBox(){
         cy.get('#checkboxmagazine').click();
@@ -44,7 +54,8 @@ export class CarInspectionLeadForm{
         cy.get("#certify-a-car-done").click();
     }
     VerifyLead(){
-        cy.get(".generic-green.fs20.mt15").should('have.text','Your request for PakWheels Car Inspection has been received.');
+        cy.get(".generic-green.fs20.mt15")
+        .should('have.text','Your request for PakWheels Car Inspection has been received.');
     }
 
 
