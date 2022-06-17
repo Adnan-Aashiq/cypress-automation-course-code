@@ -55,7 +55,7 @@ describe('Search for car, bike and autopart', function(){
     })
 
 
-    it('Search for autoparts', function(){
+    it.only('Search for autoparts', function(){
         homePageObj.openHomePage();
         homePageObj.closeBanner();
         homePageObj.clickOnFindAutoParts();
