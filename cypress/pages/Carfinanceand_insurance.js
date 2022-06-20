@@ -86,19 +86,19 @@ export class FinanceForm{
 
     //Financial Information
     FilFinancialInformation(Dp1,Dp2,Dp3,Dp4,Dp5,Dp6,Dp7){
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_occupation').select(Dp1);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_salary').select(Dp2);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_current_bank').select(Dp3);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_is_filler').select(Dp4);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_in_debt').select(Dp5);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_vehicle_intent').select(Dp6);
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.col-md-8>#car_finance_lead_processing_period').select(Dp7);
     }
     clickOnApplyNow(){

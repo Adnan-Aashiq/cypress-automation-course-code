@@ -108,7 +108,7 @@ describe('Automating lead forms', function () {
             Homepageobj.closeBanner();
             Homepageobj.clickOnCarFinance();
             Newcarloancalculatorobj.SelectCity(data.city1);
-            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year, data.make, data.model, data.version);
             Newcarloancalculatorobj.SelectTenure(data.tenure);
             Newcarloancalculatorobj.SelectDownPayment(data.downPayment);
             Newcarloancalculatorobj.ClickOnShowPlans();
@@ -123,9 +123,7 @@ describe('Automating lead forms', function () {
             Financeformobj.InputAddress(data.address);
             Financeformobj.SelectBestTimeToCall(data.bestTimeToCall);
             Financeformobj.FilFinancialInformation(data.sourceOfIncome, data.monthlyIncome, data.bank, data.taxFilerStatus, data.creditCardLoan, data.intendToUseVehicle, data.acquire);
-            Financeformobj.ClickOnApplyNow();
-
-
+            Financeformobj.clickOnApplyNow();
         })
     })
     sifmTestData.Usedcarfinance.forEach((data) => {
@@ -135,8 +133,8 @@ describe('Automating lead forms', function () {
             Homepageobj.clickOnCarFinance();
             Usedcarloancalculatorobj.ClickOnUsedCars();
             Newcarloancalculatorobj.SelectCity(data.city1);
-            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator,data.price);
-            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
+            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator, data.price);
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year, data.make, data.model, data.version);
             Newcarloancalculatorobj.SelectTenure(data.tenure);
             Newcarloancalculatorobj.SelectDownPayment(data.downPayment);
             Newcarloancalculatorobj.ClickOnShowPlans();
@@ -151,16 +149,16 @@ describe('Automating lead forms', function () {
             Financeformobj.InputAddress(data.address);
             Financeformobj.SelectBestTimeToCall(data.bestTimeToCall);
             Financeformobj.FilFinancialInformation(data.sourceOfIncome, data.monthlyIncome, data.bank, data.taxFilerStatus, data.creditCardLoan, data.intendToUseVehicle, data.acquire);
-            Financeformobj.ClickOnApplyNow();
+            Financeformobj.clickOnApplyNow();
         })
     })
-    sifmTestData.Insurance.forEach((data)=>{
+    sifmTestData.Insurance.forEach((data) => {
         it('Placing Car insurance lead', function () {
             Homepageobj.openHomePage();
             Homepageobj.closeBanner();
             Homepageobj.clickOnCarInsurance();
-            Newcarloancalculatorobj.SelectMakeModelVersion(data.year,data.make,data.model, data.version);
-            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator,data.price);
+            Newcarloancalculatorobj.SelectMakeModelVersion(data.year, data.make, data.model, data.version);
+            Usedcarloancalculatorobj.InputCarPrice(data.priceLocator, data.price);
             Newcarloancalculatorobj.ClickOnShowPlans();
             Banksobj.ClickOnInsuranceBank(data.insuranceBankName);
             Insuranceformobj.addTracker();
@@ -169,7 +167,7 @@ describe('Automating lead forms', function () {
             Insuranceformobj.inputPhoneNumber(data.phoneNumber)
             Insuranceformobj.selectCity(data.city);
             Financeformobj.clickOnApplyNow();
-    
+
         })
     })
 })

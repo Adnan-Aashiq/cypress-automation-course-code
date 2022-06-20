@@ -18,7 +18,7 @@ describe('Auto Store', function () {
   })
   autoStoreTestData.forEach((data) => {
     it('Place an estore order', function () {
-      login.loginWithEmail('sprint167@mailinator.com', 'Test123');
+      login.loginWithEmail('sprint168@mailinator.com', '1234567');
       homePageObj.clickOnFindAutoParts();
       findUsedAutoPartsHomePageObj.TypeInSearch(data.keyword);
       findUsedAutoPartsHomePageObj.ClickOnSearch();
@@ -29,7 +29,7 @@ describe('Auto Store', function () {
       findUsedAutoPartsHomePageObj.verifyTotalPrice();
       findUsedAutoPartsHomePageObj.verifyGrandTotal();
       findUsedAutoPartsHomePageObj.promoPercenatge(data.percentage);
-      //findUsedAutoPartsHomePageObj.ClickOnShippingButton();
+      findUsedAutoPartsHomePageObj.ClickOnShippingButton();
       //findUsedAutoPartsHomePageObj.FillingShippingInfo();
     })
   })
