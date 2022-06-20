@@ -16,9 +16,9 @@ export class NewCars{
 
     verifyMakePage(make){
         cy.get('h1.mt10').should('have.text', make + ' Cars in Pakistan')
-        cy.get(':nth-child(3) > .container > h2').should('have.text', make + ' New Car Models')
-        cy.get(':nth-child(4) > .container > h2').should('have.text', 'Other ' + make + ' Cars')
-        cy.get(':nth-child(5) > .container > h2').should('have.text', make + ' Car Videos')
+        cy.get('.container h2').contains(make + ' New Car Models').should('have.text', make + ' New Car Models')
+        cy.get('.container h2').contains('Other ' + make + ' Cars').should('have.text', 'Other ' + make + ' Cars')
+        cy.get('.container h2').contains(make + ' Car Videos').should('have.text', make + ' Car Videos')
         cy.get('.faqs')
     }
 

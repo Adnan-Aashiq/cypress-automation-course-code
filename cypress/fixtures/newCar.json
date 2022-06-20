@@ -1,8 +1,26 @@
 [
     {
+        "make": "KIA",
+        "model": "Picanto",
+        "version": "1.0 MT",
+        "price": "PKR 1,899,000"
+    },
+    {
         "make": "Toyota",
         "model": "Corolla",
         "version": "XLi Automatic",
         "price": "PKR 2,119,000"
+    },
+    {
+        "make": "Honda",
+        "model": "Civic",
+        "version": "Oriel 1.8 i-VTEC CVT",
+        "price": "PKR 2,499,000"
+    },
+    {
+        "make": "Honda",
+        "model": "BR-V",
+        "version": "i-VTEC S",
+        "price": "PKR 2,329,000"
     }
 ]
