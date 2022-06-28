@@ -25,12 +25,20 @@ describe('Auto Store', function () {
       findUsedAutoPartsHomePageObj.ClickOnAddToCart(data.parts);
       findUsedAutoPartsHomePageObj.ClickOnCart();
       //findUsedAutoPartsHomePageObj.changingQuantity()
+
       findUsedAutoPartsHomePageObj.verifyShippingPrice()
       findUsedAutoPartsHomePageObj.verifyTotalPrice();
       findUsedAutoPartsHomePageObj.verifyGrandTotal();
+      
       findUsedAutoPartsHomePageObj.promoPercenatge(data.percentage);
+      findUsedAutoPartsHomePageObj.removeItem(data.partsToRemove);
+
+      findUsedAutoPartsHomePageObj.verifyShippingPrice()
+      findUsedAutoPartsHomePageObj.verifyTotalPrice();
+      findUsedAutoPartsHomePageObj.verifyGrandTotal();
+
       findUsedAutoPartsHomePageObj.ClickOnShippingButton();
-      //findUsedAutoPartsHomePageObj.FillingShippingInfo();
+      findUsedAutoPartsHomePageObj.FillingShippingInfo();
     })
   })
 

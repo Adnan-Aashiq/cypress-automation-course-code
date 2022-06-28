@@ -9,13 +9,8 @@ export class FindUsedAutoPartsHomepage {
 
     ClickOnAddToCart(parts) {
         cy.get('.classified-listing').each(($el, index, $list) => {
-            // array to verify total price
-            //parts = ["HORN - MERCEDES SOUND - E-280+ in Lahore","Karsa Army Horn ","MOMO Horn Kit","HORN - PORSCHE SOUND- E-240+", "HORN - HONDA / TOYOTA SOUND- C-180"];
-            //array to verify shipping price
-            //parts = []
             const cycars = cy.wrap(parts);
             const text = $el.find('.ad-detail-path > h3').text()
-            //cy.log(text);
             cycars.each((partname) => {
                 if (text.includes(partname)) {
                     cy.wrap($el.find('.add-cart-item')).click()
@@ -23,7 +18,24 @@ export class FindUsedAutoPartsHomepage {
                 }
             })
         })
-        cy.wait(2000);
+        cy.wait(1000);
+    }
+
+    removeItem(partsToRemove) {
+        const cyparts = cy.wrap(partsToRemove);
+        cyparts.each((element) => {
+            this.domfrom(element);
+        });
+    }
+
+    domfrom(title){
+        cy.get("table tbody tr div a").each(($element) => {
+            const text = $element.text()
+            if (title == text) {
+                cy.wrap($element.parents('tr').find("a[class='generic-red']")).click()
+                cy.wait(1000)
+            }
+        })
     }
     ClickOnCart() {
         cy.get('#cart-url > .fa').click({ force: true });
@@ -90,7 +102,7 @@ export class FindUsedAutoPartsHomepage {
                 cy.get('@totalAmount').then(totalAmount => {
                     var GrandTotalByF = totalShipmentCost + totalAmount; 4
                     var percentToGet = 20;
-                    var percent =Math.round((percentage / 100) * GrandTotalByF) ;
+                    var percent = Math.round((percentage / 100) * GrandTotalByF);
                     cy.log(percent)
                     cy.log(percentage + "% of " + GrandTotalByF + " is " + percent);
                     var afterPercentage = GrandTotalByF - percent;
@@ -99,6 +111,7 @@ export class FindUsedAutoPartsHomepage {
             })
         })
     }
+
     ClickOnShippingButton() {
         cy.get("td[class='checkout-footer'] button[class='btn btn-primary pull-right']").click()
     }

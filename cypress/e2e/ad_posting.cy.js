@@ -8,7 +8,7 @@ const carSellForm = new CarSellForm();
 const bikeSellForm = new BikeSellForm();
 const accessorySellForm = new AccessorySellForm();
 
-const adDetails = require('../fixtures/adDetails.json');
+const adDetails = require('../fixtures/adDetails.json'); 
 
 
 describe('Ad Posting', function () {

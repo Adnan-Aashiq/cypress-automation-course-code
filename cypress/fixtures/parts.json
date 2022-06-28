@@ -2,6 +2,7 @@
     {
         "keyword": "horns",
         "parts" : ["HORN - MERCEDES SOUND - E-280+ in Lahore","Karsa Army Horn ","MOMO Horn Kit","HORN - PORSCHE SOUND- E-240+", "HORN - HONDA / TOYOTA SOUND- C-180"],
-        "percentage" : "20"
+        "percentage" : "20",
+        "partsToRemove" : ["Meguiar's Brilliant Solution New Car Kit - G3200","HORN - MERCEDES SOUND - E-280+","LED Fog Angel Eyes - Pair","Turtle Jet Black Box Kit - T3KT","MOMO Horn Kit"]
     }
 ]
