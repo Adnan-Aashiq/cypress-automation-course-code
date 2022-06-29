@@ -2,6 +2,7 @@
 
 describe("Test mouse actions", () => {
     it("scroll element into view", () => {
+        cy.viewport("iphone-xr")
         cy.visit("http://www.webdriveruniversity.com");
         cy.get('#actions').scrollIntoView().invoke('removeAttr', 'target').click({ force: true })
         
