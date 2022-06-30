@@ -37,6 +37,6 @@ module.exports = (on, config) => {
 
 //retry plugin
 
-module.exports = (on, config) => {
-  require('cypress-plugin-retries/lib/plugin')(on)
-}
+// module.exports = (on, config) => {
+//   require('cypress-plugin-retries/lib/plugin')(on)
+// }

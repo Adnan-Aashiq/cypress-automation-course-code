@@ -27,12 +27,18 @@ describe("Test Contact Us form via WebdriverUni", () => {
     });
 
     it("Should not be able to submit a successful submission via contact us form as all fields are required", () => {
-        cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
-        cy.get('[name="first_name"]').type(data.first_name);
-        cy.get('[name="last_name"]').type(data.last_name);
-        cy.get('textarea.feedback-input').type(data.feedback)
-        cy.get('[type="submit"]').click();
-        cy.get('body').contains('Error: Invalid email address');
-        cy.screenshot("submission1")
+        if (Cypress.isBrowser('firefox')) {
+            
+        }
+        else {
+            cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
+            cy.get('[name="first_name"]').type(data.first_name);
+            cy.get('[name="last_name"]').type(data.last_name);
+            cy.get('textarea.feedback-input').type(data.feedback)
+            cy.get('[type="submit"]').click();
+            cy.get('body').contains('Error: Invalid email address');
+            cy.screenshot("submission1")
+        }
+
     });
 })

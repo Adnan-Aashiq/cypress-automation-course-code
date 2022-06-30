@@ -5,7 +5,7 @@ describe("Test Contact Us form via Automation Test Store", () => {
         //Cypress.currentTest.retries(4)
         cy.log('i am at the start')
         cy.visit("https://www.automationteststore.com/");
-        cy.get("a[href$='contact55']").click().then(function(buttonText){
+        cy.get("a[href$='contact']").click().then(function(buttonText){
             cy.log("Text of the button is : "+buttonText.text())
         })
         //cy.xpath("//a[contains(@href, 'contact')]").click();
