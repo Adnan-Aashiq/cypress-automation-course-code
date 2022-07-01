@@ -5,7 +5,7 @@ describe("Verify check boxes via web driver uni", () => {
         cy.visit("http://www.webdriveruniversity.com",{timeout : 60000}); 
         cy.get('#dropdown-checkboxes-radiobuttons').invoke('removeAttr', 'target').click({ force: true })
     })
-    it("check and validate checkbox", () => {
+    it.only("check and validate checkbox", () => {
         
         cy.get('#checkboxes > :nth-child(1) > input').as('option-1')
         cy.get('@option-1').check().should('be.checked')

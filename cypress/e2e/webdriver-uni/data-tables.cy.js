@@ -4,7 +4,7 @@ describe("Handling data via webdriveruni", () => {
       cy.visit("http://webdriveruniversity.com/");
       cy.get("#data-table").invoke("removeAttr", "target").click({ force: true });
     })
-    it("Calculate AND Assert total age of all users", () => {
+    it.only("Calculate AND Assert total age of all users", () => {
         //My Code
         let numb=0
         cy.get('#thumbnail-1 tr td:last-child').each(($el,index,$list)=>{

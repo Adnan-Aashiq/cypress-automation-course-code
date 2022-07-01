@@ -7,7 +7,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
             globalThis.data = data;
         })
     })
-    it("Should be able to submit a successful submission via contact us form", () => {
+    it.only("Should be able to submit a successful submission via contact us form", () => {
         cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
         //to add assertions in the html document  
         cy.document().should('have.property', 'charset').and('equal', 'UTF-8')

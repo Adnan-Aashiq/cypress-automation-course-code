@@ -7,7 +7,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
         })
     })
     
-    it("Should be able to submit a successful submission via contact us form", () => {
+    it.only("Should be able to submit a successful submission via contact us form", () => {
         cy.visit("http://www.webdriveruniversity.com");
         //just removed the attribute which causes to open that in new tab
         cy.get('#contact-us').invoke('removeAttr','target').click({force: true})

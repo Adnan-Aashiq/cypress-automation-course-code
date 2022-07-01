@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Test file upload via webdriveruni", () => {
-    it("Upload a file....", () => {
+    it.only("Upload a file....", () => {
         cy.visit("http://www.webdriveruniversity.com");
         cy.get('#file-upload').invoke('removeAttr', 'target').click({ force: true })
         cy.fixture("laptop.png","base64").then(fileContent=>{
