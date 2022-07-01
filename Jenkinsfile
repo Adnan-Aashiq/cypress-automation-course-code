@@ -14,6 +14,7 @@ pipeline{
                     }
                     steps{
                         git url : 'https://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@github.com/Adnan-Aashiq/cypress-automation-course-code.git'
+                        sh 'printenv'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npm run triggerAllTests-autostore-dashboard'
