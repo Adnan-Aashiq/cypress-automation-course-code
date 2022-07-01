@@ -13,7 +13,7 @@ pipeline{
                         label "remote_node1"
                     }
                     steps{
-                        git url : 'https://github.com/Adnan-Aashiq/cypress-automation-course-code.git'
+                        git url : 'https://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@github.com/Adnan-Aashiq/cypress-automation-course-code.git'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npm run triggerAllTests-autostore-dashboard'
@@ -24,7 +24,7 @@ pipeline{
                         label "remote_node2"
                     }
                     steps{
-                        git url : 'https://github.com/Adnan-Aashiq/cypress-automation-course-code.git'
+                        git url : 'https://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@github.com/Adnan-Aashiq/cypress-automation-course-code.git'
                         bat 'npm install'
                         bat 'npm update'
                         bat 'npm run triggerAllTests-autostore-dashboard'
