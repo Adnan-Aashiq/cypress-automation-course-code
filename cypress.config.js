@@ -14,8 +14,7 @@ module.exports = defineConfig({
 
 
   e2e: {
-    baseUrl: 'http://www.webdriveruniversity.com',
-    "chromeWebSecurity": false,
+    chromeWebSecurity: false,
 
     reporter: 'cypress-multi-reporters',
     reporterOptions: {

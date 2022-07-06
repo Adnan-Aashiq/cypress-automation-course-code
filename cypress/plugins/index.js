@@ -40,3 +40,11 @@ module.exports = (on, config) => {
 // module.exports = (on, config) => {
 //   require('cypress-plugin-retries/lib/plugin')(on)
 // }
+
+//cucumber plugin
+
+const cucumber = require('cypress-cucumber-preprocessor').default
+
+module.exports = (on, config) => {
+  on('file:preprocessor', cucumber())
+}
