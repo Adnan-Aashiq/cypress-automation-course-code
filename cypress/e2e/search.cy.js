@@ -1,18 +1,16 @@
 // <reference types="cypress"/>
 import {Homepage} from "../pages/Homepage"
 import { FindUsedBikeHomePage } from "../pages/Findusedbikehomepage";
-import { FindUsedAutoPartsHomepage } from "../pages/Findusedautopartshomepage";
-import {UsedFilterSearch} from "../pages/UsedFilterSearch";
+import {UsedSearchFilters} from "../pages/usedsearchfilters";
 import { UsedCarSearch } from "../pages/Usedcarsearch";
 import { UsedBikeSearch } from "../pages/Usedbikesearch";
 import { UsedAutoPartsSearch } from "../pages/UsedAutoPartsSearch";
 
 
 
-const usedSearchFilterObj = new UsedFilterSearch();
+const usedSearchFilterObj = new UsedSearchFilters ();
 const homePageObj = new Homepage();
 const findUsedBikeHomePageObj = new FindUsedBikeHomePage();
-const findUsedAutoPartsHomePageObj = new FindUsedAutoPartsHomepage();
 const usedCarSearchObj = new UsedCarSearch();
 const usedBikeSearchObj = new UsedBikeSearch();
 const usedAutoPartsSearchObj = new UsedAutoPartsSearch();

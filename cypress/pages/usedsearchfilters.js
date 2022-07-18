@@ -1,11 +1,10 @@
-export class UsedFilterSearch{
+export class UsedSearchFilters{
 
     clickOnMake(Make){
         cy.get('.search-loader-fixed > img').should('not.be.visible');
         cy.get(Make).click();
 
     }
-    
     clickOnModel(Model){
         cy.get('.search-loader-fixed > img').should('not.be.visible');
         cy.get(Model).click();
