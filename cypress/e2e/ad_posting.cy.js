@@ -10,8 +10,13 @@ const accessorySellForm = new AccessorySellForm();
 
 const adDetails = require('../fixtures/adDetails.json'); 
 
-
 describe('Ad Posting', function () {
+
+  it.only('Login with user mobile', function(){
+    carSellForm.openPakwheels()
+    login.clickOnSignIn()
+    login.loginWithPhone('03128984447','123456')
+  })
 
   adDetails.carAdDetails.forEach((carAdDetail) => {
     it('Post a Car ad', function () {
