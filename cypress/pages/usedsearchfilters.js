@@ -1,9 +1,36 @@
 export class UsedSearchFilters{
 
-    clickOnMake(Make){
-        cy.get('.search-loader-fixed > img').should('not.be.visible');
-        cy.get(Make).click();
+    clickOnMake(){
 
+        cy.get(".accordion-heading").contains("Make").as("make")
+        cy.get('@make').parent().find('a').then(($value)=>{
+            var inputValue = $value.attr("aria-expanded")
+            cy.log(inputValue)
+        })
+        
+        // cy.get('@make').parent().siblings(".accordion-body").find("li").then(($makes)=>{
+        //     let flag = false;
+        //     cy.wrap($makes).each(($el,index,$list)=>{
+        //         const title = $el.attr('title')
+        //         if(title.includes("thhhth") ){
+        //             cy.wrap($el).click();
+        //             flag = true;
+        //         }
+        //     }).then(() => {
+        //         if(flag == false){
+        //             cy.wrap($makes).parents(".accordion-inner").find(".more-choice").click()
+        //             cy.wrap($makes).parents(".accordion-inner").find(".list-unstyled.inline  > li > label> input").then(($modalmakes)=>{
+        //                 cy.wrap($modalmakes).each(($element,index,$list)=>{
+        //                     const modaltitles = $element.attr('value')
+        //                     cy.log(modaltitles)
+        //                     if(modaltitles.includes("adam") ){
+        //                         cy.wrap($element).click();
+        //                     }
+        //                 })
+        //             })
+        //         }
+        //      })
+        // })
     }
     clickOnModel(Model){
         cy.get('.search-loader-fixed > img').should('not.be.visible');
