@@ -1,4 +1,4 @@
-// <reference types="cypress"/>
+{/* <reference types="cypress"/> */}
 import { LoginPage } from '../pages/Login';
 import { CarSellForm } from '../pages/CarSellForm';
 import { BikeSellForm } from '../pages/BikeSellForm';
@@ -12,10 +12,74 @@ const adDetails = require('../fixtures/adDetails.json');
 
 describe('Ad Posting', function () {
 
-  it.only('Login with user mobile', function(){
+  it.only('Feature Ad from ad detail', function(){
     carSellForm.openPakwheels()
     login.clickOnSignIn()
-    login.loginWithPhone('03128984447','123456')
+    // login.loginWithPhone('03128984447','123456')
+    login.loginWithEmail('webtest170@mailinator.com', '1234567')
+    cy.get('.username.dropdown-toggle').click()
+    cy.get("a[href='/users/my-ads']").click()
+    // ad to pe passed
+    cy.get('a.car-name.ad-detail-path').contains('Toyota Corolla XLi VVTi' + ' for Sale').parent()
+    .then(($el)=>{
+      cy.wrap($el).invoke('removeAttr', 'target').click()
+    })
+    
+    cy.get("a[title='Make your ad prominent and sell quickly.']").click()
+    // Check business credits
+    cy.get('#businessCredits button').click()
+    cy.get('h3.generic-basic').contains('10 Car Ad Pack')
+    cy.get('#featureCredits button').click()
+    // Product to be selected
+    cy.get('.upsell-list li h3.generic-basic').contains('28 Days').click()
+    
+    cy.get('#proceedToCheckout').click()
+    cy.get("button[name='button'][type='submit']").click()
+    cy.get('#payment_method_107').click()
+    cy.get('#proceed-checkout').click()
+
+    //https://sandbox.jazzcash.com.pk/CustomerPortal/TransactionManagement/TransactionSelection
+    // Jazz cash navigation
+    cy.origin('https://sandbox.jazzcash.com.pk/CustomerPortal/TransactionManagement/TransactionSelection', () => {
+      //Jazz cash flow
+      cy.get('#mobileAccount1').type('03123456789')
+      cy.get('#MasterBtnPay').click()
+      cy.wait(10000)
+
+    })
+
+    cy.get("div[class='cell manage-ad-features'] p").then(($el)=>{
+      featureText = $el.text()
+      console.log(featureText)
+    })
+    
+
+
+  })
+
+  it('Remove ad from my ad detail',function(){
+    carSellForm.openPakwheels()
+    login.clickOnSignIn()
+    // login.loginWithPhone('03128984447','123456')
+    login.loginWithEmail('webtest170@mailinator.com', '1234567')
+    cy.get('.username.dropdown-toggle').click()
+    cy.get("a[href='/users/my-ads']").click()
+    // ad to pe passed
+    cy.get('a.car-name.ad-detail-path').contains('Suzuki Cultus VXL' + ' for Sale').parent()
+    .then(($el)=>{
+      cy.wrap($el).invoke('removeAttr', 'target').click()
+    })
+
+    cy.get("a[title='Remove your ad from search']").click()
+    cy.get("label[id='label-sold'] span").click()
+    cy.get("li[id='sold-options'] li:nth-child(1) label:nth-child(1)").click()
+    cy.get('#remove-ad').click()
+    cy.get('#sold_price').type('1600000')
+    cy.get('#sold-price-submit').click()
+    cy.get('.removed').should('have.text', 'Removed')
+
+
+
   })
 
   adDetails.carAdDetails.forEach((carAdDetail) => {
