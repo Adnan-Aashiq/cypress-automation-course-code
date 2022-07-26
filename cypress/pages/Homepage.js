@@ -33,5 +33,10 @@ export class Homepage{
     clickOnCarInsurance(){
         cy.contains('Car Insurance').scrollIntoView().click({force: true});
     }
+
+    openMyAds(){
+        cy.get('.username.dropdown-toggle').click()
+        cy.get("a[href='/users/my-ads']").click()
+    }
     
 }

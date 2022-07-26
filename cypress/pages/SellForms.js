@@ -25,4 +25,13 @@ export class SellForms{
     submitAd(){
         cy.get('#submit_form').click() 
     }
+
+    clearMileage(){
+        cy.get('#mileage_text').clear()
+    }
+
+    clearPrice(){
+        cy.get('#price_formatted').clear()
+    }
+    
 }
