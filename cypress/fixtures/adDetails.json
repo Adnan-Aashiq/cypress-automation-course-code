@@ -61,8 +61,8 @@
     ],
     "carAdDetails" :[
         {
-            "city": "Karachi",
-            "city_area": "North Nazimabad",
+            "city": "Lahore",
+            "city_area": "Abbot Road",
             "model_year": "2020",
             "make": "Toyota",
             "model": "Corolla",
@@ -108,7 +108,17 @@
             ],
             "phone": "03915134567"
     }
-    ]
+    ],
+    "car_ad_edit":[{
+        "ad_detail": "Toyota Corolla XLi VVTi",
+        "price": "2600000",
+        "mileage": "550000",
+        "description": "Edit the ad description",
+        "color": "Black"
+    }],
+    "reactivate_ad": "Suzuki Cultus VXL",
+    "remove_ad_title": "Toyota Corolla XLi VVTi",
+    "remove_sold_price": "1600000"
 
 }
 

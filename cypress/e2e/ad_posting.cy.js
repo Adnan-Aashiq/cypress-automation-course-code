@@ -14,11 +14,70 @@ const homePage = new Homepage();
 const myAdsLiting = new MyAdsListing();
 const myAdDetail = new MyAdDetail();
 
-const adDetails = require('../fixtures/adDetails.json'); 
+const adDetails = require('../fixtures/adDetails.json');
 
 describe('Ad Posting', function () {
 
-  it.only('Feature Ad from ad detail through payment', function(){
+  // it.only('adpost image upload', function(){
+    
+  //   carSellForm.openPakwheels()
+  //   carSellForm.gotoCarSellForm()
+  //   login.loginWithEmail('sprint168@mailinator.com', '1234567')
+  //   carSellForm.clickContinueFromSellOption()
+
+  //   cy.get('#pickfiles').eq(0).click({ force: true })
+  //   cy.wait(5000)
+  //       cy.fixture("carAd.jpg","base64").then(fileContent=>{
+  //           cy.get("#pickfiles").eq(0).attachFile(
+  //               {
+  //                   fileContent,
+  //                   fileName : "carAd.jpg",
+  //                   mimeType : "image/jpg"
+  //               },
+  //               {
+  //                   uploadType : "input"
+  //               }
+  //           )
+  //       })
+  //     // cy.get("#submit-button").click();
+
+  // })
+
+  adDetails.carAdDetails.forEach((carAdDetail) => {
+    it('Post a Car ad', function () {
+      carSellForm.openPakwheels()
+      carSellForm.gotoCarSellForm()
+      login.loginWithEmail('sprint168@mailinator.com', '1234567')
+      carSellForm.clickContinueFromSellOption()
+      carSellForm.selectCity(carAdDetail.city)
+      carSellForm.selectCityArea(carAdDetail.city_area)
+      carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
+      carSellForm.selectRegistrationCity(carAdDetail.reg_city)
+      carSellForm.selectExteriorColor(carAdDetail.exterior_color)
+
+
+      // Skip duplicate pop-up
+      //   cy.get('.model-footer > .btn').click()
+
+      carSellForm.enterMileage(carAdDetail.mileage)
+      carSellForm.enterPrice(carAdDetail.price)
+      carSellForm.enterDescription(carAdDetail.description)
+      carSellForm.selectDescPreSuggestValues()
+      carSellForm.selectEngineType(carAdDetail.engine_type)
+      carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
+      carSellForm.selectTransmission(carAdDetail.transmission)
+      carSellForm.selectAssembly(carAdDetail.assembly)
+      carSellForm.selectFeatures(carAdDetail.features)
+      // enter price again because of price calculator
+      carSellForm.enterPrice(carAdDetail.price)
+      carSellForm.enterPhone(carAdDetail.phone)
+      carSellForm.enableWhatsappContact()
+      carSellForm.submitAd()
+    })
+  })
+
+
+  it('Feature Ad from ad detail through payment', function(){
     
     var featureDuration = '28 Days'
     var adDetail = 'Suzuki Cultus VXL'
@@ -86,143 +145,49 @@ describe('Ad Posting', function () {
     
   })
 
-
-
   it('Remove active ad from my ad detail',function(){
     carSellForm.openPakwheels()
     login.clickOnSignIn()
-    // login.loginWithPhone('03128984447','123456')
     login.loginWithEmail('webtest170@mailinator.com', '1234567')
-    cy.get('.username.dropdown-toggle').click()
-    cy.get("a[href='/users/my-ads']").click()
-    // ad to pe passed
-    cy.get('a.car-name.ad-detail-path').contains('Suzuki Cultus VXL' + ' for Sale').parent()
-    .then(($el)=>{
-      cy.wrap($el).invoke('removeAttr', 'target').click()
-    })
-
-    cy.get("a[title='Remove your ad from search']").click()
-    cy.get("label[id='label-sold'] span").click()
-    cy.get("li[id='sold-options'] li:nth-child(1) label:nth-child(1)").click()
-    cy.get('#remove-ad').click()
-    cy.get('#sold_price').type('1600000')
-    cy.get('#sold-price-submit').click()
-    cy.get('.removed').should('have.text', 'Removed')
+    homePage.openMyAds()
+    myAdsLiting.openAdDetail(adDetails.remove_ad_title)
+    myAdDetail.removeAd(adDetails.remove_sold_price)
 
   })
 
-  it('Edit ad from my ad detail', function(){
-    carSellForm.openPakwheels()
-    login.clickOnSignIn()
-    // login.loginWithPhone('03128984447','123456')
-    login.loginWithEmail('webtest170@mailinator.com', '1234567')
-    cy.get('.username.dropdown-toggle').click()
-    cy.get("a[href='/users/my-ads']").click()
-    // ad to pe passed
-    cy.get('a.car-name.ad-detail-path').contains('Toyota Corolla XLi VVTi' + ' for Sale').parent()
-    .then(($el)=>{
-      cy.wrap($el).invoke('removeAttr', 'target').click()
-    })
-
-    cy.get("a[title='Change your ad details']").click()
-
-    carSellForm.clearMileage()
-    carSellForm.enterMileage("500000")
-    carSellForm.clearPrice()
-    carSellForm.enterPrice("2700000")
-    carSellForm.enterDescription('get the ad edit')
-    carSellForm.selectExteriorColor('White')
-    carSellForm.submitAd()
-
-    cy.get("strong[class='active']").should('have.text', 'Active')
-    cy.get("strong[class='generic-green']").should('have.text', 'PKR 27 lacs')
-    cy.get('.engine-icon.millage').next('p').should('have.text', '500,000 km')
-    cy.get('#scroll_car_detail li').contains('White')
-
-
-  })
-
-
-  it('re-activate ad from my ad detail', function(){
-
-    carSellForm.openPakwheels()
-    login.clickOnSignIn()
-    // login.loginWithPhone('03128984447','123456')
-    login.loginWithEmail('webtest170@mailinator.com', '1234567')
-    
-    // credit get code
-    // Get normal car credits count
-    cy.get('.username.dropdown-toggle').click()
-    cy.get("a[href='/users/my-credits']").click()
-
-    cy.get('ul.mt30 li').contains('Normal Car Ad Credits').next().then(($el)=>{
-        
-      const normalCarCreditsCount = $el.text()
-      cy.log(normalCarCreditsCount)
-
-      cy.get(".dashboard-nav .fa.fa-bullhorn").click()
-      // Goto removed ad listing
-      cy.get("a[href='/users/my-ads/st_removed']").click()
-        
-      // open ad to pe passed
-      cy.get('a.car-name.ad-detail-path').contains('Suzuki Cultus VXL' + ' for Sale').parent().then(($el)=>{
-        cy.wrap($el).invoke('removeAttr', 'target').click()          
-      })
-
-      // click on reactivate button
-      cy.get("a[title='List your ad in search']").click()
-
-      // check relevant upsell
-        if(normalCarCreditsCount > 0){
-          
-          cy.get('.upsell-list li h3.generic-basic').contains('7 Days').then(($el)=>{
-            const upsellChk = $el.text().trim()
-            expect(upsellChk).to.equal('7 Days')
-          })
-
-        }else{  cy.get('h3.generic-primary.mt10').should('have.text', 'Your Ad is Pending') }
-
-    
-    })  
-
-  })
-
-
-
-  adDetails.carAdDetails.forEach((carAdDetail) => {
-    it('Post a Car ad', function () {
+  adDetails.car_ad_edit.forEach((editDetails)=>{
+    it('Edit ad from my ad detail', function(){
+  
       carSellForm.openPakwheels()
-      carSellForm.gotoCarSellForm()
-      login.loginWithEmail('sprint168@mailinator.com', '1234567')
-      carSellForm.clickContinueFromSellOption()
-      carSellForm.selectCity(carAdDetail.city)
-      carSellForm.selectCityArea(carAdDetail.city_area)
-      carSellForm.selectYearMakeModelVersion(carAdDetail.model_year, carAdDetail.make, carAdDetail.model, carAdDetail.version)
-      carSellForm.selectRegistrationCity(carAdDetail.reg_city)
-      carSellForm.selectExteriorColor(carAdDetail.exterior_color)
-
-
-      // Skip duplicate pop-up
-      //   cy.get('.model-footer > .btn').click()
-
-      carSellForm.enterMileage(carAdDetail.mileage)
-      carSellForm.enterPrice(carAdDetail.price)
-      carSellForm.enterDescription(carAdDetail.description)
-      carSellForm.selectDescPreSuggestValues()
-      carSellForm.selectEngineType(carAdDetail.engine_type)
-      carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
-      carSellForm.selectTransmission(carAdDetail.transmission)
-      carSellForm.selectAssembly(carAdDetail.assembly)
-      carSellForm.selectFeatures(carAdDetail.features)
-      // enter price again because of price calculator
-      carSellForm.enterPrice(carAdDetail.price)
-      carSellForm.enterPhone(carAdDetail.phone)
-      carSellForm.enableWhatsappContact()
+      login.clickOnSignIn()
+      login.loginWithEmail('webtest170@mailinator.com', '1234567')
+      homePage.openMyAds()
+      myAdsLiting.openAdDetail(editDetails.ad_detail)
+      myAdDetail.clickOnEdit()
+  
+      carSellForm.clearMileage()
+      carSellForm.enterMileage(editDetails.mileage)
+      carSellForm.clearPrice()
+      carSellForm.enterPrice(editDetails.price)
+      carSellForm.enterDescription(editDetails.description)
+      carSellForm.selectExteriorColor(editDetails.color)
       carSellForm.submitAd()
+  
+      myAdDetail.verifyAdEdit(editDetails.price, editDetails.mileage, editDetails.color)
+  
+  
     })
+  
   })
 
+  it.only('re-activate ad from my ad detail', function(){
+    carSellForm.openPakwheels()
+    login.clickOnSignIn()
+    // login.loginWithPhone('03128984447','123456')
+    login.loginWithEmail('webtest170@mailinator.com', '1234567')
+    myAdDetail.reActivateAdAndVerify(adDetails.reactivate_ad)
 
+  })
 
   adDetails.bikeAdDetails.forEach((bikeAdDetail) => {
     it('Post a Bike ad', function () {
@@ -267,4 +232,6 @@ describe('Ad Posting', function () {
     })
 
   })
+
+
 })  
