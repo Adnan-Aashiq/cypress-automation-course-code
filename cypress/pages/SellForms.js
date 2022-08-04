@@ -24,6 +24,7 @@ export class SellForms{
 
     submitAd(){
         cy.get('#submit_form').click() 
+        cy.wait(6000)
     }
 
     clearMileage(){

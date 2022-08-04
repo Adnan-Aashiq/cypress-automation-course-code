@@ -8,7 +8,7 @@
             "condition": "New",
             "description": "This is the test description for autopart ad posting from cypress automation",
             "price": "6500",
-            "phone": "03915134567"
+            "phone": "03128984447"
         },
         {
             "title": "Car A/C Belt",
@@ -18,7 +18,7 @@
             "condition": "Used",
             "description": "This is the test description for autopart ad posting from cypress automation",
             "price": "5500",
-            "phone": "03915134567"
+            "phone": "03128984447"
         }
     ],
     "bikeAdDetails" : [
@@ -37,7 +37,7 @@
                 "Disc Brake",
                 "Anti Theft Lock"
             ],
-            "phone": "03915134567"
+            "phone": "03128984447"
     
         },
         {
@@ -55,7 +55,7 @@
                 "Disc Brake",
                 "Anti Theft Lock"
             ],
-            "phone": "03915134567"
+            "phone": "03128984447"
     
         }
     ],
@@ -82,7 +82,7 @@
                     "Rear Camera",
                     "Rear Speakers"
             ],
-            "phone": "03915134567"
+            "phone": "03128984447"
     },
     {
             "city": "Karachi",
@@ -106,19 +106,23 @@
                     "Rear Camera",
                     "Rear Speakers"
             ],
-            "phone": "03915134567"
+            "phone": "03128984447"
     }
     ],
     "car_ad_edit":[{
-        "ad_detail": "Toyota Corolla XLi VVTi",
-        "price": "2600000",
+        "ad_detail": "Honda Civic Oriel 1.8 i-VTEC CVT",
+        "price": "2800000",
         "mileage": "550000",
         "description": "Edit the ad description",
         "color": "Black"
     }],
-    "reactivate_ad": "Suzuki Cultus VXL",
-    "remove_ad_title": "Toyota Corolla XLi VVTi",
-    "remove_sold_price": "1600000"
+    "reactivate_ad": "Toyota Corolla GLi Automatic 1.3 VVTi",
+    "remove_ad_title": "Toyota Corolla GLi Automatic 1.3 VVTi",
+    "remove_sold_price": "1600000",
+    "feature_ads_with_credits":[{
+        "ad_detail": "Suzuki Cultus VXL",
+        "feature_duration": "14 Days"
+    }]
 
 }
 
