@@ -1,0 +1,64 @@
+{
+    "usedCarSearch": [
+        {
+            "Province": "Punjab",
+            "City": "Faisalabad",
+            "City Area": "Madina Town",
+            "Make": "Toyota",
+            "Model": "Vitz",
+            "Version": "F 1.0",
+            "Price Range": [
+                "500000",
+                "10000000"
+            ],
+            "Year": [
+                "2000",
+                "2022"
+            ],
+            "Mileage": [
+                "1000",
+                "200000"
+            ],
+            "Registered In": "Un-Registered",
+            "Transmission": "Automatic",
+            "Color": "Gold",
+            "Engine Type": "Petrol",
+            "Engine Capacity": [
+                "600",
+                "20000"
+            ],
+            "Assembly": "Imported",
+            "Body Type": "Hatchback",
+            "Seller Type": "Individuals"
+        }
+    ],
+    "usedBikeSearch": [
+        {
+            "city": "Lahore",
+            "cityArea": "Cantt",
+            "yearFrom": "2000",
+            "yearTo": "2022",
+            "priceRangeFrom": "50000",
+            "priceRangeTo": "1000000",
+            "make": "Honda",
+            "model": "CG 125",
+            "registeredIn": "Lahore",
+            "engineType": "4 Stroke",
+            "engineCapacityFrom": "50",
+            "engineCapacityTo": "1000",
+            "bodyType": "Standard",
+            "sellerType": "Individuals"
+        }
+    ],
+    "usedAccessorySearch": [
+        {
+            "sale": "Discounted Products",
+            "shopNow": "PakWheels Autostore",
+            "priceRangeFrom": "500",
+            "priceRangeTo": "100000",
+            "brand": "Sonax",
+            "city": "Lahore",
+            "pictureAvailability": "With Pictures"
+        }
+    ]
+}
