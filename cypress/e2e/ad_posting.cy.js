@@ -19,6 +19,7 @@ const adDetails = require('../fixtures/adDetails.json');
 describe('Ad Posting', function () {
 
   adDetails.carAdDetails.forEach((carAdDetail) => {
+
     it('Post a Car ad', function () {
       carSellForm.openPakwheels()
       carSellForm.gotoCarSellForm()
@@ -30,7 +31,6 @@ describe('Ad Posting', function () {
       carSellForm.selectRegistrationCity(carAdDetail.reg_city)
       carSellForm.selectExteriorColor(carAdDetail.exterior_color)
 
-
       // Skip duplicate pop-up
       //   cy.get('.model-footer > .btn').click()
 
@@ -38,6 +38,7 @@ describe('Ad Posting', function () {
       carSellForm.enterPrice(carAdDetail.price)
       carSellForm.enterDescription(carAdDetail.description)
       carSellForm.selectDescPreSuggestValues()
+      carSellForm.attachPictures(carAdDetail.image_paths)
       carSellForm.selectEngineType(carAdDetail.engine_type)
       carSellForm.enterEngineCapacity(carAdDetail.engine_capacity)
       carSellForm.selectTransmission(carAdDetail.transmission)
@@ -77,7 +78,6 @@ describe('Ad Posting', function () {
   })
   
 
-
   it.skip('Feature Ad from ad detail through payment', function(){
     
     var featureDuration = '28 Days'
@@ -114,6 +114,7 @@ describe('Ad Posting', function () {
     })
     
   })
+
 
   adDetails.feature_ads_with_credits.forEach((featureAdDetails)=>{  
     it.skip('Feature Ad from ad detail through credits', function(){
@@ -165,6 +166,7 @@ describe('Ad Posting', function () {
 
   })
 
+
   adDetails.bikeAdDetails.forEach((bikeAdDetail) => {
     it('Post a Bike ad', function () {
       bikeSellForm.openPakwheels()
@@ -182,6 +184,7 @@ describe('Ad Posting', function () {
       bikeSellForm.enterDescription(bikeAdDetail.description)
       bikeSellForm.enterPrice(bikeAdDetail.price)
       bikeSellForm.selectFeatures(bikeAdDetail.features)
+      bikeSellForm.attachPictures(bikeAdDetail.image_paths)
       bikeSellForm.enterPhone(bikeAdDetail.phone)
       bikeSellForm.enableWhatsappContact()
       bikeSellForm.submitAd()
@@ -190,7 +193,7 @@ describe('Ad Posting', function () {
 
 
   adDetails.accessoryAdDetails.forEach((accessoryAdDetail) => {
-    it('Post an autopart ad', function () {
+    it.only('Post an autopart ad', function () {
       accessorySellForm.openPakwheels()
       accessorySellForm.openAccessorySellForm()
       // Login
@@ -203,6 +206,7 @@ describe('Ad Posting', function () {
       accessorySellForm.selectCondition(accessoryAdDetail.condition)
       accessorySellForm.enterDescription(accessoryAdDetail.description)
       accessorySellForm.enterPrice(accessoryAdDetail.price)
+      accessorySellForm.attachPictures(accessoryAdDetail.image_paths)
       accessorySellForm.enterPhone(accessoryAdDetail.phone)
       accessorySellForm.submitAd()
     })

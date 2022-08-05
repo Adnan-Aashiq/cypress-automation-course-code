@@ -56,6 +56,7 @@ export class CarSellForm extends SellForms{
     }
 
     enterEngineCapacity(engine_cc){
+        cy.get('#used_car_engine_capacity').clear()
         cy.get('#used_car_engine_capacity').type(engine_cc)
     }
 

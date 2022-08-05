@@ -8,7 +8,12 @@
             "condition": "New",
             "description": "This is the test description for autopart ad posting from cypress automation",
             "price": "6500",
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                "images/parts_images/part_ad_1.jpg",
+                "images/parts_images/part_ad_2.jpg",
+                "images/parts_images/part_ad_3.jpg"
+            ]
         },
         {
             "title": "Car A/C Belt",
@@ -18,7 +23,12 @@
             "condition": "Used",
             "description": "This is the test description for autopart ad posting from cypress automation",
             "price": "5500",
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                "images/parts_images/part_ad_1.jpg",
+                "images/parts_images/part_ad_2.jpg",
+                "images/parts_images/part_ad_3.jpg"
+            ]
         }
     ],
     "bikeAdDetails" : [
@@ -37,7 +47,12 @@
                 "Disc Brake",
                 "Anti Theft Lock"
             ],
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                "images/bike_images/bike_ad_1.jpg",
+                "images/bike_images/bike_ad_2.jpg",
+                "images/bike_images/bike_ad_3.jpg"
+            ]
     
         },
         {
@@ -55,7 +70,12 @@
                 "Disc Brake",
                 "Anti Theft Lock"
             ],
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                "images/bike_images/bike_ad_1.jpg",
+                "images/bike_images/bike_ad_2.jpg",
+                "images/bike_images/bike_ad_4.jpg"
+            ]
     
         }
     ],
@@ -82,7 +102,12 @@
                     "Rear Camera",
                     "Rear Speakers"
             ],
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                    "images/car_images/car_ad_1.jpg",
+                    "images/car_images/car_ad_2.jpg",
+                    "images/car_images/car_ad_3.jpg"
+            ]
     },
     {
             "city": "Karachi",
@@ -106,7 +131,12 @@
                     "Rear Camera",
                     "Rear Speakers"
             ],
-            "phone": "03128984447"
+            "phone": "03128984447",
+            "image_paths": [
+                "images/car_images/car_ad_1.jpg",
+                "images/car_images/car_ad_2.jpg",
+                "images/car_images/car_ad_3.jpg"
+            ]
     }
     ],
     "car_ad_edit":[{
