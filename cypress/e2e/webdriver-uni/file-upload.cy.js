@@ -19,7 +19,6 @@ describe("Test file upload via webdriveruni", () => {
         cy.get("#submit-button").click();
 
     })
-
     it("Upload not a file....", () => {
         cy.visit("http://www.webdriveruniversity.com");
         cy.get('#file-upload').invoke('removeAttr', 'target').click({ force: true })
