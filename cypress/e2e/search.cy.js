@@ -1,4 +1,4 @@
-// <reference types="cypress"/>
+/// <reference types="cypress"/>
 import {Homepage} from "../pages/Homepage"
 import { FindUsedBikeHomePage } from "../pages/Findusedbikehomepage";
 import {UsedSearchFilters} from "../pages/usedsearchfilters";

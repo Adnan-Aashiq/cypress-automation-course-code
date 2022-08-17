@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class Homepage{
     homePageURL = "https://www.pakgari.com/";
     openHomePage(){

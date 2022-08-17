@@ -1,4 +1,4 @@
-// <reference types="cypress"/>
+/// <reference types="cypress"/>
 import { Homepage } from "../pages/Homepage"
 import { FindUsedAutoPartsHomepage } from "../pages/Findusedautopartshomepage";
 import { LoginPage } from '../pages/Login';

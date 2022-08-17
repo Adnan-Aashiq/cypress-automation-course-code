@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class UsedSearchFilters {
 
     selectOption(filteroption) {

@@ -1,4 +1,5 @@
 //Car Finance
+/// <reference types="cypress"/>
 export class NewCarLoanCalculator{
     SelectCity(city){
         cy.get('.chzn-single').click();

@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class UsedAutoPartsSearch{
     city_Locator ='li[title="Accessories for Sale in Karachi, Pakistan"] > .filter-check';
     priceFrom = '4000'

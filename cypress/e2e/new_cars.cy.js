@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 import {NewCars} from '../pages/NewCars';
 
 const newCar = new NewCars();

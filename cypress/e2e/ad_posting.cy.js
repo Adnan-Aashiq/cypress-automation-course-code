@@ -1,4 +1,4 @@
-// <reference types="cypress"/>
+/// <reference types="cypress"/>
 import { LoginPage } from '../pages/Login';
 import { CarSellForm } from '../pages/CarSellForm';
 import { BikeSellForm } from '../pages/BikeSellForm';

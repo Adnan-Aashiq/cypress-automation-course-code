@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class CarInspectionHome{
     clickOnScheduleInspection(){
         cy.contains('Schedule Inspection').click();

@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class LoginPage{
     clickOnSignIn(){
         cy.contains('Sign In').click();

@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class SellForms{
 
     phone_loc = '#used_car_ad_listing_attributes_phone';
