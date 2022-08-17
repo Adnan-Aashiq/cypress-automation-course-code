@@ -19,7 +19,7 @@ describe('Search for car, bike and autopart', function(){
     
     searchTestData.usedCarSearch.forEach((data)=>{
 
-        it.only('Search for used car', function(){ 
+        it('Search for used car', function(){ 
             homePageObj.openHomePage();
             homePageObj.closeBanner();
             homePageObj.ClickOnSignIn();
