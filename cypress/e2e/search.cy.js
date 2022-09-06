@@ -19,11 +19,11 @@ describe('Search for car, bike and autopart', function(){
     
     searchTestData.usedCarSearch.forEach((data)=>{
 
-        it('Search for used car', function(){ 
+        it.only('Search for used car', function(){ 
             homePageObj.openHomePage();
             homePageObj.closeBanner();
             homePageObj.ClickOnSignIn();
-            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Loginpageobj.loginWithEmail('sprint173@mailinator.com', '1234567')
             homePageObj.clickOnUsedCars();
             Object.keys(data).forEach(function(key) {
                 usedSearchFilterObj.applyfilter(key,data[key])

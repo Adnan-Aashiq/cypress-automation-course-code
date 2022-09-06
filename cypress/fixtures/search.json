@@ -2,6 +2,45 @@
     "usedCarSearch": [
         {
             "Province": "Punjab",
+            "City": "Lahore",
+            "City Area": "Johar Town",
+            "Make": "Toyota",
+            "Model": "Corolla",
+            "Price Range": [
+                "1500000",
+                "6000000"
+            ],
+            "Year": [
+                "2015",
+                "2020"
+            ],
+            "Transmission": "Automatic",
+            "Color": "White"
+        },
+        {
+            "Make": "Suzuki",
+            "Model": "Baleno",
+            "Version": "JXR",
+            "Color": "Gold",
+            "Year": [
+                "2002",
+                "2015"
+            ]
+        },
+        {
+            "Make": "Honda",
+            "Model": "City",
+            "Version": "i-DSI",
+            "Year": [
+                "2005",
+                "2015"
+            ],
+            "Engine Type": "Petrol",
+            "Assembly": "Local",
+            "Seller Type": "Individuals"
+        },
+        {
+            "Province": "Punjab",
             "City": "Faisalabad",
             "City Area": "Madina Town",
             "Make": "Toyota",

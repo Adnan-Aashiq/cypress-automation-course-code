@@ -52,7 +52,7 @@ describe('Automating lead forms', function () {
             Homepageobj.openHomePage();
             Homepageobj.closeBanner();
             Homepageobj.ClickOnSignIn();
-            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Loginpageobj.loginWithEmail('sprint173@mailinator.com', '1234567')
             Homepageobj.clickAuctionSheetVerfication();
             Auctionsheetverificationobj.inputChassisNumber(data.chassisNumber);
             Auctionsheetverificationobj.verifyAuctionSheet();
@@ -76,7 +76,7 @@ describe('Automating lead forms', function () {
             Homepageobj.openHomePage();
             Homepageobj.closeBanner();
             Homepageobj.ClickOnSignIn();
-            Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
+            Loginpageobj.loginWithEmail('sprint173@mailinator.com', '1234567')
             Homepageobj.clickSIFM();
             SIFMPageobj.clickOnGetStarted();
             SIFMLeadFormobj.SelectModelYear(data.year);

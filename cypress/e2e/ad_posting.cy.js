@@ -1,8 +1,10 @@
 /// <reference types="cypress"/>
+
 import { LoginPage } from '../pages/Login';
 import { CarSellForm } from '../pages/CarSellForm';
 import { BikeSellForm } from '../pages/BikeSellForm';
 import { AccessorySellForm } from '../pages/AccessorySellForm';
+
 const login = new LoginPage();
 const carSellForm = new CarSellForm();
 const bikeSellForm = new BikeSellForm();
@@ -17,7 +19,7 @@ describe('Ad Posting', function () {
     it('Post a Car ad', function () {
       carSellForm.openPakwheels()
       carSellForm.gotoCarSellForm()
-      login.loginWithEmail('sprint168@mailinator.com', '1234567')
+      login.loginWithEmail('sprint173@mailinator.com', '1234567')
       carSellForm.clickContinueFromSellOption()
       carSellForm.selectCity(carAdDetail.city)
       carSellForm.selectCityArea(carAdDetail.city_area)
@@ -50,7 +52,7 @@ describe('Ad Posting', function () {
       bikeSellForm.openPakwheels()
       bikeSellForm.gotoBikeSellForm()
       // Login
-      login.loginWithEmail('sprint168@mailinator.com', '1234567')
+      login.loginWithEmail('sprint173@mailinator.com', '1234567')
       // It should already navigate to bike sell form after login website consistency issue
       bikeSellForm.gotoBikeSellForm()
       bikeSellForm.selectCity(bikeAdDetail.city)
@@ -74,7 +76,7 @@ describe('Ad Posting', function () {
       accessorySellForm.openPakwheels()
       accessorySellForm.openAccessorySellForm()
       // Login
-      login.loginWithEmail('sprint168@mailinator.com', '1234567')
+      login.loginWithEmail('sprint173@mailinator.com', '1234567')
       // It should already navigate to autopart sell form after login website consistency issue
       accessorySellForm.openAccessorySellForm()
       accessorySellForm.enterTitle(accessoryAdDetail.title)

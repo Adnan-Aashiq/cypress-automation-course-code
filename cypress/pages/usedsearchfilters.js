@@ -8,18 +8,21 @@ export class UsedSearchFilters {
                 const title = $el.text();
                 if (title.includes(filteroption)) {
                     cy.wrap($el).click();
-                    this.verifyCanonicals()
+                    cy.get('.search-loader-fixed > img').should('not.be.visible');
+                    //this.verifyCanonicals()
                     flag = true;
                 }
             }).then(() => {
                 if (flag == false) {
                     cy.wrap($makes).parents(".accordion-inner").find(".more-choice").click()
-                    cy.wrap($makes).parents(".accordion-inner").find(".list-unstyled.inline  > li label a").then(($modalmakes) => {
+                    cy.get(".list-unstyled.inline li").then(($modalmakes) => {
                         cy.wrap($modalmakes).each(($element, index, $list) => {
                             const modaltitles = $element.text()
                             if (modaltitles.includes(filteroption)) {
                                 cy.wrap($element).click();
-                                this.verifyCanonicals()
+                                cy.get(".modal-content div:last-child div:last-child button[value='submit']").click()
+                                cy.get('.search-loader-fixed > img').should('not.be.visible');
+                                //this.verifyCanonicals()
 
                             }
                         })
@@ -42,20 +45,24 @@ export class UsedSearchFilters {
                 // if two argument        
                 if (typeof arguments[1] == 'string') {
                     this.selectOption(filteroption)
-                    cy.wait(3000)
                     if (filter == "City") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifycityFilter(filteroption)
                     }
                     else if (filter == "Engine Type") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginetypeFilter(filteroption)
                     }
                     else if (filter == "Transmission") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifytransmissionFilter(filteroption)
                     }
                     else if (filter == "Make") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymakeFilter(filteroption)
                     }
                     else if (filter == "Model") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymodelFilter(filteroption)
                     }
                 }
@@ -64,17 +71,20 @@ export class UsedSearchFilters {
                     var from = arguments[1][0]
                     var to = arguments[1][1]
                     this.selectRanges(from, to)
-                    cy.wait(3000)
                     if (filter == "Year") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyyearFilter(from, to)
                     }
                     else if (filter == "Mileage (Km)") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymileageFilter(from, to)
                     }
                     else if (filter == "Engine Capacity (cc)") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginecapacityFilter(from, to)
                     }
                     else if (filter == "Price Range") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifypriceFilter(from, to)
                     }
                 }
@@ -82,20 +92,24 @@ export class UsedSearchFilters {
             else {
                 if (typeof arguments[1] == 'string') {
                     this.selectOption(filteroption)
-                    cy.wait(3000)
                     if (filter == "City") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifycityFilter(filteroption)
                     }
                     else if (filter == "Engine Type") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginetypeFilter(filteroption)
                     }
                     else if (filter == "Transmission") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifytransmissionFilter(filteroption)
                     }
                     else if (filter == "Make") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymakeFilter(filteroption)
                     }
                     else if (filter == "Model") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymodelFilter(filteroption)
                     }
                 }
@@ -104,17 +118,20 @@ export class UsedSearchFilters {
                     var from = arguments[1][0]
                     var to = arguments[1][1]
                     this.selectRanges(from, to)
-                    cy.wait(3000)
                     if (filter == "Year") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyyearFilter(from, to)
                     }
                     else if (filter == "Mileage (Km)") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymileageFilter(from, to)
                     }
                     else if (filter == "Engine Capacity (cc)") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginecapacityFilter(from, to)
                     }
                     else if (filter == "Price Range") {
+                        cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifypriceFilter(from, to)
                     }
                 }
@@ -214,14 +231,14 @@ export class UsedSearchFilters {
     clearFilters() {
         cy.get('.clear-filters').should('have.text', "Clear All")
     }
-    verifyCanonicals(){
-        cy.reload()
-        return cy.get("link[rel='canonical']").invoke('attr','href').then((link)=>{
-            cy.url().then((url)=>{
-                expect(link).to.contain(url)
-            })
-            //expect('link').to.match(u)
-            //cy.url().should('eq', link)
-        })
-    }
+    // verifyCanonicals(){
+    //     cy.reload()
+    //     return cy.get("link[rel='canonical']").invoke('attr','href').then((link)=>{
+    //         cy.url().then((url)=>{
+    //             expect(link).to.contain(url)
+    //         })
+    //         //expect('link').to.match(u)
+    //         //cy.url().should('eq', link)
+    //     })
+    // }
 }
