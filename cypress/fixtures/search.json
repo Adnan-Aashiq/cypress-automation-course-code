@@ -1,6 +1,31 @@
 {
     "usedCarSearch": [
         {
+            "Make": "Mitsubishi",
+            "Model": "Minicab Bravo",
+            "Model Category": "Low Priced",
+            "Transmission": "Automatic",
+            "Year": [
+                "2002",
+                "2015"
+            ],
+            "Assembly": "Imported",
+            "Seller Type": "Individuals"
+        },
+        {
+            "Make": "Suzuki",
+            "Model": "Baleno",
+            "Version": "JXR",
+            "Color": "Gold",
+            "Year": [
+                "2002",
+                "2015"
+            ],
+            "Assembly": "Local",
+            "Body Type": "Sedan",
+            "Seller Type": "Individuals"
+        },
+        {
             "Province": "Punjab",
             "City": "Lahore",
             "City Area": "Johar Town",
@@ -15,59 +40,24 @@
                 "2020"
             ],
             "Transmission": "Automatic",
-            "Color": "White"
-        },
-        {
-            "Make": "Suzuki",
-            "Model": "Baleno",
-            "Version": "JXR",
-            "Color": "Gold",
-            "Year": [
-                "2002",
-                "2015"
-            ]
-        },
+            "Color": "White",
+            "Assembly": "Local",
+            "Body Type": "Sedan",
+            "Seller Type": "Individuals"
+        }
+        ,
         {
             "Make": "Honda",
             "Model": "City",
-            "Version": "i-DSI",
+            "Version": "Aspire 1.5 i-VTEC",
             "Year": [
-                "2005",
-                "2015"
+                "2009",
+                "2021"
             ],
+            "City": "Lahore",
+            "City Area": "Garhi Shahu",
+            "Registered In":"Lahore",
             "Engine Type": "Petrol",
-            "Assembly": "Local",
-            "Seller Type": "Individuals"
-        },
-        {
-            "Province": "Punjab",
-            "City": "Faisalabad",
-            "City Area": "Madina Town",
-            "Make": "Toyota",
-            "Model": "Vitz",
-            "Version": "F 1.0",
-            "Price Range": [
-                "500000",
-                "10000000"
-            ],
-            "Year": [
-                "2000",
-                "2022"
-            ],
-            "Mileage": [
-                "1000",
-                "200000"
-            ],
-            "Registered In": "Un-Registered",
-            "Transmission": "Automatic",
-            "Color": "Gold",
-            "Engine Type": "Petrol",
-            "Engine Capacity": [
-                "600",
-                "20000"
-            ],
-            "Assembly": "Imported",
-            "Body Type": "Hatchback",
             "Seller Type": "Individuals"
         }
     ],

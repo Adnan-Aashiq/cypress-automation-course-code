@@ -40,6 +40,7 @@ export class UsedSearchFilters {
         cy.get(".accordion-heading").contains(filter).as("filterName")
         cy.get('@filterName').parent().find('a').then(($value) => {
             var inputValue = $value.attr("class")
+            cy.log(inputValue)
             if (inputValue.includes('collapsed')) {
                 cy.get($value).click();
                 // if two argument        

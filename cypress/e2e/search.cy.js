@@ -5,8 +5,6 @@ import {UsedSearchFilters} from "../pages/usedsearchfilters";
 import { UsedAutoPartsSearch } from "../pages/UsedAutoPartsSearch";
 import { LoginPage } from "../pages/Login";
 
-
-
 const usedSearchFilterObj = new UsedSearchFilters ();
 const homePageObj = new Homepage();
 const findUsedBikeHomePageObj = new FindUsedBikeHomePage();
