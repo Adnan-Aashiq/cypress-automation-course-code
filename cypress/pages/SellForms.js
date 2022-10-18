@@ -24,7 +24,8 @@ export class SellForms{
 
     submitAd(){
         cy.wait(6000)
-        // cy.get('#submit_form').click() 
+        // cy.get('#submit_form').click()
+        cy.wait(20000)
     }
 
     clearMileage(){
@@ -37,8 +38,8 @@ export class SellForms{
 
     attachPictures(imagePaths){
         imagePaths.forEach(image => {
-            cy.get("input[type='file']").attachFile(image)  
-        });       
+            cy.get("input[type='file']").attachFile(image)
+        });
     }
     
 }

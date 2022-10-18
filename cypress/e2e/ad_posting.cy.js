@@ -53,7 +53,7 @@ describe('Ad Posting', function () {
   })
 
   adDetails.car_ad_edit.forEach((editDetails)=>{
-    it('Edit ad from my ad detail', function(){
+    it.skip('Edit ad from my ad detail', function(){
   
       carSellForm.openPakwheels()
       login.clickOnSignIn()
@@ -96,7 +96,7 @@ describe('Ad Posting', function () {
 
     myAdDetail.submitFeature()
 
-    myAdDetail.proceedToCheckOut()
+    // myAdDetail.proceedToCheckOut()
 
     //https://sandbox.jazzcash.com.pk/CustomerPortal/TransactionManagement/TransactionSelection
     // Jazz cash navigation
@@ -108,10 +108,10 @@ describe('Ad Posting', function () {
 
     // })
 
-    cy.get("div[class='cell manage-ad-features'] p").then(($el)=>{
-      featureText = $el.text()
-      console.log(featureText)
-    })
+    // cy.get("div[class='cell manage-ad-features'] p").then(($el)=>{
+    //   featureText = $el.text()
+    //   console.log(featureText)
+    // })
     
   })
 
@@ -146,7 +146,7 @@ describe('Ad Posting', function () {
   })
 
 
-  it('Remove active ad from my ad detail',function(){
+  it.skip('Remove active ad from my ad detail',function(){
     carSellForm.openPakwheels()
     login.clickOnSignIn()
     login.loginWithEmail('sprint168@mailinator.com', '1234567')
@@ -157,7 +157,7 @@ describe('Ad Posting', function () {
   })
 
 
-  it('re-activate ad from my ad detail', function(){
+  it.skip('re-activate ad from my ad detail', function(){
     carSellForm.openPakwheels()
     login.clickOnSignIn()
     // login.loginWithPhone('03128984447','123456')
@@ -193,7 +193,7 @@ describe('Ad Posting', function () {
 
 
   adDetails.accessoryAdDetails.forEach((accessoryAdDetail) => {
-    it.only('Post an autopart ad', function () {
+    it('Post an autopart ad', function () {
       accessorySellForm.openPakwheels()
       accessorySellForm.openAccessorySellForm()
       // Login
