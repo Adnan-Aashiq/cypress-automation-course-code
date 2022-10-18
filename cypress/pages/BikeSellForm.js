@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 import { SellForms } from "./SellForms"
 
 export class BikeSellForm extends SellForms{

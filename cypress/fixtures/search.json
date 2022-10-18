@@ -1,0 +1,93 @@
+{
+    "usedCarSearch": [
+        {
+            "Make": "Mitsubishi",
+            "Model": "Minicab Bravo",
+            "Model Category": "Low Priced",
+            "Transmission": "Automatic",
+            "Year": [
+                "2002",
+                "2015"
+            ],
+            "Assembly": "Imported",
+            "Seller Type": "Individuals"
+        },
+        {
+            "Make": "Suzuki",
+            "Model": "Baleno",
+            "Version": "JXR",
+            "Color": "Gold",
+            "Year": [
+                "2002",
+                "2015"
+            ],
+            "Assembly": "Local",
+            "Body Type": "Sedan",
+            "Seller Type": "Individuals"
+        },
+        {
+            "Province": "Punjab",
+            "City": "Lahore",
+            "City Area": "Johar Town",
+            "Make": "Toyota",
+            "Model": "Corolla",
+            "Price Range": [
+                "1500000",
+                "6000000"
+            ],
+            "Year": [
+                "2015",
+                "2020"
+            ],
+            "Transmission": "Automatic",
+            "Color": "White",
+            "Assembly": "Local",
+            "Body Type": "Sedan",
+            "Seller Type": "Individuals"
+        }
+        ,
+        {
+            "Make": "Honda",
+            "Model": "City",
+            "Version": "Aspire 1.5 i-VTEC",
+            "Year": [
+                "2009",
+                "2021"
+            ],
+            "City": "Lahore",
+            "City Area": "Garhi Shahu",
+            "Registered In":"Lahore",
+            "Engine Type": "Petrol",
+            "Seller Type": "Individuals"
+        }
+    ],
+    "usedBikeSearch": [
+        {
+            "city": "Lahore",
+            "cityArea": "Cantt",
+            "yearFrom": "2000",
+            "yearTo": "2022",
+            "priceRangeFrom": "50000",
+            "priceRangeTo": "1000000",
+            "make": "Honda",
+            "model": "CG 125",
+            "registeredIn": "Lahore",
+            "engineType": "4 Stroke",
+            "engineCapacityFrom": "50",
+            "engineCapacityTo": "1000",
+            "bodyType": "Standard",
+            "sellerType": "Individuals"
+        }
+    ],
+    "usedAccessorySearch": [
+        {
+            "sale": "Discounted Products",
+            "shopNow": "PakWheels Autostore",
+            "priceRangeFrom": "500",
+            "priceRangeTo": "100000",
+            "brand": "Sonax",
+            "city": "Lahore",
+            "pictureAvailability": "With Pictures"
+        }
+    ]
+}

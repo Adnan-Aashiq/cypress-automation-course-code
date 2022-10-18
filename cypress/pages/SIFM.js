@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 export class SIFMPage{
     clickOnGetStarted(){
         cy.get('.btn.btn-success.btn-lg.fs20.show.mb15').click();

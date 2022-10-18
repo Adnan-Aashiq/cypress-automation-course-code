@@ -1,3 +1,4 @@
+/// <reference types="cypress"/>
 const today = new Date();
 
 export class NewCars{

@@ -1,4 +1,4 @@
-// <reference types="cypress"/>
+/// <reference types="cypress"/>
 import { Homepage } from "../pages/Homepage"
 import { FindUsedAutoPartsHomepage } from "../pages/Findusedautopartshomepage";
 import { LoginPage } from '../pages/Login';
@@ -18,7 +18,7 @@ describe('Auto Store', function () {
   })
   autoStoreTestData.forEach((data) => {
     it('Place an estore order', function () {
-      login.loginWithEmail('sprint168@mailinator.com', '1234567');
+      login.loginWithEmail('sprint173@mailinator.com', '1234567');
       homePageObj.clickOnFindAutoParts();
       findUsedAutoPartsHomePageObj.TypeInSearch(data.keyword);
       findUsedAutoPartsHomePageObj.ClickOnSearch();
