@@ -101,7 +101,7 @@ export class FindUsedAutoPartsHomepage {
             cy.log(grandTotal)
             cy.get('@totalShipment').then(totalShipmentCost => {
                 cy.get('@totalAmount').then(totalAmount => {
-                    var GrandTotalByF = totalShipmentCost + totalAmount; 4
+                    var GrandTotalByF = totalShipmentCost + totalAmount;
                     var percentToGet = 20;
                     var percent = Math.round((percentage / 100) * GrandTotalByF);
                     cy.log(percent)

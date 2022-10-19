@@ -49,13 +49,12 @@
         {
             "Make": "Honda",
             "Model": "City",
-            "Version": "Aspire 1.5 i-VTEC",
             "Year": [
-                "2009",
+                "2016",
                 "2021"
             ],
             "City": "Lahore",
-            "City Area": "Garhi Shahu",
+            "Transmission": "Manual",
             "Registered In":"Lahore",
             "Engine Type": "Petrol",
             "Seller Type": "Individuals"
