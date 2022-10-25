@@ -36,7 +36,7 @@ export class UsedSearchFilters {
         cy.get('@filterName').parent().siblings(".accordion-body").find("input[placeholder='To']").type(to);
         cy.get('@filterName').parent().siblings(".accordion-body").find("input[value='Go']").click();
     }
-    applyfilter(filter, filteroption) {
+    applyfilter(filter, filteroption, type) {
         cy.get(".accordion-heading").contains(filter).as("filterName")
         cy.get('@filterName').parent().find('a').then(($value) => {
             var inputValue = $value.attr("class")
@@ -46,7 +46,7 @@ export class UsedSearchFilters {
                 // if two argument        
                 if (typeof arguments[1] == 'string') {
                     this.selectOption(filteroption)
-                    if (filter == "City") {
+                    if (filter == "City" && (type==='usedBikeSearch' || type==='usedCarSearch')) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifycityFilter(filteroption)
                     }
@@ -76,24 +76,24 @@ export class UsedSearchFilters {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyyearFilter(from, to)
                     }
-                    else if (filter == "Mileage (Km)") {
+                    else if ((filter == "Mileage (Km)") || (filter == "Mileage")) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymileageFilter(from, to)
                     }
-                    else if (filter == "Engine Capacity (cc)") {
+                    else if ((filter == "Engine Capacity (cc)") && (type==='usedCarSearch')) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginecapacityFilter(from, to)
                     }
-                    else if (filter == "Price Range") {
+                    else if (filter == "Price Range" ) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
-                        this.verifypriceFilter(from, to)
+                        this.verifypriceFilter(from, to, type)
                     }
                 }
             }
             else {
                 if (typeof arguments[1] == 'string') {
                     this.selectOption(filteroption)
-                    if (filter == "City") {
+                    if (filter == "City" && (type==='usedBikeSearch' || type==='usedCarSearch')) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifycityFilter(filteroption)
                     }
@@ -127,13 +127,13 @@ export class UsedSearchFilters {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifymileageFilter(from, to)
                     }
-                    else if (filter == "Engine Capacity (cc)") {
+                    else if ((filter == "Engine Capacity (cc)") && (type==='usedCarSearch')) {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
                         this.verifyenginecapacityFilter(from, to)
                     }
                     else if (filter == "Price Range") {
                         cy.get('.search-loader-fixed > img').should('not.be.visible');
-                        this.verifypriceFilter(from, to)
+                        this.verifypriceFilter(from, to, type)
                     }
                 }
             }
@@ -188,9 +188,22 @@ export class UsedSearchFilters {
             expect(value).includes(model)
         })
     }
-    verifypriceFilter(priceFrom, priceTo) {
+    verifypriceFilter(priceFrom, priceTo,type) {
         cy.get(".price-details.generic-dark-grey").each(($element) => {
             var value = $element.text()
+            cy.log(value)
+            if(type==='usedAccessorySearch'){
+                const priceArray = value.split(" ");
+                cy.log("0th "+priceArray[0]+"1st " +priceArray[1]+"2nd "+priceArray[2]+"3rd "+priceArray[3])
+                var price = priceArray[0]+priceArray[1]
+                cy.log("price "+price)
+                if (value.includes("lacs") || value.includes("crore")) {
+                    price = price+priceArray[2]
+                    cy.log("pricewithlacorpkr "+price)
+                }
+                value = price
+                cy.log("if end +"+value)
+            }
             if (value.includes("lacs")) {
                 var price = value.replace(/[^\d.-]/g, '')
                 var finalPrice = 100000 * price
@@ -199,12 +212,19 @@ export class UsedSearchFilters {
                 var price = value.replace(/[^\d.-]/g, '')
                 var finalPrice = 10000000 * price
             }
+            else {
+                var finalPrice = value.replace(/[^\d.-]/g, '')
+            }
             expect(Number(finalPrice)).to.be.within(Number(priceFrom), Number(priceTo))
         })
     }
-    Addtofavourite() {
-        cy.get('.save-ad').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
+    Addtofavourite(type) {
+        var locator = ".save-ad";
+        if(type==='usedAccessorySearch'){
+            locator = "span[id*='ad_']";
+        }
+        cy.get(locator).should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 4)
         }).then((k) => {
             cy.get('.save-ad').eq(k).click();
             return cy.get(".search-title a").eq(k).invoke('attr', 'href')

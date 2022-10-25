@@ -9,7 +9,28 @@
                 "2002",
                 "2015"
             ],
+            "Price Range": [
+                "500000",
+                "3000000"
+            ],
             "Assembly": "Imported",
+            "Seller Type": "Individuals"
+        },
+        {
+            "Make": "Honda",
+            "Model": "City",
+            "Year": [
+                "2016",
+                "2021"
+            ],
+            "City": "Lahore",
+            "Transmission": "Manual",
+            "Registered In": "Lahore",
+            "Mileage (Km)": [
+                "10000",
+                "40000"
+            ],
+            "Engine Type": "Petrol",
             "Seller Type": "Individuals"
         },
         {
@@ -28,65 +49,70 @@
         {
             "Province": "Punjab",
             "City": "Lahore",
-            "City Area": "Johar Town",
             "Make": "Toyota",
-            "Model": "Corolla",
+            "Model": "Land Cruiser",
             "Price Range": [
-                "1500000",
-                "6000000"
+                "8000000",
+                "235000000"
             ],
             "Year": [
                 "2015",
                 "2020"
             ],
-            "Transmission": "Automatic",
-            "Color": "White",
-            "Assembly": "Local",
-            "Body Type": "Sedan",
-            "Seller Type": "Individuals"
-        }
-        ,
-        {
-            "Make": "Honda",
-            "Model": "City",
-            "Year": [
-                "2016",
-                "2021"
-            ],
-            "City": "Lahore",
-            "Transmission": "Manual",
-            "Registered In":"Lahore",
-            "Engine Type": "Petrol",
-            "Seller Type": "Individuals"
+            "Transmission": "Automatic"
         }
     ],
     "usedBikeSearch": [
         {
-            "city": "Lahore",
-            "cityArea": "Cantt",
-            "yearFrom": "2000",
-            "yearTo": "2022",
-            "priceRangeFrom": "50000",
-            "priceRangeTo": "1000000",
-            "make": "Honda",
-            "model": "CG 125",
-            "registeredIn": "Lahore",
-            "engineType": "4 Stroke",
-            "engineCapacityFrom": "50",
-            "engineCapacityTo": "1000",
-            "bodyType": "Standard",
-            "sellerType": "Individuals"
+            "City": "Lahore",
+            "City Area": "Cantt",
+            "Price Range": [
+                "50000",
+                "120000"
+            ],
+            "Make": "Honda",
+            "Registered In": "Lahore",
+            "Engine Capacity (cc)": [
+                "50",
+                "150"
+            ],
+            "Body Type": "Standard",
+            "Seller Type": "Individuals"
+        },
+        {
+            "City": "Karachi",
+            "Year": [
+                "2000",
+                "2020"
+            ],
+            "Price Range": [
+                "50000",
+                "90000"
+            ],
+            "Make": "Suzuki",
+            "Model": "GS500F",
+            "Registered In" :"Karachi",
+            "Body Type" : "Sportsbike"
         }
     ],
     "usedAccessorySearch": [
         {
-            "sale": "Discounted Products",
-            "shopNow": "PakWheels Autostore",
-            "priceRangeFrom": "500",
-            "priceRangeTo": "100000",
-            "brand": "Sonax",
-            "city": "Lahore",
-            "pictureAvailability": "With Pictures"
+            "Sale": "Discounted Products",
+            "Price Range": [
+                "500",
+                "45000"
+            ],
+            "Brand": "Sonax",
+            "City": "Lahore",
+            "Picture Availability": "With Pictures"
+        },
+        {
+            "Price Range": [
+                "150000",
+                "10000000"
+            ],
+            "City": "Lahore",
+            "Picture Availability": "With Pictures"
         }
     ]
 }
