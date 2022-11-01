@@ -1,62 +1,64 @@
 /// <reference types="cypress"/>
-export class CarInspectionHome{
-    clickOnScheduleInspection(){
-        cy.contains('Schedule Inspection').click();
-    }
-} 
+export class CarInspectionLeadForm {
+    location(city, cityArea, address) {
+        cy.get('#city-city-area-selector').click();
+        cy.get(".city-listings li").contains(city).click();
+        cy.get("#city-areas-list div li").contains(cityArea).click();
 
-export class CarInspectionLeadForm{
-    SelectModelYear(year){
-        cy.get("#car_certification_request_model_year")
-        .select(year).should('have.value', year);
+        //Adress Field
+        cy.get('#car_certification_request_address').type(address)
     }
-    SelectCarInfo(make,model){
-        //this model css is only valid for suzuki make
+    make_model_version(year, make, model, version) {
         cy.get("#car_selector").click();
-        cy.get(".form-group.nomargin .make").contains(make).click();
-        cy.get(".form-group.nomargin .model").contains(model).click();
+        cy.get(".year-listings li").contains(year).click();
+        cy.get(".make-listings li a").contains(make).click();
+        cy.get(".model-listings li a").contains(model).click();
+        cy.get(".version-listings li a").contains(version).click();
     }
-    InputName(name){
+    inspection_slot() {
+        cy.get("#inspection-slots-input").click();
+        cy.get('.get-inspection-days li a').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.get-inspection-days li a').eq(k).click();
+        })
+        cy.get('#copied-slots-for-day input:not(:disabled)').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('#copied-slots-for-day input:not(:disabled)').eq(k).click();
+        })
+        cy.contains('Confirm').click({ force: true })
+    }
+    name_number(name, phoneNumber) {
         cy.get("#car_certification_request_name").type(name);
-    }
-    InputPhoneNumber(phoneNumber){
         cy.get("#car_certification_request_mobile").type(phoneNumber)
     }
-    // clickIfExist(email){
-    //     cy.get('body').then((body) => {
-    //         if (body.find("#user_email").length > 0) {
-    //             cy.get("#user_email").type(email)
-    //         }
-    //         else
-    //         {
+    ClickOnSubmit() {
+        cy.get("#car_certification_request_submit_btn").click();
+    }
+    ordersummary() {
+        let randomize = Date.now() % 2
+        cy.log(randomize)
+        if (randomize === 1) {
+            cy.get('#discount_code').type('NewCode1212')
+            cy.get('#apply-discount').click()
+        }
+        else {
+        }
+        cy.get('#proceed_to_payment_btn').click()
 
-    //         }
-    //     });
-    // }
-    InputEmail(email){
-        cy.get("#user_email").type(email);
+        //Payment methods
+        cy.get('#payment_method_107').click()
+        cy.get('#proceed-checkout').click()
+
+        //Jazzcash menu
+        cy.get('#mobile_number').type('03123456789')
+        cy.get('#cnic_number').type('345678')
+        cy.get('#continue').click()
     }
-    SelectCity(city){
-        cy.get('.chzn-single').click();
-        cy.get("ul[class='chzn-results'] li[class='active-result']").contains(city).click();
-        cy.get("ul[class='chzn-results'] li[class='active-result result-selected']")
-        .should('have.text', city);
-    }
-    SelectCityArea(cityArea){
-        cy.get("#car_certification_request_city_area_id_chzn").click();
-        cy.get("ul[class='chzn-results'] li[class='active-result group-option']").contains(cityArea).click();
-        cy.get("ul[class='chzn-results'] li[class='active-result group-option result-selected']")
-        .should('have.text', cityArea);
-    }
-    CheckBox(){
-        cy.get('#checkboxmagazine').click();
-    }
-    ClickOnSubmit(){
-        cy.get("#certify-a-car-done").click();
-    }
-    VerifyLead(){
+    VerifyLead() {
         cy.get(".generic-green.fs20.mt15")
-        .should('have.text','Your request for PakWheels Car Inspection has been received.');
+            .should('have.text', 'Your request for PakWheels Car Inspection has been received.');
     }
 
 

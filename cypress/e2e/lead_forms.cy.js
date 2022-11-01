@@ -8,7 +8,6 @@ import { NewCarLoanCalculator, UsedCarLoanCalculator, Banks, FinanceForm, Insura
 
 
 const Homepageobj = new Homepage();
-const Carinspectionhomeobj = new CarInspectionHome();
 const Carinspectionleadformobj = new CarInspectionLeadForm();
 const Loginpageobj = new LoginPage();
 const Auctionsheetverificationobj = new AuctionSheetVerification();
@@ -24,29 +23,21 @@ const Insuranceformobj = new InsuranceForm();
 const sifmTestData = require("../fixtures/leadForms.json")
 
 describe('Automating lead forms', function () {
-    // sifmTestData.InspectionRequest.forEach((data) => {
-    //     it('Placing PakWheels Car Inspection lead', function () {
-    //         Homepageobj.openHomePage();
-    //         Homepageobj.closeBanner();
-    //         Homepageobj.ClickOnSignIn();
-    //         Loginpageobj.loginWithEmail('sprint168@mailinator.com', '1234567')
-    //         Homepageobj.clickOnCarInspection();
-    //         Carinspectionhomeobj.clickOnScheduleInspection();
-    //         Carinspectionleadformobj.SelectModelYear(data.year);
-    //         Carinspectionleadformobj.SelectCarInfo(data.make, data.model);
-    //         Carinspectionleadformobj.InputName(data.name);
-    //         Carinspectionleadformobj.InputPhoneNumber(data.phoneNumber);
-    //         //for already logged in user this lower function is not required
-    //         //Carinspectionleadformobj.clickIfExist(data.email)
-    //         //Carinspectionleadformobj.InputEmail(data.email);
-    //         Carinspectionleadformobj.SelectCity(data.city);
-    //         Carinspectionleadformobj.SelectCityArea(data.cityArea);
-    //         Carinspectionleadformobj.CheckBox();
-    //         Carinspectionleadformobj.ClickOnSubmit();
-    //         Carinspectionleadformobj.VerifyLead();
+    sifmTestData.InspectionRequest.forEach((data) => {
+        it.only('Placing PakWheels Car Inspection lead', function () {
+            Homepageobj.openHomePage();
+            Homepageobj.closeBanner();
+            Homepageobj.ClickOnSignIn();
+            Loginpageobj.loginWithEmail('sprint180@mailinator.com', '1234567')
+            Homepageobj.clickOnCarInspection();
+            Carinspectionleadformobj.location(data.city,data.cityArea,data.address)
+            Carinspectionleadformobj.make_model_version(data.year,data.make,data.model,data.version)
+            Carinspectionleadformobj.inspection_slot()
+            //Carinspectionleadformobj.ClickOnSubmit()
+            Carinspectionleadformobj.ordersummary()
 
-    //     })
-    // })
+        })
+    })
     sifmTestData.AuctionSheet_loggedinUser.forEach((data) => {
         it('Auction Sheet verification when user is logged in', function () {
             Homepageobj.openHomePage();

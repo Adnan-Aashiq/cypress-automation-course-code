@@ -37,24 +37,16 @@
 	],
 	"InspectionRequest": [
 		{
+			"city": "Karachi",
+			"cityArea": "A.F.O.H.S",
+			"address":"House # 45 Street # 5",
 			"year": "2018",
 			"make": "KIA",
-			"model": "Pride",
+			"model": "Picanto",
+			"version":"1.2 GT",
 			"name": "Maham Riaz",
 			"phoneNumber": "03025689366",
-			"email" : "testing@PW.com",
-			"city": "Karachi",
-			"cityArea": "Korangi"
-		},
-		{
-			"year": "2020",
-			"make": "Opel",
-			"model": "Rekord",
-			"name": "Iqra Aziz",
-			"phoneNumber": "03568974522",
-			"email" : "testing@PW.com",
-			"city": "Karachi",
-			"cityArea": "Air Port"
+			"email" : "testing@PW.com"
 		}
 	],
 	"AuctionSheet_loggedinUser": [
