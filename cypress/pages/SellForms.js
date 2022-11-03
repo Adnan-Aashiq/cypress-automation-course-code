@@ -1,46 +1,50 @@
 /// <reference types="cypress"/>
-export class SellForms{
+export class SellForms {
 
     phone_loc = '#used_car_ad_listing_attributes_phone';
     bike_phone_loc = '#used_bike_ad_listing_attributes_phone';
     accessory_phone_loc = '#ad_listing_phone';
 
-    openPakwheels(){
+    sellername() {
+        cy.get('#used_car_ad_listing_attributes_display_name').type('Automation User')
+    }
+    openPakwheels() {
         cy.visit("https://www.pakgari.com")
         cy.get('#onesignal-slidedown-cancel-button').click()
 
     }
 
-    enterMileage(mileage){
+    enterMileage(mileage) {
         cy.get('#mileage_text').type(mileage)
     }
 
-    enterPrice(price){
+    enterPrice(price) {
         cy.get('#price_formatted').type(price)
     }
 
-    enableWhatsappContact(){
+    enableWhatsappContact() {
         cy.get('.slider_whatsapp').click()
     }
 
-    submitAd(){
-        cy.wait(6000)
-        // cy.get('#submit_form').click()
-        cy.wait(20000)
+    submitAd() {
+        //cy.wait(6000)
+        cy.get('#submit_form').click()
+        //cy.wait(20000)
+        
     }
 
-    clearMileage(){
+    clearMileage() {
         cy.get('#mileage_text').clear()
     }
 
-    clearPrice(){
+    clearPrice() {
         cy.get('#price_formatted').clear()
     }
 
-    attachPictures(imagePaths){
+    attachPictures(imagePaths) {
         imagePaths.forEach(image => {
             cy.get("input[type='file']").attachFile(image)
         });
     }
-    
+
 }

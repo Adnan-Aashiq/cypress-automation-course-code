@@ -18,13 +18,15 @@ const myAdDetail = new MyAdDetail();
 const adDetails = require('../fixtures/adDetails.json');
 
 describe('Ad Posting', function () {
-
   adDetails.carAdDetails.forEach((carAdDetail) => {
-
-    it('Post a Car ad', function () {
+    it.only('', () => {
+      cy.visit('https://www.pakgari.com/clear-number?numbers=03601234567')
+      cy.get('body').should('have.text', 'OK')
+    })
+    it.only('Post a Car ad', function () {
       carSellForm.openPakwheels()
       carSellForm.gotoCarSellForm()
-      login.loginWithEmail('sprint173@mailinator.com', '1234567')
+      login.loginWithPhone('03601234567', '123456')
       carSellForm.clickContinueFromSellOption()
       carSellForm.selectCity(carAdDetail.city)
       carSellForm.selectCityArea(carAdDetail.city_area)
@@ -47,22 +49,27 @@ describe('Ad Posting', function () {
       carSellForm.selectFeatures(carAdDetail.features)
       // enter price again because of price calculator
       carSellForm.enterPrice(carAdDetail.price)
+      carSellForm.sellername()
       carSellForm.enterPhone(carAdDetail.phone)
       carSellForm.enableWhatsappContact()
       carSellForm.submitAd()
+      cy.get('h1').then(($el) => {
+        var text = $el.text()
+        expect('Your Ad has been Posted Successfully!').to.be.eq(text.trim())
+      })
     })
   })
 
-  adDetails.car_ad_edit.forEach((editDetails)=>{
-    it.skip('Edit ad from my ad detail', function(){
-  
+  adDetails.car_ad_edit.forEach((editDetails) => {
+    it.only('Edit ad from my ad detail', function () {
+
       carSellForm.openPakwheels()
       login.clickOnSignIn()
-      login.loginWithEmail('sprint168@mailinator.com', '1234567')
+      login.loginWithPhone('03601234567', '123456')
       homePage.openMyAds()
       myAdsLiting.openAdDetail(editDetails.ad_detail)
       myAdDetail.clickOnEdit()
-  
+
       carSellForm.clearMileage()
       carSellForm.enterMileage(editDetails.mileage)
       carSellForm.clearPrice()
@@ -70,20 +77,20 @@ describe('Ad Posting', function () {
       carSellForm.enterDescription(editDetails.description)
       carSellForm.selectExteriorColor(editDetails.color)
       carSellForm.submitAd()
-  
+      cy.get('.table-alert > div:nth-child(2)').then(($el) => {
+        var text = $el.text()
+        expect('Your Ad has been successfully updated.').to.be.eq(text.trim())
+      })
       myAdDetail.verifyAdEdit(editDetails.price, editDetails.mileage, editDetails.color)
-  
-  
     })
-  
   })
-  
 
-  it.skip('Feature Ad from ad detail through payment', function(){
-    
+
+  it.skip('Feature Ad from ad detail through payment', function () {
+
     var featureDuration = '28 Days'
     var adDetail = 'Suzuki Cultus VXL'
-    
+
     carSellForm.openPakwheels()
     login.clickOnSignIn()
     login.loginWithEmail('webtest170@mailinator.com', '1234567')
@@ -113,41 +120,41 @@ describe('Ad Posting', function () {
     //   featureText = $el.text()
     //   console.log(featureText)
     // })
-    
+
   })
 
 
-  adDetails.feature_ads_with_credits.forEach((featureAdDetails)=>{  
-    it.skip('Feature Ad from ad detail through credits', function(){
-      
+  adDetails.feature_ads_with_credits.forEach((featureAdDetails) => {
+    it.skip('Feature Ad from ad detail through credits', function () {
+
       carSellForm.openPakwheels()
       login.clickOnSignIn()
       login.loginWithEmail('webtest170@mailinator.com', '1234567')
       homePage.openMyAds()
       myAdsLiting.openAdDetail(featureAdDetails.ad_detail)
       myAdDetail.clickOnFeatureAd()
-     
+
       // get feature credits
-      myAdDetail.getFeatureCreditsFromUpsell().then(($el)=>{
+      myAdDetail.getFeatureCreditsFromUpsell().then(($el) => {
         var featureCreditsCount = $el.text()
         cy.log(featureCreditsCount)
-  
+
         // Product to be selected
         myAdDetail.selectFeatureProduct(featureAdDetails.feature_duration)
         // submit feature
         myAdDetail.submitFeatureUsingCredit()
-  
+
         myAdDetail.verifyFeatureTill()
-        
+
         myAdDetail.verifyFeatureCredits(featureCreditsCount, featureAdDetails.feature_duration)
-  
-        })     
+
+      })
     })
-  
+
   })
 
 
-  it.skip('Remove active ad from my ad detail',function(){
+  it.skip('Remove active ad from my ad detail', function () {
     carSellForm.openPakwheels()
     login.clickOnSignIn()
     login.loginWithEmail('sprint168@mailinator.com', '1234567')
@@ -158,7 +165,7 @@ describe('Ad Posting', function () {
   })
 
 
-  it.skip('re-activate ad from my ad detail', function(){
+  it.skip('re-activate ad from my ad detail', function () {
     carSellForm.openPakwheels()
     login.clickOnSignIn()
     // login.loginWithPhone('03128984447','123456')

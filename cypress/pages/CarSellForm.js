@@ -3,7 +3,13 @@ import { SellForms } from "./SellForms"
 
 export class CarSellForm extends SellForms{
 
-
+adpost(){
+    gotoCarSellForm
+    gotoCarSellForm
+    gotoCarSellForm
+    gotoCarSellForm
+    gotoCarSellForm
+}
     gotoCarSellForm(){
         cy.get('[title="Post an Ad"]').click()
         cy.get('#select-sell-option').click()
