@@ -19,11 +19,11 @@ const adDetails = require('../fixtures/adDetails.json');
 
 describe('Ad Posting', function () {
   adDetails.carAdDetails.forEach((carAdDetail) => {
-    it.only('', () => {
+    it.skip('', () => {
       cy.visit('https://www.pakgari.com/clear-number?numbers=03601234567')
       cy.get('body').should('have.text', 'OK')
     })
-    it.only('Post a Car ad', function () {
+    it.skip('Post a Car ad', function () {
       carSellForm.openPakwheels()
       carSellForm.gotoCarSellForm()
       login.loginWithPhone('03601234567', '123456')
@@ -61,7 +61,7 @@ describe('Ad Posting', function () {
   })
 
   adDetails.car_ad_edit.forEach((editDetails) => {
-    it.only('Edit ad from my ad detail', function () {
+    it.skip('Edit ad from my ad detail', function () {
 
       carSellForm.openPakwheels()
       login.clickOnSignIn()
@@ -87,13 +87,13 @@ describe('Ad Posting', function () {
 
 
   it.skip('Feature Ad from ad detail through payment', function () {
-
+    //pending due to jazzcash
     var featureDuration = '28 Days'
-    var adDetail = 'Suzuki Cultus VXL'
+    var adDetail = 'Toyota Corolla GLi Automatic 1.3 VVTi'
 
     carSellForm.openPakwheels()
     login.clickOnSignIn()
-    login.loginWithEmail('webtest170@mailinator.com', '1234567')
+    login.loginWithPhone('03601234567', '123456')
     homePage.openMyAds()
     myAdsLiting.openAdDetail(adDetail)
     myAdDetail.clickOnFeatureAd()
@@ -125,11 +125,11 @@ describe('Ad Posting', function () {
 
 
   adDetails.feature_ads_with_credits.forEach((featureAdDetails) => {
-    it.skip('Feature Ad from ad detail through credits', function () {
+    it.only('Feature Ad from ad detail through credits', function () {
 
       carSellForm.openPakwheels()
       login.clickOnSignIn()
-      login.loginWithEmail('webtest170@mailinator.com', '1234567')
+      login.loginWithPhone('03601234567', '123456')
       homePage.openMyAds()
       myAdsLiting.openAdDetail(featureAdDetails.ad_detail)
       myAdDetail.clickOnFeatureAd()

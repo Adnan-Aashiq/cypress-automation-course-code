@@ -47,7 +47,7 @@ export class MyAdDetail{
         cy.get('.username.dropdown-toggle').click()
         cy.get("a[href='/users/my-credits']").click()
 
-        cy.get('ul.mt30 li').contains('Cars Featured Ads').next().then(($el)=>{
+        cy.get(".credits > :nth-child(2) > .list-unstyled > :nth-child(2)").contains('Cars Featured Ads').next().then(($el)=>{
             
             var currentFeatureCredits = $el.text()
             cy.wait(500)
